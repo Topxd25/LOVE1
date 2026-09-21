@@ -3,68 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOVE1 | Clan</title>
+
+<title>LOVE1 | Oficjalna aplikacja klanu</title>
 
 <style>
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background: #08000d;
+    background:
+        radial-gradient(circle at top, #36004f 0%, #0b0010 45%, #050008 100%);
     color: white;
     min-height: 100vh;
 }
 
+/* ================= HEADER ================= */
+
 header {
-    background: linear-gradient(90deg,#14001f,#7000a8,#14001f);
-    padding: 22px;
     text-align: center;
+    padding: 35px 20px;
+    background: linear-gradient(
+        135deg,
+        #170021,
+        #7200a8,
+        #21002f
+    );
+
     border-bottom: 2px solid #b000ff;
-    box-shadow: 0 0 25px #8500bd;
+    box-shadow: 0 0 35px #7c00a8;
 }
 
-header h1 {
-    color: #df9aff;
-    font-size: 42px;
-    text-shadow: 0 0 15px #a000ff;
+.logo {
+    font-size: 55px;
+    font-weight: 900;
+    color: #e19aff;
+    text-shadow:
+        0 0 10px #a900ff,
+        0 0 30px #8700c7;
 }
 
-header p {
+.subtitle {
+    margin-top: 8px;
     color: #ddd;
-    margin-top: 5px;
+    font-size: 17px;
 }
+
+/* ================= NAV ================= */
 
 nav {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+
     padding: 15px;
-    background: #100016;
+
+    background: rgba(10,0,15,0.95);
+    border-bottom: 1px solid #42005b;
 }
 
 nav button {
-    background: #20002d;
+    border: 1px solid #8200b5;
+    background: #190021;
     color: white;
-    border: 1px solid #8500bd;
-    padding: 11px 16px;
+
+    padding: 11px 17px;
     border-radius: 9px;
+
     cursor: pointer;
+    transition: 0.2s;
 }
 
 nav button:hover {
-    background: #8200b8;
-    box-shadow: 0 0 15px #a000ff;
+    background: #8000b8;
+    box-shadow: 0 0 18px #a000ff;
+    transform: translateY(-2px);
 }
 
+/* ================= MAIN ================= */
+
 main {
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1100px;
     margin: auto;
-    padding: 25px;
+    padding: 30px 20px;
 }
 
 .page {
@@ -75,89 +102,216 @@ main {
     display: block;
 }
 
+/* ================= HERO ================= */
+
 .hero {
     text-align: center;
-    padding: 70px 20px;
-    background: radial-gradient(circle,#3d0057,#0b0010 70%);
-    border: 1px solid #7d00a8;
-    border-radius: 20px;
-    box-shadow: 0 0 30px #43005c;
+    padding: 85px 25px;
+
+    background:
+        radial-gradient(circle, #50006f, #16001f 60%, #08000c);
+
+    border: 1px solid #8500b8;
+    border-radius: 22px;
+
+    box-shadow:
+        0 0 35px rgba(150,0,220,0.35);
 }
 
-.hero h2 {
-    font-size: 50px;
-    color: #d990ff;
-    margin-bottom: 15px;
+.hero h1 {
+    font-size: 55px;
+    color: #e19aff;
+
+    text-shadow:
+        0 0 15px #a000ff,
+        0 0 35px #8500d0;
 }
 
-.card {
-    background: #14001d;
-    border: 1px solid #5f007e;
-    padding: 22px;
-    border-radius: 15px;
-    margin-bottom: 18px;
+.hero p {
+    margin: 18px auto;
+    max-width: 700px;
+
+    color: #ddd;
+    font-size: 19px;
+    line-height: 1.6;
 }
 
-.card h3 {
-    color: #d783ff;
-    margin-bottom: 12px;
-}
-
-.card li {
-    list-style: none;
-    margin: 10px 0;
-}
+/* ================= BUTTON ================= */
 
 .btn {
-    background: #8700c9;
-    color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 9px;
-    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #7300a8,
+        #a900f5
+    );
+
+    color: white;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
     font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    margin: 5px;
 }
 
 .btn:hover {
-    background: #b000ff;
-    box-shadow: 0 0 15px #a000ff;
+    transform: scale(1.04);
+    box-shadow: 0 0 22px #a000ff;
 }
 
-input, textarea {
+/* ================= CARDS ================= */
+
+.card {
+    background: rgba(20,0,28,0.95);
+
+    border: 1px solid #600080;
+
+    border-radius: 17px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 0 20px rgba(110,0,160,0.18);
+}
+
+.card h2,
+.card h3 {
+    color: #d88aff;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* ================= RECRUITMENT ================= */
+
+.recruitment-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.recruitment-header h1 {
+    color: #dc91ff;
+    font-size: 40px;
+
+    text-shadow: 0 0 15px #9200cc;
+}
+
+.recruitment-header p {
+    color: #bbb;
+    margin-top: 10px;
+}
+
+/* requirements */
+
+.requirements {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.requirement {
+    background: #180020;
+
+    border: 1px solid #660088;
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    transition: 0.2s;
+}
+
+.requirement:hover {
+    border-color: #bd00ff;
+
+    box-shadow:
+        0 0 18px rgba(170,0,255,0.35);
+
+    transform: translateY(-3px);
+}
+
+.requirement .icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.requirement h3 {
+    color: #d788ff;
+    margin-bottom: 7px;
+}
+
+.requirement p {
+    color: #aaa;
+}
+
+/* recruitment form */
+
+input,
+textarea {
     width: 100%;
+
     background: #08000c;
+
     color: white;
+
     border: 1px solid #65008a;
+
+    border-radius: 9px;
+
     padding: 13px;
-    border-radius: 8px;
-    margin: 8px 0 15px;
+
+    margin-top: 8px;
+    margin-bottom: 15px;
+
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #bd00ff;
+
+    box-shadow:
+        0 0 12px rgba(160,0,230,0.4);
 }
 
 textarea {
-    min-height: 130px;
+    min-height: 140px;
     resize: vertical;
 }
 
-.login {
-    max-width: 450px;
-    margin: 40px auto;
+label {
+    color: #d58aff;
+    font-weight: bold;
 }
 
-.success {
-    color: #7dff9d;
-    margin-top: 12px;
-}
-
-.error {
-    color: #ff7777;
-    margin-top: 12px;
-}
+/* ================= APPLICATIONS ================= */
 
 .application {
-    background: #0c0013;
-    border: 1px solid #700099;
-    border-radius: 12px;
-    padding: 18px;
+    background: #100016;
+
+    border: 1px solid #60007e;
+
+    padding: 20px;
+
+    border-radius: 13px;
+
     margin-bottom: 15px;
 }
 
@@ -167,142 +321,536 @@ textarea {
 
 .status {
     display: inline-block;
-    padding: 5px 10px;
+
+    margin: 10px 0;
+
+    padding: 6px 10px;
+
     border-radius: 7px;
-    margin: 8px 0;
-    background: #350044;
+
+    background: #360047;
 }
 
-.admin-title {
-    color: #d88aff;
-    text-shadow: 0 0 10px #8f00c4;
+/* ================= CHAT ================= */
+
+.chat-box {
+    height: 350px;
+
+    overflow-y: auto;
+
+    background: #07000b;
+
+    border: 1px solid #550072;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
 }
+
+.chat-message {
+    background: #190021;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    margin-bottom: 8px;
+}
+
+.chat-name {
+    color: #d889ff;
+    font-weight: bold;
+}
+
+/* ================= LOGIN ================= */
+
+.login-box {
+    max-width: 450px;
+
+    margin: 50px auto;
+}
+
+/* ================= ADMIN ================= */
+
+.admin-panel {
+    border: 1px solid #a000df;
+
+    box-shadow:
+        0 0 30px rgba(150,0,220,0.3);
+}
+
+.owner-badge {
+    display: inline-block;
+
+    background: #65008c;
+
+    border: 1px solid #d000ff;
+
+    padding: 7px 12px;
+
+    border-radius: 8px;
+
+    color: #fff;
+}
+
+/* ================= FOOTER ================= */
 
 footer {
     text-align: center;
+
+    padding: 30px;
+
     color: #777;
-    padding: 25px;
-    border-top: 1px solid #30003e;
+
+    border-top: 1px solid #320041;
+
     margin-top: 30px;
 }
 
+/* ================= UTILITY ================= */
+
 .hidden {
     display: none !important;
+}
+
+.success {
+    color: #73ff9a;
+    margin-top: 10px;
+}
+
+.error {
+    color: #ff7070;
+    margin-top: 10px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px) {
+
+    .logo {
+        font-size: 40px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero {
+        padding: 55px 15px;
+    }
+
+    main {
+        padding: 20px 12px;
+    }
+
 }
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
-    <h1>💜 LOVE1</h1>
-    <p>JEDNA EKIPA • JEDEN CEL</p>
+
+    <div class="logo">
+        💜 LOVE1
+    </div>
+
+    <div class="subtitle">
+        JEDNA EKIPA • JEDEN CEL 🏆
+    </div>
+
 </header>
 
+
+<!-- ================= NAV ================= -->
+
 <nav>
-    <button onclick="showPage('home')">🏠 Start</button>
-    <button onclick="showPage('announcements')">📢 Ogłoszenia</button>
-    <button onclick="showPage('goals')">🎯 Cele</button>
-    <button onclick="showPage('recruitment')">📝 Rekrutacja</button>
-    <button onclick="showPage('chat')">💬 Czat</button>
-    <button onclick="showPage('login')">🔐 Konto</button>
-    <button id="adminButton" class="hidden" onclick="showPage('admin')">
-        👑 Panel Właściciela
+
+    <button onclick="showPage('home')">
+        🏠 Start
     </button>
+
+    <button onclick="showPage('announcements')">
+        📢 Ogłoszenia
+    </button>
+
+    <button onclick="showPage('goals')">
+        🎯 Cele
+    </button>
+
+    <button onclick="showPage('recruitment')">
+        📝 Rekrutacja
+    </button>
+
+    <button onclick="showPage('chat')">
+        💬 Czat
+    </button>
+
+    <button onclick="showPage('login')">
+        🔐 Konto
+    </button>
+
+    <button
+        id="ownerButton"
+        class="hidden"
+        onclick="showPage('owner')">
+
+        👑 Panel Właściciela
+
+    </button>
+
 </nav>
+
 
 <main>
 
-<!-- START -->
+
+<!-- ================= HOME ================= -->
+
 <section id="home" class="page active">
 
     <div class="hero">
-        <h2>💜 LOVE1</h2>
-        <p>Oficjalna aplikacja klanu LOVE1</p>
+
+        <h1>
+            💜 LOVE1
+        </h1>
+
+        <p>
+            Oficjalna aplikacja klanu LOVE1.
+            Znajdź ekipę, dołącz do rekrutacji,
+            poznaj nasze cele i graj razem z nami!
+        </p>
+
+        <button
+            class="btn"
+            onclick="showPage('recruitment')">
+
+            🔥 DOŁĄCZ DO LOVE1
+
+        </button>
+
+    </div>
+
+    <br>
+
+    <div class="card">
+
+        <h2>
+            ⚔️ O LOVE1
+        </h2>
+
+        <p>
+            LOVE1 to społeczność graczy skupiona
+            na Minecraft, PvP, wspólnej grze,
+            rywalizacji i dobrej atmosferze.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ANNOUNCEMENTS ================= -->
+
+<section id="announcements" class="page">
+
+    <div class="card">
+
+        <h2>
+            📢 OGŁOSZENIA
+        </h2>
 
         <br>
 
-        <button class="btn" onclick="showPage('recruitment')">
-            🔥 DOŁĄCZ DO LOVE1
-        </button>
-    </div>
+        <h3>
+            🔥 REKRUTACJA OTWARTA
+        </h3>
 
-    <br>
-
-    <div class="card">
-        <h3>⚔️ O LOVE1</h3>
         <p>
-            LOVE1 to ekipa graczy skupiona na Minecraft,
-            PvP, wspólnej grze i dobrej zabawie.
+            Szukamy nowych osób do ekipy LOVE1!
         </p>
+
+        <br>
+
+        <h3>
+            🏆 ROZWIJAMY KLAN
+        </h3>
+
+        <p>
+            Wspólnie budujemy coraz większą ekipę.
+        </p>
+
     </div>
 
 </section>
 
 
-<!-- OGŁOSZENIA -->
-<section id="announcements" class="page">
+<!-- ================= GOALS ================= -->
 
-    <h2>📢 Ogłoszenia</h2>
-    <br>
-
-    <div class="card">
-        <h3>🔥 Rekrutacja otwarta!</h3>
-        <p>
-            LOVE1 prowadzi rekrutację nowych członków.
-        </p>
-    </div>
-
-    <div class="card">
-        <h3>🏆 Rozwijamy LOVE1!</h3>
-        <p>
-            Budujemy większą i zgraną ekipę.
-        </p>
-    </div>
-
-</section>
-
-
-<!-- CELE -->
 <section id="goals" class="page">
 
-    <h2>🎯 Cele LOVE1</h2>
-    <br>
-
     <div class="card">
-        <ul>
-            <li>⚔️ Rozwijać PvP</li>
-            <li>👥 Powiększać ekipę</li>
-            <li>🏆 Brać udział w eventach</li>
-            <li>🎮 Grać razem</li>
-            <li>💜 Budować społeczność LOVE1</li>
-        </ul>
+
+        <h2>
+            🎯 CELE KLanu LOVE1
+        </h2>
+
+        <div class="requirements">
+
+            <div class="requirement">
+                <div class="icon">⚔️</div>
+                <h3>Rozwój PvP</h3>
+                <p>
+                    Doskonalimy swoje umiejętności.
+                </p>
+            </div>
+
+            <div class="requirement">
+                <div class="icon">👥</div>
+                <h3>Większa ekipa</h3>
+                <p>
+                    Rozwijamy społeczność LOVE1.
+                </p>
+            </div>
+
+            <div class="requirement">
+                <div class="icon">🏆</div>
+                <h3>Rywalizacja</h3>
+                <p>
+                    Bierzemy udział w eventach.
+                </p>
+            </div>
+
+            <div class="requirement">
+                <div class="icon">💜</div>
+                <h3>Zgrana społeczność</h3>
+                <p>
+                    Gramy razem i pomagamy sobie.
+                </p>
+            </div>
+
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- REKRUTACJA -->
+<!-- ================= RECRUITMENT ================= -->
+
 <section id="recruitment" class="page">
 
-    <h2>📝 Podanie do LOVE1</h2>
-    <br>
+
+    <div class="recruitment-header">
+
+        <h1>
+            📝 REKRUTACJA LOVE1
+        </h1>
+
+        <p>
+            Chcesz dołączyć do naszej ekipy?
+            Sprawdź wymagania i wyślij podanie!
+        </p>
+
+    </div>
+
+
+    <!-- REQUIREMENTS -->
 
     <div class="card">
 
-        <input id="applicationName"
-               placeholder="Twój nick">
+        <h2>
+            📋 WYMAGANIA
+        </h2>
 
-        <input id="applicationAge"
-               type="number"
-               placeholder="Wiek">
+        <div class="requirements">
 
-        <textarea id="applicationText"
-                  placeholder="Napisz coś o sobie, np. jak długo grasz i jakie masz doświadczenie w PvP..."></textarea>
 
-        <button class="btn" onclick="sendApplication()">
+            <div class="requirement">
+
+                <div class="icon">
+                    🎂
+                </div>
+
+                <h3>
+                    Minimum 13 lat
+                </h3>
+
+                <p>
+                    Kandydat musi mieć ukończone
+                    minimum 13 lat.
+                </p>
+
+            </div>
+
+
+            <div class="requirement">
+
+                <div class="icon">
+                    🎙️
+                </div>
+
+                <h3>
+                    Sprawny mikrofon
+                </h3>
+
+                <p>
+                    Wymagany działający mikrofon
+                    do komunikacji z ekipą.
+                </p>
+
+            </div>
+
+
+            <div class="requirement">
+
+                <div class="icon">
+                    ⚔️
+                </div>
+
+                <h3>
+                    Umiejętność PvP
+                </h3>
+
+                <p>
+                    Wymagana podstawowa znajomość
+                    PvP i chęć rozwijania skilla.
+                </p>
+
+            </div>
+
+
+            <div class="requirement">
+
+                <div class="icon">
+                    🟢
+                </div>
+
+                <h3>
+                    Aktywność
+                </h3>
+
+                <p>
+                    Liczymy na regularną aktywność
+                    na serwerze i w grze.
+                </p>
+
+            </div>
+
+
+            <div class="requirement">
+
+                <div class="icon">
+                    🤝
+                </div>
+
+                <h3>
+                    Kultura i szacunek
+                </h3>
+
+                <p>
+                    Szanujemy członków LOVE1
+                    i innych graczy.
+                </p>
+
+            </div>
+
+
+            <div class="requirement">
+
+                <div class="icon">
+                    🔥
+                </div>
+
+                <h3>
+                    Chęć grania
+                </h3>
+
+                <p>
+                    Najważniejsza jest chęć grania
+                    i rozwijania naszej ekipy.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="card">
+
+        <h2>
             📩 WYŚLIJ PODANIE
+        </h2>
+
+        <br>
+
+        <label>
+            Nick Minecraft / Discord
+        </label>
+
+        <input
+            id="applicationName"
+            placeholder="np. Topxd">
+
+
+        <label>
+            Wiek
+        </label>
+
+        <input
+            id="applicationAge"
+            type="number"
+            min="1"
+            max="100"
+            placeholder="np. 14">
+
+
+        <label>
+            Czy masz mikrofon?
+        </label>
+
+        <input
+            id="applicationMic"
+            placeholder="np. Tak">
+
+
+        <label>
+            Opisz swoje doświadczenie w PvP
+        </label>
+
+        <textarea
+            id="applicationPvP"
+            placeholder="Np. gram od 2 lat...">
+        </textarea>
+
+
+        <label>
+            Dlaczego chcesz dołączyć do LOVE1?
+        </label>
+
+        <textarea
+            id="applicationReason"
+            placeholder="Napisz kilka zdań...">
+        </textarea>
+
+
+        <button
+            class="btn"
+            onclick="sendApplication()">
+
+            📩 WYŚLIJ PODANIE
+
         </button>
+
 
         <p id="applicationResult"></p>
 
@@ -311,49 +859,91 @@ footer {
 </section>
 
 
-<!-- CZAT -->
+<!-- ================= CHAT ================= -->
+
 <section id="chat" class="page">
 
-    <h2>💬 Czat LOVE1</h2>
-    <br>
+    <div class="card">
 
-    <div id="chatBox" class="card">
-        <p>
-            <b style="color:#d88aff;">LOVE1:</b>
-            Witaj na czacie! 💜
-        </p>
+        <h2>
+            💬 CZAT LOVE1
+        </h2>
+
+        <div
+            id="chatBox"
+            class="chat-box">
+
+            <div class="chat-message">
+
+                <span class="chat-name">
+                    💜 LOVE1
+                </span>
+
+                <br>
+
+                Witaj na czacie!
+
+            </div>
+
+        </div>
+
+
+        <input
+            id="chatName"
+            placeholder="Twój nick">
+
+
+        <input
+            id="chatMessage"
+            placeholder="Napisz wiadomość...">
+
+
+        <button
+            class="btn"
+            onclick="sendMessage()">
+
+            📤 WYŚLIJ
+
+        </button>
+
     </div>
-
-    <input id="chatName" placeholder="Twój nick">
-    <input id="chatMessage" placeholder="Wiadomość">
-
-    <button class="btn" onclick="sendMessage()">
-        📤 Wyślij
-    </button>
 
 </section>
 
 
-<!-- LOGOWANIE -->
+<!-- ================= LOGIN ================= -->
+
 <section id="login" class="page">
 
-    <div class="login">
+    <div class="login-box">
 
         <div class="card">
 
-            <h2>🔐 Logowanie</h2>
+            <h2>
+                🔐 LOGOWANIE
+            </h2>
+
             <br>
 
-            <input id="loginName"
-                   placeholder="Nick">
+            <input
+                id="loginName"
+                placeholder="Nick">
 
-            <input id="loginPassword"
-                   type="password"
-                   placeholder="Hasło">
 
-            <button class="btn" onclick="login()">
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Hasło">
+
+
+            <button
+                class="btn"
+                onclick="login()">
+
                 🔑 ZALOGUJ
+
             </button>
+
 
             <p id="loginResult"></p>
 
@@ -364,82 +954,99 @@ footer {
 </section>
 
 
-<!-- PANEL WŁAŚCICIELA -->
-<section id="admin" class="page">
+<!-- ================= OWNER ================= -->
 
-    <h2 class="admin-title">
-        👑 PANEL WŁAŚCICIELA LOVE1
-    </h2>
+<section id="owner" class="page">
 
-    <br>
+    <div class="card admin-panel">
 
-    <div class="card">
-        <h3>👑 WŁAŚCICIEL</h3>
+        <span class="owner-badge">
+            👑 WŁAŚCICIEL
+        </span>
+
+        <br><br>
+
+        <h2>
+            Panel zarządzania LOVE1
+        </h2>
 
         <p>
-            Masz dostęp do zarządzania podaniami.
+            Tutaj możesz przeglądać podania
+            kandydatów.
         </p>
+
     </div>
+
 
     <div class="card">
 
-        <h3>📋 PODANIA</h3>
+        <h2>
+            📋 PODANIA
+        </h2>
 
         <div id="applicationsList">
-            Ładowanie podań...
+
+            Brak podań.
+
         </div>
 
     </div>
 
-    <button class="btn" onclick="logout()">
-        🚪 Wyloguj
+
+    <button
+        class="btn"
+        onclick="logout()">
+
+        🚪 WYLOGUJ
+
     </button>
 
 </section>
+
 
 </main>
 
 
 <footer>
+
     💜 LOVE1 — JEDNA EKIPA. JEDEN CEL. 🏆
+
 </footer>
 
 
 <script>
 
-/*
-    ============================
-       LOVE1 - SYSTEM
-    ============================
-
-    Konto właściciela TESTOWE:
-
-    Nick: Topxd
-    Hasło: LOVE1
-
-    UWAGA:
-    To jest wersja testowa.
-    Prawdziwe zabezpieczenie zrobimy
-    po podłączeniu bazy danych.
-*/
-
+/* ========================================
+   LOVE1 SYSTEM
+   ======================================== */
 
 let isOwner = false;
 
 
-/* ZMIANA STRONY */
+/* ================= PAGE ================= */
 
 function showPage(page) {
 
-    document.querySelectorAll(".page").forEach(function(section) {
-        section.classList.remove("active");
-    });
+    document
+        .querySelectorAll(".page")
+        .forEach(function(section) {
 
-    document.getElementById(page).classList.add("active");
+            section.classList.remove("active");
 
-    if (page === "admin") {
+        });
+
+
+    document
+        .getElementById(page)
+        .classList.add("active");
+
+
+    if (page === "owner") {
+
         loadApplications();
+
     }
+
 
     window.scrollTo({
         top: 0,
@@ -448,35 +1055,59 @@ function showPage(page) {
 }
 
 
-/* LOGOWANIE */
+/* ================= LOGIN ================= */
 
 function login() {
 
     const name =
-        document.getElementById("loginName").value.trim();
+        document.getElementById("loginName")
+        .value
+        .trim();
+
 
     const password =
-        document.getElementById("loginPassword").value;
+        document.getElementById("loginPassword")
+        .value;
+
 
     const result =
         document.getElementById("loginResult");
 
 
-    if (name === "Topxd" && password === "LOVE1") {
+    /*
+       TESTOWE KONTO WŁAŚCICIELA
+
+       Nick: Topxd
+       Hasło: LOVE1
+    */
+
+
+    if (
+        name === "Topxd" &&
+        password === "LOVE1"
+    ) {
 
         isOwner = true;
 
-        document.getElementById("adminButton")
-            .classList.remove("hidden");
+
+        document
+            .getElementById("ownerButton")
+            .classList
+            .remove("hidden");
+
 
         result.className = "success";
 
         result.textContent =
-            "✅ Zalogowano jako 👑 WŁAŚCICIEL!";
+            "✅ Zalogowano jako 👑 WŁAŚCICIEL";
+
 
         setTimeout(function() {
-            showPage("admin");
-        }, 700);
+
+            showPage("owner");
+
+        }, 500);
+
 
     } else {
 
@@ -484,44 +1115,81 @@ function login() {
 
         result.textContent =
             "❌ Nieprawidłowy nick lub hasło.";
+
     }
+
 }
 
 
-/* WYLOGOWANIE */
+/* ================= LOGOUT ================= */
 
 function logout() {
 
     isOwner = false;
 
-    document.getElementById("adminButton")
-        .classList.add("hidden");
+
+    document
+        .getElementById("ownerButton")
+        .classList
+        .add("hidden");
+
 
     showPage("home");
 }
 
 
-/* WYSŁANIE PODANIA */
+/* ================= APPLICATION ================= */
 
 function sendApplication() {
 
+
     const name =
-        document.getElementById("applicationName")
-        .value.trim();
+        document
+        .getElementById("applicationName")
+        .value
+        .trim();
+
 
     const age =
-        document.getElementById("applicationAge")
-        .value.trim();
+        document
+        .getElementById("applicationAge")
+        .value
+        .trim();
 
-    const text =
-        document.getElementById("applicationText")
-        .value.trim();
+
+    const mic =
+        document
+        .getElementById("applicationMic")
+        .value
+        .trim();
+
+
+    const pvp =
+        document
+        .getElementById("applicationPvP")
+        .value
+        .trim();
+
+
+    const reason =
+        document
+        .getElementById("applicationReason")
+        .value
+        .trim();
+
 
     const result =
-        document.getElementById("applicationResult");
+        document
+        .getElementById("applicationResult");
 
 
-    if (!name || !age || !text) {
+    if (
+        !name ||
+        !age ||
+        !mic ||
+        !pvp ||
+        !reason
+    ) {
 
         result.className = "error";
 
@@ -529,12 +1197,15 @@ function sendApplication() {
             "❌ Uzupełnij wszystkie pola.";
 
         return;
+
     }
 
 
     const applications =
         JSON.parse(
-            localStorage.getItem("love1Applications") || "[]"
+            localStorage.getItem(
+                "love1Applications"
+            ) || "[]"
         );
 
 
@@ -546,16 +1217,23 @@ function sendApplication() {
 
         age: age,
 
-        text: text,
+        mic: mic,
 
-        status: "Oczekuje"
+        pvp: pvp,
+
+        reason: reason,
+
+        status: "⏳ Oczekuje"
 
     });
 
 
     localStorage.setItem(
+
         "love1Applications",
+
         JSON.stringify(applications)
+
     );
 
 
@@ -565,22 +1243,48 @@ function sendApplication() {
         "✅ Podanie zostało wysłane!";
 
 
-    document.getElementById("applicationName").value = "";
-    document.getElementById("applicationAge").value = "";
-    document.getElementById("applicationText").value = "";
+    document
+        .getElementById("applicationName")
+        .value = "";
+
+
+    document
+        .getElementById("applicationAge")
+        .value = "";
+
+
+    document
+        .getElementById("applicationMic")
+        .value = "";
+
+
+    document
+        .getElementById("applicationPvP")
+        .value = "";
+
+
+    document
+        .getElementById("applicationReason")
+        .value = "";
+
 }
 
 
-/* WYŚWIETLANIE PODAŃ */
+/* ================= LOAD APPLICATIONS ================= */
 
 function loadApplications() {
 
+
     const list =
-        document.getElementById("applicationsList");
+        document
+        .getElementById("applicationsList");
+
 
     const applications =
         JSON.parse(
-            localStorage.getItem("love1Applications") || "[]"
+            localStorage.getItem(
+                "love1Applications"
+            ) || "[]"
         );
 
 
@@ -590,6 +1294,7 @@ function loadApplications() {
             "<p>📭 Nie ma jeszcze żadnych podań.</p>";
 
         return;
+
     }
 
 
@@ -598,182 +1303,272 @@ function loadApplications() {
 
     applications.forEach(function(app) {
 
+
         const box =
             document.createElement("div");
 
-        box.className = "application";
+
+        box.className =
+            "application";
 
 
         box.innerHTML = `
 
-            <h3>👤 ${escapeHTML(app.name)}</h3>
+            <h3>
+                👤 ${escapeHTML(app.name)}
+            </h3>
 
-            <p>🎂 Wiek: ${escapeHTML(app.age)}</p>
-
-            <p class="status">
-                📌 Status: ${escapeHTML(app.status)}
+            <p>
+                🎂 Wiek:
+                ${escapeHTML(app.age)}
             </p>
 
             <p>
-                <b>📝 Podanie:</b><br>
-                ${escapeHTML(app.text)}
+                🎙️ Mikrofon:
+                ${escapeHTML(app.mic)}
             </p>
+
+            <p>
+                ⚔️ PvP:
+                ${escapeHTML(app.pvp)}
+            </p>
+
+            <p>
+                📖 Dlaczego LOVE1:
+                ${escapeHTML(app.reason)}
+            </p>
+
+            <div class="status">
+                ${escapeHTML(app.status)}
+            </div>
 
             <br>
 
-            <button class="btn"
-                    onclick="acceptApplication(${app.id})">
+            <button
+                class="btn"
+                onclick="acceptApplication(${app.id})">
+
                 ✅ AKCEPTUJ
+
             </button>
 
-            <button class="btn"
-                    onclick="rejectApplication(${app.id})">
+
+            <button
+                class="btn"
+                onclick="rejectApplication(${app.id})">
+
                 ❌ ODRZUĆ
+
             </button>
 
-            <button class="btn"
-                    onclick="deleteApplication(${app.id})">
+
+            <button
+                class="btn"
+                onclick="deleteApplication(${app.id})">
+
                 🗑️ USUŃ
+
             </button>
+
         `;
 
 
         list.appendChild(box);
+
     });
+
 }
 
 
-/* AKCEPTACJA */
+/* ================= ACCEPT ================= */
 
 function acceptApplication(id) {
 
-    updateApplicationStatus(
+    changeStatus(
         id,
         "✅ Zaakceptowane"
     );
+
 }
 
 
-/* ODRZUCENIE */
+/* ================= REJECT ================= */
 
 function rejectApplication(id) {
 
-    updateApplicationStatus(
+    changeStatus(
         id,
         "❌ Odrzucone"
     );
+
 }
 
 
-/* ZMIANA STATUSU */
+/* ================= STATUS ================= */
 
-function updateApplicationStatus(id, status) {
+function changeStatus(id,status) {
+
 
     const applications =
         JSON.parse(
-            localStorage.getItem("love1Applications") || "[]"
+            localStorage.getItem(
+                "love1Applications"
+            ) || "[]"
         );
 
 
     const application =
-        applications.find(function(app) {
-            return app.id === id;
-        });
+        applications.find(
+            function(app) {
+
+                return app.id === id;
+
+            }
+        );
 
 
     if (application) {
 
-        application.status = status;
+        application.status =
+            status;
 
-        localStorage.setItem(
-            "love1Applications",
-            JSON.stringify(applications)
-        );
     }
 
 
-    loadApplications();
-}
-
-
-/* USUWANIE */
-
-function deleteApplication(id) {
-
-    const applications =
-        JSON.parse(
-            localStorage.getItem("love1Applications") || "[]"
-        );
-
-
-    const newApplications =
-        applications.filter(function(app) {
-            return app.id !== id;
-        });
-
-
     localStorage.setItem(
+
         "love1Applications",
-        JSON.stringify(newApplications)
+
+        JSON.stringify(applications)
+
     );
 
 
     loadApplications();
+
 }
 
 
-/* CZAT */
+/* ================= DELETE ================= */
+
+function deleteApplication(id) {
+
+
+    const applications =
+        JSON.parse(
+            localStorage.getItem(
+                "love1Applications"
+            ) || "[]"
+        );
+
+
+    const filtered =
+        applications.filter(
+            function(app) {
+
+                return app.id !== id;
+
+            }
+        );
+
+
+    localStorage.setItem(
+
+        "love1Applications",
+
+        JSON.stringify(filtered)
+
+    );
+
+
+    loadApplications();
+
+}
+
+
+/* ================= CHAT ================= */
 
 function sendMessage() {
 
+
     const name =
-        document.getElementById("chatName")
-        .value.trim();
+        document
+        .getElementById("chatName")
+        .value
+        .trim();
+
 
     const message =
-        document.getElementById("chatMessage")
-        .value.trim();
+        document
+        .getElementById("chatMessage")
+        .value
+        .trim();
 
 
     if (!name || !message) {
 
-        alert("Wpisz nick i wiadomość!");
+        alert(
+            "Wpisz nick i wiadomość!"
+        );
 
         return;
+
     }
 
 
     const box =
-        document.getElementById("chatBox");
+        document
+        .getElementById("chatBox");
 
 
-    const newMessage =
-        document.createElement("p");
+    const msg =
+        document
+        .createElement("div");
 
 
-    newMessage.innerHTML =
-        `<b style="color:#d88aff;">
-        ${escapeHTML(name)}:
-        </b> ${escapeHTML(message)}`;
+    msg.className =
+        "chat-message";
 
 
-    box.appendChild(newMessage);
+    msg.innerHTML = `
+
+        <span class="chat-name">
+            ${escapeHTML(name)}
+        </span>
+
+        <br>
+
+        ${escapeHTML(message)}
+
+    `;
 
 
-    document.getElementById("chatMessage").value = "";
+    box.appendChild(msg);
+
+
+    document
+        .getElementById("chatMessage")
+        .value = "";
+
+
+    box.scrollTop =
+        box.scrollHeight;
+
 }
 
 
-/* OCHRONA TEKSTU */
+/* ================= SECURITY ================= */
 
 function escapeHTML(text) {
 
     const div =
         document.createElement("div");
 
-    div.textContent = text;
+    div.textContent =
+        text;
 
     return div.innerHTML;
+
 }
 
 </script>
