@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -60,9 +61,7 @@ nav {
     align-items: center;
     flex-wrap: wrap;
     gap: 9px;
-
     padding: 15px;
-
     background: rgba(10,0,15,0.95);
     border-bottom: 1px solid #42005b;
 }
@@ -71,10 +70,8 @@ nav button {
     border: 1px solid #8200b5;
     background: #190021;
     color: white;
-
     padding: 11px 17px;
     border-radius: 9px;
-
     cursor: pointer;
     transition: 0.2s;
 }
@@ -130,7 +127,6 @@ main {
 .hero p {
     margin: 18px auto;
     max-width: 700px;
-
     color: #ddd;
     font-size: 19px;
     line-height: 1.6;
@@ -170,13 +166,9 @@ main {
 
 .card {
     background: rgba(20,0,28,0.95);
-
     border: 1px solid #600080;
-
     border-radius: 17px;
-
     padding: 25px;
-
     margin-bottom: 20px;
 
     box-shadow:
@@ -194,6 +186,53 @@ main {
     line-height: 1.6;
 }
 
+/* ================= SOCIAL CARDS ================= */
+
+.social-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.social-card {
+    background:
+        linear-gradient(
+            135deg,
+            #190021,
+            #30003f
+        );
+
+    border: 1px solid #72009b;
+    border-radius: 17px;
+    padding: 25px;
+    text-align: center;
+
+    transition: 0.2s;
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    border-color: #c000ff;
+    box-shadow: 0 0 25px rgba(180,0,255,0.4);
+}
+
+.social-icon {
+    font-size: 50px;
+    margin-bottom: 12px;
+}
+
+.social-card h2 {
+    color: #df9aff;
+    margin-bottom: 10px;
+}
+
+.social-card p {
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
 /* ================= RECRUITMENT ================= */
 
 .recruitment-header {
@@ -204,7 +243,6 @@ main {
 .recruitment-header h1 {
     color: #dc91ff;
     font-size: 40px;
-
     text-shadow: 0 0 15px #9200cc;
 }
 
@@ -213,28 +251,19 @@ main {
     margin-top: 10px;
 }
 
-/* requirements */
-
 .requirements {
     display: grid;
-
     grid-template-columns:
         repeat(auto-fit, minmax(220px, 1fr));
-
     gap: 15px;
-
     margin-top: 20px;
 }
 
 .requirement {
     background: #180020;
-
     border: 1px solid #660088;
-
     padding: 20px;
-
     border-radius: 14px;
-
     transition: 0.2s;
 }
 
@@ -261,18 +290,16 @@ main {
     color: #aaa;
 }
 
-/* recruitment form */
+/* ================= FORM ================= */
 
 input,
 textarea {
     width: 100%;
 
     background: #08000c;
-
     color: white;
 
     border: 1px solid #65008a;
-
     border-radius: 9px;
 
     padding: 13px;
@@ -305,13 +332,9 @@ label {
 
 .application {
     background: #100016;
-
     border: 1px solid #60007e;
-
     padding: 20px;
-
     border-radius: 13px;
-
     margin-bottom: 15px;
 }
 
@@ -321,13 +344,9 @@ label {
 
 .status {
     display: inline-block;
-
     margin: 10px 0;
-
     padding: 6px 10px;
-
     border-radius: 7px;
-
     background: #360047;
 }
 
@@ -335,27 +354,20 @@ label {
 
 .chat-box {
     height: 350px;
-
     overflow-y: auto;
 
     background: #07000b;
-
     border: 1px solid #550072;
-
     border-radius: 12px;
 
     padding: 15px;
-
     margin-bottom: 15px;
 }
 
 .chat-message {
     background: #190021;
-
     padding: 10px;
-
     border-radius: 8px;
-
     margin-bottom: 8px;
 }
 
@@ -368,7 +380,6 @@ label {
 
 .login-box {
     max-width: 450px;
-
     margin: 50px auto;
 }
 
@@ -385,11 +396,9 @@ label {
     display: inline-block;
 
     background: #65008c;
-
     border: 1px solid #d000ff;
 
     padding: 7px 12px;
-
     border-radius: 8px;
 
     color: #fff;
@@ -399,13 +408,9 @@ label {
 
 footer {
     text-align: center;
-
     padding: 30px;
-
     color: #777;
-
     border-top: 1px solid #320041;
-
     margin-top: 30px;
 }
 
@@ -490,6 +495,15 @@ footer {
         💬 Czat
     </button>
 
+    <!-- NOWE -->
+    <button onclick="showPage('youtube')">
+        ▶️ YouTube
+    </button>
+
+    <button onclick="showPage('discord')">
+        💬 Discord
+    </button>
+
     <button onclick="showPage('login')">
         🔐 Konto
     </button>
@@ -507,7 +521,6 @@ footer {
 
 
 <main>
-
 
 <!-- ================= HOME ================= -->
 
@@ -548,6 +561,62 @@ footer {
             na Minecraft, PvP, wspólnej grze,
             rywalizacji i dobrej atmosferze.
         </p>
+
+    </div>
+
+
+    <!-- SOCIALS -->
+
+    <div class="social-grid">
+
+        <div class="social-card">
+
+            <div class="social-icon">
+                ▶️
+            </div>
+
+            <h2>
+                YouTube
+            </h2>
+
+            <p>
+                Sprawdź kanał Topxd25!
+            </p>
+
+            <button
+                class="btn"
+                onclick="openYouTube()">
+
+                ▶️ ODWIEDŹ KANAŁ
+
+            </button>
+
+        </div>
+
+
+        <div class="social-card">
+
+            <div class="social-icon">
+                💬
+            </div>
+
+            <h2>
+                Discord LOVE1
+            </h2>
+
+            <p>
+                Dołącz do naszej ekipy!
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDiscord()">
+
+                💜 DOŁĄCZ NA DISCORDA
+
+            </button>
+
+        </div>
 
     </div>
 
@@ -596,7 +665,7 @@ footer {
     <div class="card">
 
         <h2>
-            🎯 CELE KLanu LOVE1
+            🎯 CELE KLANU LOVE1
         </h2>
 
         <div class="requirements">
@@ -644,7 +713,6 @@ footer {
 
 <section id="recruitment" class="page">
 
-
     <div class="recruitment-header">
 
         <h1>
@@ -659,8 +727,6 @@ footer {
     </div>
 
 
-    <!-- REQUIREMENTS -->
-
     <div class="card">
 
         <h2>
@@ -669,121 +735,64 @@ footer {
 
         <div class="requirements">
 
-
             <div class="requirement">
-
-                <div class="icon">
-                    🎂
-                </div>
-
-                <h3>
-                    Minimum 13 lat
-                </h3>
-
+                <div class="icon">🎂</div>
+                <h3>Minimum 13 lat</h3>
                 <p>
                     Kandydat musi mieć ukończone
                     minimum 13 lat.
                 </p>
-
             </div>
 
-
             <div class="requirement">
-
-                <div class="icon">
-                    🎙️
-                </div>
-
-                <h3>
-                    Sprawny mikrofon
-                </h3>
-
+                <div class="icon">🎙️</div>
+                <h3>Sprawny mikrofon</h3>
                 <p>
                     Wymagany działający mikrofon
                     do komunikacji z ekipą.
                 </p>
-
             </div>
 
-
             <div class="requirement">
-
-                <div class="icon">
-                    ⚔️
-                </div>
-
-                <h3>
-                    Umiejętność PvP
-                </h3>
-
+                <div class="icon">⚔️</div>
+                <h3>Umiejętność PvP</h3>
                 <p>
                     Wymagana podstawowa znajomość
                     PvP i chęć rozwijania skilla.
                 </p>
-
             </div>
 
-
             <div class="requirement">
-
-                <div class="icon">
-                    🟢
-                </div>
-
-                <h3>
-                    Aktywność
-                </h3>
-
+                <div class="icon">🟢</div>
+                <h3>Aktywność</h3>
                 <p>
                     Liczymy na regularną aktywność
                     na serwerze i w grze.
                 </p>
-
             </div>
 
-
             <div class="requirement">
-
-                <div class="icon">
-                    🤝
-                </div>
-
-                <h3>
-                    Kultura i szacunek
-                </h3>
-
+                <div class="icon">🤝</div>
+                <h3>Kultura i szacunek</h3>
                 <p>
                     Szanujemy członków LOVE1
                     i innych graczy.
                 </p>
-
             </div>
 
-
             <div class="requirement">
-
-                <div class="icon">
-                    🔥
-                </div>
-
-                <h3>
-                    Chęć grania
-                </h3>
-
+                <div class="icon">🔥</div>
+                <h3>Chęć grania</h3>
                 <p>
                     Najważniejsza jest chęć grania
                     i rozwijania naszej ekipy.
                 </p>
-
             </div>
-
 
         </div>
 
     </div>
 
-
-    <!-- FORM -->
 
     <div class="card">
 
@@ -829,8 +838,7 @@ footer {
 
         <textarea
             id="applicationPvP"
-            placeholder="Np. gram od 2 lat...">
-        </textarea>
+            placeholder="Np. gram od 2 lat..."></textarea>
 
 
         <label>
@@ -839,8 +847,7 @@ footer {
 
         <textarea
             id="applicationReason"
-            placeholder="Napisz kilka zdań...">
-        </textarea>
+            placeholder="Napisz kilka zdań..."></textarea>
 
 
         <button
@@ -850,7 +857,6 @@ footer {
             📩 WYŚLIJ PODANIE
 
         </button>
-
 
         <p id="applicationResult"></p>
 
@@ -911,6 +917,86 @@ footer {
 </section>
 
 
+<!-- ================= YOUTUBE ================= -->
+
+<section id="youtube" class="page">
+
+    <div class="card">
+
+        <div style="text-align:center;">
+
+            <div style="font-size:70px;">
+                ▶️
+            </div>
+
+            <h1 style="
+                color:#e19aff;
+                margin-bottom:15px;
+                text-shadow:0 0 15px #a000ff;
+            ">
+                MÓJ KANAŁ YOUTUBE
+            </h1>
+
+            <p style="margin-bottom:20px;">
+                Znajdziesz tam moje materiały,
+                gameplaye i inne filmy.
+            </p>
+
+            <button
+                class="btn"
+                onclick="openYouTube()">
+
+                ▶️ PRZEJDŹ NA KANAŁ
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DISCORD ================= -->
+
+<section id="discord" class="page">
+
+    <div class="card">
+
+        <div style="text-align:center;">
+
+            <div style="font-size:70px;">
+                💬
+            </div>
+
+            <h1 style="
+                color:#e19aff;
+                margin-bottom:15px;
+                text-shadow:0 0 15px #a000ff;
+            ">
+                DISCORD LOVE1
+            </h1>
+
+            <p style="margin-bottom:20px;">
+                Dołącz do naszego klanowego Discorda
+                i poznaj ekipę LOVE1!
+            </p>
+
+            <button
+                class="btn"
+                onclick="openDiscord()">
+
+                💜 DOŁĄCZ DO DISCORDA
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 <!-- ================= LOGIN ================= -->
 
 <section id="login" class="page">
@@ -929,12 +1015,10 @@ footer {
                 id="loginName"
                 placeholder="Nick">
 
-
             <input
                 id="loginPassword"
                 type="password"
                 placeholder="Hasło">
-
 
             <button
                 class="btn"
@@ -943,7 +1027,6 @@ footer {
                 🔑 ZALOGUJ
 
             </button>
-
 
             <p id="loginResult"></p>
 
@@ -985,9 +1068,7 @@ footer {
         </h2>
 
         <div id="applicationsList">
-
             Brak podań.
-
         </div>
 
     </div>
@@ -1018,9 +1099,40 @@ footer {
 
 /* ========================================
    LOVE1 SYSTEM
-   ======================================== */
+======================================== */
 
 let isOwner = false;
+
+
+/* ================= LINKI ================= */
+
+const YOUTUBE_URL =
+    "https://youtube.com/@topxd25?si=xJjV83Y2wXEZHUbG";
+
+const DISCORD_URL =
+    "https://discord.gg/6GUdm5ZBtT";
+
+
+function openYouTube() {
+
+    window.open(
+        YOUTUBE_URL,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+function openDiscord() {
+
+    window.open(
+        DISCORD_URL,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
 
 
 /* ================= PAGE ================= */
@@ -1052,6 +1164,7 @@ function showPage(page) {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -1060,18 +1173,21 @@ function showPage(page) {
 function login() {
 
     const name =
-        document.getElementById("loginName")
+        document
+        .getElementById("loginName")
         .value
         .trim();
 
 
     const password =
-        document.getElementById("loginPassword")
+        document
+        .getElementById("loginPassword")
         .value;
 
 
     const result =
-        document.getElementById("loginResult");
+        document
+        .getElementById("loginResult");
 
 
     /*
@@ -1079,6 +1195,10 @@ function login() {
 
        Nick: Topxd
        Hasło: LOVE1
+
+       UWAGA:
+       To nadal jest tylko logowanie testowe.
+       Nie jest bezpieczne do prawdziwej aplikacji.
     */
 
 
@@ -1135,13 +1255,13 @@ function logout() {
 
 
     showPage("home");
+
 }
 
 
 /* ================= APPLICATION ================= */
 
 function sendApplication() {
-
 
     const name =
         document
@@ -1229,11 +1349,8 @@ function sendApplication() {
 
 
     localStorage.setItem(
-
         "love1Applications",
-
         JSON.stringify(applications)
-
     );
 
 
@@ -1247,21 +1364,17 @@ function sendApplication() {
         .getElementById("applicationName")
         .value = "";
 
-
     document
         .getElementById("applicationAge")
         .value = "";
-
 
     document
         .getElementById("applicationMic")
         .value = "";
 
-
     document
         .getElementById("applicationPvP")
         .value = "";
-
 
     document
         .getElementById("applicationReason")
@@ -1273,7 +1386,6 @@ function sendApplication() {
 /* ================= LOAD APPLICATIONS ================= */
 
 function loadApplications() {
-
 
     const list =
         document
@@ -1302,7 +1414,6 @@ function loadApplications() {
 
 
     applications.forEach(function(app) {
-
 
         const box =
             document.createElement("div");
@@ -1352,7 +1463,6 @@ function loadApplications() {
 
             </button>
 
-
             <button
                 class="btn"
                 onclick="rejectApplication(${app.id})">
@@ -1360,7 +1470,6 @@ function loadApplications() {
                 ❌ ODRZUĆ
 
             </button>
-
 
             <button
                 class="btn"
@@ -1408,7 +1517,6 @@ function rejectApplication(id) {
 
 function changeStatus(id,status) {
 
-
     const applications =
         JSON.parse(
             localStorage.getItem(
@@ -1420,27 +1528,19 @@ function changeStatus(id,status) {
     const application =
         applications.find(
             function(app) {
-
                 return app.id === id;
-
             }
         );
 
 
     if (application) {
-
-        application.status =
-            status;
-
+        application.status = status;
     }
 
 
     localStorage.setItem(
-
         "love1Applications",
-
         JSON.stringify(applications)
-
     );
 
 
@@ -1453,7 +1553,6 @@ function changeStatus(id,status) {
 
 function deleteApplication(id) {
 
-
     const applications =
         JSON.parse(
             localStorage.getItem(
@@ -1465,19 +1564,14 @@ function deleteApplication(id) {
     const filtered =
         applications.filter(
             function(app) {
-
                 return app.id !== id;
-
             }
         );
 
 
     localStorage.setItem(
-
         "love1Applications",
-
         JSON.stringify(filtered)
-
     );
 
 
@@ -1489,7 +1583,6 @@ function deleteApplication(id) {
 /* ================= CHAT ================= */
 
 function sendMessage() {
-
 
     const name =
         document
@@ -1575,3 +1668,4 @@ function escapeHTML(text) {
 
 </body>
 </html>
+```
