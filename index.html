@@ -6,703 +6,615 @@
 <title>LOVE1 • Gaming Clan</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth}
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-color:white;
-min-height:100vh;
-overflow-x:hidden;
-background:
-radial-gradient(circle at 50% -10%,#6500a0 0%,transparent 35%),
-radial-gradient(circle at 10% 50%,#26003d 0%,transparent 30%),
-radial-gradient(circle at 90% 80%,#32004f 0%,transparent 30%),
-#07000d;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(150,0,255,.28),transparent 35%),
+        radial-gradient(circle at 10% 30%,rgba(90,0,255,.16),transparent 30%),
+        radial-gradient(circle at 90% 70%,rgba(210,0,255,.12),transparent 30%),
+        #05020d;
 }
 
-body::before,
-body::after{
-content:"";
-position:fixed;
-pointer-events:none;
-z-index:-1;
-border-radius:50%;
-filter:blur(60px);
-opacity:.22;
-}
+/* =========================
+   AURA
+========================= */
 
 body::before{
-width:280px;
-height:280px;
-background:#a000ff;
-top:25%;
-left:-120px;
-animation:bgFloat1 8s ease-in-out infinite;
+    content:"";
+    position:fixed;
+    inset:-30%;
+    z-index:-5;
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent,
+            rgba(160,0,255,.13),
+            transparent,
+            rgba(100,0,255,.14),
+            transparent
+        );
+    animation:auraRotate 18s linear infinite;
+    filter:blur(45px);
 }
 
 body::after{
-width:320px;
-height:320px;
-background:#7200ff;
-right:-140px;
-bottom:5%;
-animation:bgFloat2 10s ease-in-out infinite;
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1px),
+        radial-gradient(circle,rgba(180,80,255,.5) 1px,transparent 1px);
+    background-size:90px 90px,140px 140px;
+    background-position:0 0,40px 60px;
+    opacity:.25;
+    animation:stars 20s linear infinite;
 }
 
-@keyframes bgFloat1{
-0%,100%{transform:translate(0,0)}
-50%{transform:translate(100px,-70px)}
+@keyframes auraRotate{
+    from{transform:rotate(0deg) scale(1.2);}
+    to{transform:rotate(360deg) scale(1.2);}
 }
 
-@keyframes bgFloat2{
-0%,100%{transform:translate(0,0)}
-50%{transform:translate(-100px,60px)}
+@keyframes stars{
+    from{transform:translateY(0);}
+    to{transform:translateY(90px);}
 }
 
-::-webkit-scrollbar{width:9px}
-::-webkit-scrollbar-track{background:#09000f}
-::-webkit-scrollbar-thumb{
-background:linear-gradient(#8a00d4,#c000ff);
-border-radius:10px;
+/* =========================
+   PARTICLES
+========================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+    overflow:hidden;
 }
+
+.particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#d58cff;
+    box-shadow:
+        0 0 8px #b800ff,
+        0 0 18px #8d00ff;
+    animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    from{
+        transform:translateY(110vh) scale(.3);
+        opacity:0;
+    }
+    15%{opacity:1;}
+    85%{opacity:1;}
+    to{
+        transform:translateY(-20vh) scale(1);
+        opacity:0;
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
-text-align:center;
-padding:55px 20px 45px;
-background:
-radial-gradient(circle at center,rgba(170,0,255,.22),transparent 45%),
-rgba(7,0,13,.95);
-border-bottom:1px solid #7800b5;
-box-shadow:0 0 35px rgba(150,0,255,.25);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:14px 20px;
+    background:rgba(7,2,17,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(183,76,255,.25);
+    box-shadow:
+        0 5px 35px rgba(115,0,255,.16),
+        0 0 80px rgba(130,0,255,.08);
 }
 
 .logo{
-font-size:62px;
-font-weight:1000;
-color:#e09cff;
-text-shadow:
-0 0 8px #a000ff,
-0 0 25px #8b00ff,
-0 0 50px rgba(180,0,255,.6);
-}
-
-.subtitle{
-margin-top:12px;
-color:#cdb4d9;
-font-size:15px;
-letter-spacing:3px;
+    text-align:center;
+    font-size:34px;
+    font-weight:1000;
+    letter-spacing:5px;
+    color:#fff;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px #c400ff,
+        0 0 35px #9b00ff,
+        0 0 65px #6500ff;
+    margin-bottom:13px;
 }
 
 nav{
-position:sticky;
-top:0;
-z-index:999;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:9px;
-padding:13px;
-background:rgba(7,0,13,.94);
-backdrop-filter:blur(15px);
-border-bottom:1px solid #3e0059;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
 nav button{
-border:1px solid #6800a5;
-background:linear-gradient(135deg,#15001f,#22002f);
-color:#eee;
-padding:11px 15px;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
-transition:.2s;
+    border:1px solid rgba(183,0,255,.32);
+    color:#fff;
+    background:rgba(70,0,100,.28);
+    padding:9px 13px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.25s;
+    box-shadow:inset 0 0 15px rgba(170,0,255,.04);
 }
 
 nav button:hover{
-transform:translateY(-3px);
-background:linear-gradient(135deg,#5e008e,#8c00c9);
-box-shadow:0 0 15px rgba(160,0,255,.6);
+    transform:translateY(-2px);
+    background:rgba(150,0,255,.25);
+    border-color:#c200ff;
+    box-shadow:
+        0 0 12px rgba(190,0,255,.5),
+        inset 0 0 18px rgba(170,0,255,.1);
 }
 
+/* =========================
+   MAIN
+========================= */
+
 main{
-max-width:1150px;
-margin:auto;
-padding:35px 15px 60px;
+    width:min(1250px,94%);
+    margin:auto;
 }
 
 .page{
-display:none;
-animation:pageIn .35s ease;
+    display:none;
+    padding:55px 0;
+    animation:pageIn .45s ease;
 }
 
-.page.active{display:block}
+.page.active{
+    display:block;
+}
 
 @keyframes pageIn{
-from{opacity:0;transform:translateY(12px)}
-to{opacity:1;transform:translateY(0)}
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-.card{
-background:linear-gradient(145deg,rgba(30,0,45,.92),rgba(11,0,18,.94));
-border:1px solid #62009b;
-border-radius:20px;
-padding:27px;
-margin-bottom:20px;
-box-shadow:0 0 25px rgba(120,0,190,.12);
-transition:.25s;
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    min-height:560px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    border-radius:35px;
+    padding:50px 20px;
+    background:
+        radial-gradient(circle at center,
+        rgba(150,0,255,.25),
+        rgba(35,0,65,.22) 35%,
+        rgba(5,2,13,.72) 70%);
+    border:1px solid rgba(200,80,255,.22);
+    box-shadow:
+        0 0 35px rgba(132,0,255,.15),
+        inset 0 0 80px rgba(135,0,255,.08);
 }
 
-.card:hover{
-border-color:#a000e8;
-box-shadow:0 0 30px rgba(150,0,255,.2);
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(150,0,255,.16);
+    filter:blur(100px);
+    animation:heroGlow 4s ease-in-out infinite;
 }
 
-h1{color:#e19cff;text-shadow:0 0 15px rgba(160,0,255,.5)}
-h2{color:#d98eff}
-h3{color:#d29aff}
-
-p{
-color:#cdbbd5;
-line-height:1.6;
+@keyframes heroGlow{
+    0%,100%{transform:scale(.85);opacity:.5;}
+    50%{transform:scale(1.15);opacity:1;}
 }
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:clamp(55px,10vw,120px);
+    font-weight:1000;
+    letter-spacing:12px;
+    color:#fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 18px #d000ff,
+        0 0 40px #a000ff,
+        0 0 80px #6800ff;
+}
+
+.hero p{
+    margin:20px auto;
+    max-width:700px;
+    font-size:20px;
+    color:#d9c7e8;
+    line-height:1.7;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:30px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
 
 .btn{
-border:none;
-background:linear-gradient(135deg,#7800bd,#b000ff);
-color:white;
-padding:13px 20px;
-border-radius:11px;
-cursor:pointer;
-font-weight:900;
-transition:.2s;
-box-shadow:0 0 12px rgba(160,0,255,.18);
+    display:inline-block;
+    padding:14px 24px;
+    border-radius:15px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:900;
+    cursor:pointer;
+    border:1px solid #a900ff;
+    background:linear-gradient(
+        135deg,
+        rgba(120,0,255,.5),
+        rgba(210,0,255,.25)
+    );
+    box-shadow:
+        0 0 15px rgba(165,0,255,.35),
+        inset 0 0 15px rgba(255,255,255,.03);
+    transition:.25s;
 }
 
 .btn:hover{
-transform:translateY(-3px) scale(1.02);
-box-shadow:0 0 25px rgba(170,0,255,.55);
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:
+        0 0 20px #b000ff,
+        0 0 50px rgba(130,0,255,.4);
 }
+
+/* =========================
+   TITLES
+========================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-size:42px;
+    font-weight:1000;
+    text-shadow:
+        0 0 10px #c000ff,
+        0 0 30px rgba(150,0,255,.7);
+}
+
+.section-title p{
+    margin-top:10px;
+    color:#a99bb5;
+}
+
+/* =========================
+   CARDS
+========================= */
 
 .grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-}
-
-.grid4{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:14px;
-}
-
-.hero-home{
-text-align:center;
-padding:60px 25px;
-border-radius:25px;
-background:
-radial-gradient(circle at center,rgba(160,0,255,.24),transparent 50%),
-linear-gradient(145deg,#250039,#09000f);
-border:1px solid #8500ca;
-box-shadow:0 0 45px rgba(130,0,255,.2);
-}
-
-.hero-icon{
-font-size:75px;
-animation:pulse 2.5s infinite;
-}
-
-@keyframes pulse{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.08)}
-}
-
-.hero-home h1{
-font-size:48px;
-margin:12px 0;
-}
-
-.hero-home p{
-max-width:700px;
-margin:auto;
-}
-
-.stat{
-text-align:center;
-padding:23px 12px;
-border-radius:16px;
-background:linear-gradient(145deg,rgba(50,0,75,.7),rgba(15,0,25,.9));
-border:1px solid #60009a;
-}
-
-.stat-number{
-font-size:34px;
-font-weight:1000;
-color:#e4a5ff;
-text-shadow:0 0 15px #8d00d4;
-}
-
-.stat-label{
-color:#9e8ba7;
-margin-top:5px;
-font-size:13px;
-}
-
-.feature{
-text-align:center;
-padding:28px 18px;
-border-radius:18px;
-background:rgba(20,0,30,.85);
-border:1px solid #530080;
-transition:.25s;
-}
-
-.feature:hover{
-transform:translateY(-6px);
-border-color:#a000e8;
-box-shadow:0 0 25px rgba(150,0,255,.25);
-}
-
-.feature-icon{
-font-size:45px;
-margin-bottom:12px;
-}
-
-.announcement{
-display:flex;
-gap:18px;
-padding:20px;
-margin-top:15px;
-border-radius:15px;
-background:linear-gradient(135deg,rgba(45,0,65,.8),rgba(15,0,23,.9));
-border-left:4px solid #a000ff;
-}
-
-.announcement-icon{font-size:32px}
-
-.badge{
-display:inline-block;
-padding:5px 10px;
-border-radius:20px;
-font-size:11px;
-font-weight:bold;
-background:#560080;
-color:#edcaff;
-}
-
-.goal{
-padding:20px;
-margin-top:15px;
-border-radius:15px;
-background:rgba(30,0,45,.8);
-border:1px solid #5d008e;
-}
-
-.goal-top{
-display:flex;
-justify-content:space-between;
-margin-bottom:9px;
-}
-
-.event-card,
-.notification-card,
-.history-card,
-.reward-card,
-.badge-card,
-.rank-card{
-padding:24px;
-margin-top:15px;
-border-radius:17px;
-background:linear-gradient(145deg,#1a0027,#0c0013);
-border:1px solid #62009a;
-}
-
-.rank-position{
-font-size:34px;
-font-weight:1000;
-color:#e19cff;
-}
-
-.points{
-color:#ffcf66;
-font-size:20px;
-font-weight:900;
-}
-
-.rank-bar{
-height:10px;
-background:#16001f;
-border-radius:20px;
-overflow:hidden;
-margin-top:10px;
-}
-
-.rank-bar div{
-height:100%;
-background:linear-gradient(90deg,#7b00c9,#d000ff);
-}
-
-.event-date{
-color:#ffcf66;
-font-weight:bold;
-}
-
-.notification-card.unread{
-border-left:5px solid #c000ff;
-box-shadow:0 0 20px rgba(190,0,255,.18);
-}
-
-.reward-unlocked{
-border-color:#d000ff;
-box-shadow:0 0 20px rgba(200,0,255,.2);
-}
-
-.youtube-hero,
-.discord-hero{
-text-align:center;
-padding:60px 25px;
-border-radius:25px;
-}
-
-.youtube-hero{
-background:
-radial-gradient(circle at 50% 15%,rgba(255,0,70,.2),transparent 35%),
-linear-gradient(145deg,#38002e,#10000f);
-border:1px solid #a00065;
-}
-
-.youtube-icon,
-.discord-icon{
-width:125px;
-height:125px;
-margin:auto auto 25px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:35px;
-font-size:65px;
-}
-
-.youtube-icon{
-background:linear-gradient(145deg,#ff003c,#b80035);
-box-shadow:0 0 30px rgba(255,0,60,.55);
-}
-
-.youtube-title{
-font-size:52px;
-font-weight:1000;
-color:white;
-text-shadow:0 0 15px #a000ff;
-}
-
-.youtube-label{
-color:#ff6688;
-letter-spacing:4px;
-font-size:13px;
-font-weight:bold;
-}
-
-.youtube-text{
-max-width:700px;
-margin:15px auto 30px;
-}
-
-.youtube-button,
-.discord-button{
-padding:16px 28px;
-border-radius:12px;
-color:white;
-border:none;
-cursor:pointer;
-font-weight:900;
-}
-
-.youtube-button{
-background:linear-gradient(135deg,#ff003d,#ca0055);
-}
-
-.discord-hero{
-background:
-radial-gradient(circle at center,rgba(130,0,255,.25),transparent 50%),
-linear-gradient(145deg,#270044,#09000f);
-border:1px solid #8d00d4;
-}
-
-.discord-icon{
-border-radius:50%;
-background:#6900ae;
-box-shadow:0 0 30px #9000ff;
-}
-
-.discord-title{
-font-size:48px;
-font-weight:1000;
-text-shadow:0 0 20px #a000ff;
-}
-
-.discord-button{
-margin-top:20px;
-background:linear-gradient(135deg,#6500ad,#a000ff);
-}
-
-.about-hero{
-text-align:center;
-padding:55px 25px;
-border-radius:25px;
-background:
-radial-gradient(circle at center,rgba(180,0,255,.25),transparent 55%),
-linear-gradient(145deg,#270039,#09000f);
-border:1px solid #8500ca;
-}
-
-.timeline{
-border-left:3px solid #8d00d4;
-margin:25px 10px;
-padding-left:25px;
-}
-
-.timeline-item{
-position:relative;
-margin-bottom:25px;
-}
-
-.timeline-item::before{
-content:"";
-position:absolute;
-left:-34px;
-top:4px;
-width:14px;
-height:14px;
-background:#c000ff;
-border-radius:50%;
-box-shadow:0 0 15px #c000ff;
-}
-
-.empty{
-text-align:center;
-padding:35px;
-color:#a996b0;
-}
-
-footer{
-text-align:center;
-padding:35px 15px;
-color:#8e7b98;
-border-top:1px solid #270038;
-background:#06000a;
-}
-
-/* UFO */
-
-.love1-ufo{
-position:fixed;
-top:18px;
-right:22px;
-width:65px;
-height:55px;
-z-index:9999;
-pointer-events:none;
-animation:ufoFloat 3.5s ease-in-out infinite;
-}
-
-.ufo-body{
-position:absolute;
-top:12px;
-left:5px;
-width:55px;
-height:25px;
-background:linear-gradient(135deg,#9b4dff,#5b00b8);
-border-radius:50%;
-box-shadow:
-0 0 10px #a855f7,
-0 0 25px rgba(168,85,247,.45);
-}
-
-.ufo-body::after{
-content:"";
-position:absolute;
-left:8px;
-right:8px;
-bottom:2px;
-height:7px;
-border-radius:50%;
-background:#d8a7ff;
-box-shadow:0 0 12px #c084fc;
-}
-
-.ufo-window{
-position:absolute;
-top:-9px;
-left:18px;
-width:19px;
-height:15px;
-border-radius:50% 50% 40% 40%;
-background:linear-gradient(135deg,#e9d5ff,#8b5cf6);
-box-shadow:0 0 10px #c084fc;
-}
-
-.ufo-light{
-position:absolute;
-top:7px;
-left:29px;
-width:7px;
-height:7px;
-border-radius:50%;
-background:white;
-box-shadow:0 0 12px #fff;
-animation:ufoBlink 1.8s ease-in-out infinite;
-}
-
-.ufo-beam{
-position:absolute;
-top:35px;
-left:18px;
-width:30px;
-height:20px;
-background:linear-gradient(
-to bottom,
-rgba(168,85,247,.35),
-rgba(168,85,247,0)
-);
-clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);
-opacity:.55;
-}
-
-@keyframes ufoFloat{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-}
-
-@keyframes ufoBlink{
-0%,100%{opacity:1}
-50%{opacity:.35}
-}
-
-@media(max-width:800px){
-
-.grid4{
-grid-template-columns:repeat(2,1fr);
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.youtube-title,
-.discord-title{
-font-size:38px;
-}
-
-.hero-home h1{
-font-size:38px;
-}
-
-}
-
-@media(max-width:520px){
-
-.logo{
-font-size:43px;
-}
-
-.subtitle{
-font-size:11px;
-}
-
-nav{
-gap:6px;
-}
-
-nav button{
-font-size:11px;
-padding:9px 10px;
-}
-
-.grid4{
-grid-template-columns:1fr;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
 }
 
 .card{
-padding:20px;
+    position:relative;
+    padding:25px;
+    border-radius:22px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(90,0,130,.25),
+            rgba(20,5,35,.55)
+        );
+    border:1px solid rgba(183,0,255,.22);
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.25),
+        inset 0 0 25px rgba(150,0,255,.035);
+    transition:.3s;
+    overflow:hidden;
 }
 
-.hero-home,
-.youtube-hero,
-.discord-hero,
-.about-hero{
-padding:40px 18px;
+.card::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    right:-80px;
+    top:-80px;
+    border-radius:50%;
+    background:#a000ff;
+    opacity:.08;
+    filter:blur(25px);
 }
 
+.card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(200,0,255,.7);
+    box-shadow:
+        0 15px 45px rgba(80,0,120,.35),
+        0 0 25px rgba(160,0,255,.2);
+}
+
+.card h3{
+    color:#fff;
+    margin-bottom:12px;
+    font-size:21px;
+}
+
+.card p{
+    color:#bdb0c8;
+    line-height:1.6;
+}
+
+.icon{
+    font-size:38px;
+    margin-bottom:15px;
+    filter:drop-shadow(0 0 10px #a000ff);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+    overflow-x:auto;
+    border-radius:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+    background:rgba(15,5,25,.65);
+}
+
+th,td{
+    padding:16px;
+    border-bottom:1px solid rgba(180,0,255,.13);
+    text-align:left;
+}
+
+th{
+    color:#d98cff;
+    background:rgba(120,0,180,.13);
+}
+
+tr:hover td{
+    background:rgba(150,0,255,.05);
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badge{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:20px;
+    background:rgba(155,0,255,.15);
+    border:1px solid rgba(185,0,255,.35);
+    color:#df9cff;
+    font-weight:bold;
+    margin:4px;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:bold;
+}
+
+.online{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#6dff9c;
+    box-shadow:0 0 15px #00ff66;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px;
+    margin:8px 0 15px;
+    border-radius:12px;
+    border:1px solid rgba(190,0,255,.25);
+    outline:none;
+    background:rgba(15,3,25,.75);
+    color:#fff;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#c000ff;
+    box-shadow:0 0 15px rgba(170,0,255,.2);
+}
+
+textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+/* =========================
+   UFO
+========================= */
+
+.ufo{
+    position:fixed;
+    right:30px;
+    bottom:30px;
+    font-size:38px;
+    z-index:50;
+    animation:ufoFloat 3s ease-in-out infinite;
+    filter:
+        drop-shadow(0 0 5px #fff)
+        drop-shadow(0 0 15px #a000ff)
+        drop-shadow(0 0 35px #7000ff);
+    pointer-events:none;
+}
+
+@keyframes ufoFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-3deg);
+    }
+    50%{
+        transform:translateY(-15px) rotate(3deg);
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:50px;
+    padding:30px 20px;
+    text-align:center;
+    color:#75697f;
+    border-top:1px solid rgba(170,0,255,.15);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    header{
+        padding:12px 10px;
+    }
+
+    .logo{
+        font-size:25px;
+        letter-spacing:3px;
+    }
+
+    nav{
+        max-height:180px;
+        overflow-y:auto;
+    }
+
+    nav button{
+        font-size:12px;
+        padding:8px 10px;
+    }
+
+    .hero{
+        min-height:500px;
+        border-radius:24px;
+    }
+
+    .hero h1{
+        font-size:55px;
+        letter-spacing:5px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .page{
+        padding:35px 0;
+    }
+
+    .ufo{
+        right:15px;
+        bottom:15px;
+        font-size:28px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<div class="particles" id="particles"></div>
+
 <header>
 
-<div class="logo">💜 LOVE1</div>
+    <div class="logo">💜 LOVE1</div>
 
-<div class="subtitle">
-JEDNA EKIPA • JEDEN CEL • JEDEN KLAN
-</div>
+    <nav>
+        <button onclick="showPage('home')">🏠 Start</button>
+        <button onclick="showPage('announcements')">📢 Ogłoszenia</button>
+        <button onclick="showPage('ranking')">🏆 Ranking</button>
+        <button onclick="showPage('points')">🎁 Punkty</button>
+        <button onclick="showPage('server')">🟢 Serwer</button>
+        <button onclick="showPage('history')">📜 Historia</button>
+        <button onclick="showPage('badges')">🏅 Odznaki</button>
+        <button onclick="showPage('events')">📅 Eventy</button>
+        <button onclick="showPage('notifications')">🔔 Powiadomienia</button>
+        <button onclick="showPage('recruitment')">📋 Rekrutacja</button>
+        <button onclick="showPage('chat')">💬 Czat</button>
+        <button onclick="showPage('youtube')">▶️ YouTube</button>
+        <button onclick="showPage('discord')">💬 Discord</button>
+        <button onclick="showPage('about')">💜 O LOVE1</button>
+        <button onclick="showPage('privacy')">🔒 Prywatność</button>
+        <button onclick="showPage('login')">👤 Konto</button>
+        <button id="ownerButton" onclick="showPage('owner')" style="display:none">
+            👑 Właściciel
+        </button>
+    </nav>
 
 </header>
-
-<nav>
-
-<button onclick="showPage('home')">🏠 Start</button>
-
-<button onclick="showPage('announcements')">
-📢 Ogłoszenia
-</button>
-
-<button onclick="showPage('ranking')">
-🏆 Ranking
-</button>
-
-<button onclick="showPage('points')">
-🎁 Punkty
-</button>
-
-<button onclick="showPage('server')">
-🟢 Serwer
-</button>
-
-<button onclick="showPage('history')">
-📜 Historia
-</button>
-
-<button onclick="showPage('badges')">
-🏅 Odznaki
-</button>
-
-<button onclick="showPage('events')">
-📅 Eventy
-</button>
-
-<button onclick="showPage('notifications')">
-🔔 Powiadomienia
-</button>
-
-<button onclick="showPage('chat')">
-💬 Czat
-</button>
-
-<button onclick="showPage('youtube')">
-▶️ YouTube
-</button>
-
-<button onclick="showPage('discord')">
-💜 Discord
-</button>
-
-<button onclick="showPage('about')">
-💜 O LOVE1
-</button>
-
-</nav>
 
 <main>
 
@@ -710,178 +622,30 @@ JEDNA EKIPA • JEDEN CEL • JEDEN KLAN
 
 <section id="home" class="page active">
 
-<div class="hero-home">
+    <div class="hero">
 
-<div class="hero-icon">
-💜
-</div>
+        <div class="hero-content">
 
-<h1>
-WITAJ W LOVE1
-</h1>
+            <h1>LOVE1</h1>
 
-<p>
-Oficjalna aplikacja klanu LOVE1.
-Minecraft • PvP • Gaming • Discord • YouTube
-</p>
+            <p>
+                Oficjalna strona gamingowego klanu LOVE1.
+                Minecraft, PvP, eventy, ranking i społeczność.
+            </p>
 
-<div style="margin-top:25px">
+            <div class="hero-buttons">
+                <button class="btn" onclick="showPage('ranking')">
+                    🏆 Zobacz ranking
+                </button>
 
-<button class="btn" onclick="showPage('discord')">
-💬 DISCORD
-</button>
+                <button class="btn" onclick="showPage('recruitment')">
+                    📋 Rekrutacja
+                </button>
+            </div>
 
-</div>
+        </div>
 
-</div>
-
-<div class="grid4" style="margin-top:20px">
-
-<div class="stat">
-<div class="stat-number">💜</div>
-<div class="stat-label">LOVE1</div>
-</div>
-
-<div class="stat">
-<div class="stat-number">⚔️</div>
-<div class="stat-label">PvP</div>
-</div>
-
-<div class="stat">
-<div class="stat-number">🎮</div>
-<div class="stat-label">GAMING</div>
-</div>
-
-<div class="stat">
-<div class="stat-number">🏆</div>
-<div class="stat-label">TEAM</div>
-</div>
-
-</div>
-
-<div class="card" style="margin-top:20px">
-
-<h2>
-👥 EKIPA LOVE1
-</h2>
-
-<p style="margin-top:8px">
-Aktualne statystyki klanu.
-</p>
-
-<div class="grid4" style="margin-top:18px">
-
-<div class="stat">
-
-<div id="memberCount" class="stat-number">
-1
-</div>
-
-<div class="stat-label">
-CZŁONKÓW
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-number">
-⚔️
-</div>
-
-<div class="stat-label">
-PvP
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-number">
-🎮
-</div>
-
-<div class="stat-label">
-GAMING
-</div>
-
-</div>
-
-<div class="stat">
-
-<div class="stat-number">
-🟢
-</div>
-
-<div class="stat-label">
-LOVE1 ONLINE
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>
-🔥 CO ZNAJDZIESZ W LOVE1?
-</h2>
-
-<div class="grid" style="margin-top:20px">
-
-<div class="feature">
-
-<div class="feature-icon">
-🏆
-</div>
-
-<h3>
-Ranking
-</h3>
-
-<p>
-Ranking członków i punkty.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-🎁
-</div>
-
-<h3>
-Nagrody
-</h3>
-
-<p>
-Punkty można wymieniać na nagrody.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-🏅
-</div>
-
-<h3>
-Odznaki
-</h3>
-
-<p>
-Zbieraj specjalne odznaki LOVE1.
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -890,85 +654,39 @@ Zbieraj specjalne odznaki LOVE1.
 
 <section id="announcements" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>📢 Ogłoszenia</h2>
+        <p>Najnowsze informacje LOVE1</p>
+    </div>
 
-<h1>
-📢 OGŁOSZENIA LOVE1
-</h1>
+    <div class="grid">
 
-<div class="announcement">
+        <div class="card">
+            <div class="icon">🔥</div>
+            <h3>LOVE1 działa!</h3>
+            <p>
+                Oficjalna strona klanu jest już dostępna.
+                Sprawdzaj ranking, eventy oraz najważniejsze informacje.
+            </p>
+        </div>
 
-<div class="announcement-icon">
-🔥
-</div>
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>Minecraft PvP</h3>
+            <p>
+                Trenuj PvP i zdobywaj punkty dla LOVE1.
+            </p>
+        </div>
 
-<div>
+        <div class="card">
+            <div class="icon">🎮</div>
+            <h3>Gaming</h3>
+            <p>
+                Gramy razem i rozwijamy społeczność LOVE1.
+            </p>
+        </div>
 
-<span class="badge">
-LOVE1
-</span>
-
-<h3>
-LOVE1
-</h3>
-
-<p>
-Witaj w oficjalnej aplikacji klanu LOVE1!
-</p>
-
-</div>
-
-</div>
-
-<div class="announcement">
-
-<div class="announcement-icon">
-🏆
-</div>
-
-<div>
-
-<span class="badge">
-RANKING
-</span>
-
-<h3>
-Ranking LOVE1
-</h3>
-
-<p>
-Zdobywaj punkty i awansuj w rankingu.
-</p>
-
-</div>
-
-</div>
-
-<div class="announcement">
-
-<div class="announcement-icon">
-📅
-</div>
-
-<div>
-
-<span class="badge">
-EVENT
-</span>
-
-<h3>
-Nowe eventy
-</h3>
-
-<p>
-Sprawdzaj kalendarz wydarzeń.
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -977,79 +695,33 @@ Sprawdzaj kalendarz wydarzeń.
 
 <section id="ranking" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>🏆 Ranking LOVE1</h2>
+        <p>Najaktywniejsi członkowie</p>
+    </div>
 
-<h1>
-🏆 RANKING CZŁONKÓW LOVE1
-</h1>
+    <div class="card">
 
-<p style="margin-top:10px">
-Ranking jest zapisywany lokalnie w przeglądarce.
-</p>
+        <div class="table-wrap">
 
-<div id="rankingList"></div>
+            <table>
 
-</div>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Gracz</th>
+                        <th>Punkty</th>
+                        <th>Poziom</th>
+                    </tr>
+                </thead>
 
-<div class="card">
+                <tbody id="rankingTable"></tbody>
 
-<h2>
-💡 Jak zdobywać punkty?
-</h2>
+            </table>
 
-<div class="grid" style="margin-top:20px">
+        </div>
 
-<div class="feature">
-
-<div class="feature-icon">
-⚔️
-</div>
-
-<h3>
-PvP
-</h3>
-
-<p>
-+100 punktów
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-🎮
-</div>
-
-<h3>
-Aktywność
-</h3>
-
-<p>
-+50 punktów
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-🏆
-</div>
-
-<h3>
-Event
-</h3>
-
-<p>
-+200 punktów
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1058,127 +730,38 @@ Event
 
 <section id="points" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>🎁 Punkty LOVE1</h2>
+        <p>Zdobywaj punkty za aktywność</p>
+    </div>
 
-<h1>
-🎁 SYSTEM PUNKTÓW I NAGRÓD
-</h1>
+    <div class="grid">
 
-<p style="margin-top:10px">
-Twoje punkty są przechowywane w localStorage.
-</p>
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>Aktywność PvP</h3>
+            <p>+50 punktów</p>
+        </div>
 
-<div class="stat" style="margin-top:20px">
+        <div class="card">
+            <div class="icon">🎉</div>
+            <h3>Event</h3>
+            <p>+100 punktów</p>
+        </div>
 
-<div id="myPoints" class="stat-number">
-0
-</div>
+        <div class="card">
+            <div class="icon">💬</div>
+            <h3>Aktywność Discord</h3>
+            <p>+25 punktów</p>
+        </div>
 
-<div class="stat-label">
-TWOJE PUNKTY
-</div>
+        <div class="card">
+            <div class="icon">🏅</div>
+            <h3>1000 punktów</h3>
+            <p>Specjalna ranga LOVE1</p>
+        </div>
 
-</div>
-
-<div class="grid" style="margin-top:20px">
-
-<div class="reward-card">
-
-<h2>
-💜 Ranga Wspierający
-</h2>
-
-<p>
-1000 punktów
-</p>
-
-<button class="btn"
-onclick="claimReward(1000,'Ranga Wspierający')">
-
-🎁 ODBIERZ
-
-</button>
-
-</div>
-
-<div class="reward-card">
-
-<h2>
-⚔️ Specjalny trening
-</h2>
-
-<p>
-2000 punktów
-</p>
-
-<button class="btn"
-onclick="claimReward(2000,'Specjalny trening')">
-
-🎁 ODBIERZ
-
-</button>
-
-</div>
-
-<div class="reward-card">
-
-<h2>
-👑 Ranga VIP
-</h2>
-
-<p>
-5000 punktów
-</p>
-
-<button class="btn"
-onclick="claimReward(5000,'Ranga VIP')">
-
-🎁 ODBIERZ
-
-</button>
-
-</div>
-
-</div>
-
-<p id="rewardMessage" style="margin-top:20px"></p>
-
-</div>
-
-<div class="card">
-
-<h2>
-📊 Przykładowe źródła punktów
-</h2>
-
-<div class="goal">
-
-<div class="goal-top">
-<strong>⚔️ Wygrany mecz PvP</strong>
-<span>+100</span>
-</div>
-
-</div>
-
-<div class="goal">
-
-<div class="goal-top">
-<strong>🎮 Aktywność</strong>
-<span>+50</span>
-</div>
-
-</div>
-
-<div class="goal">
-
-<div class="goal-top">
-<strong>🏆 Event</strong>
-<span>+200</span>
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1187,53 +770,41 @@ onclick="claimReward(5000,'Ranga VIP')">
 
 <section id="server" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>🟢 Status serwera</h2>
+        <p>Informacje o serwerze LOVE1</p>
+    </div>
 
-<h1>
-🟢 STATUS SERWERA
-</h1>
+    <div class="card">
 
-<div class="discord-hero" style="margin-top:20px">
+        <div class="status">
+            <span class="online"></span>
+            Serwer aktywny
+        </div>
 
-<div style="font-size:70px">
-🟢
-</div>
+        <br>
 
-<h2 style="font-size:38px;margin-top:15px">
-LOVE1 ONLINE
-</h2>
+        <p>
+            LOVE1 jest gotowe do gry.
+        </p>
 
-<p style="margin-top:10px">
-Strona LOVE1 działa lokalnie.
-</p>
+        <br>
 
-<div class="grid4" style="margin-top:30px">
+        <div class="grid">
 
-<div class="stat">
-<div class="stat-number">🟢</div>
-<div class="stat-label">STRONA</div>
-</div>
+            <div class="card">
+                <h3>🎮 Tryb</h3>
+                <p>Minecraft PvP</p>
+            </div>
 
-<div class="stat">
-<div class="stat-number">🟢</div>
-<div class="stat-label">DISCORD</div>
-</div>
+            <div class="card">
+                <h3>👥 Społeczność</h3>
+                <p>LOVE1 Community</p>
+            </div>
 
-<div class="stat">
-<div class="stat-number">🟢</div>
-<div class="stat-label">APLIKACJA</div>
-</div>
+        </div>
 
-<div class="stat">
-<div class="stat-number">💜</div>
-<div class="stat-label">LOVE1</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1242,81 +813,41 @@ Strona LOVE1 działa lokalnie.
 
 <section id="history" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>📜 Historia LOVE1</h2>
+        <p>Nasza historia</p>
+    </div>
 
-<h1>
-📜 HISTORIA LOVE1
-</h1>
+    <div class="grid">
 
-<p style="margin-top:10px">
-Najważniejsze momenty rozwoju naszej ekipy.
-</p>
+        <div class="card">
+            <div class="icon">💜</div>
+            <h3>Początek</h3>
+            <p>
+                LOVE1 powstało jako gamingowa społeczność
+                skupiona na Minecraft i PvP.
+            </p>
+        </div>
 
-<div class="timeline">
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Rozwój</h3>
+            <p>
+                Społeczność zaczęła się rozwijać,
+                a klan otrzymał własne systemy rankingów i eventów.
+            </p>
+        </div>
 
-<div class="timeline-item">
+        <div class="card">
+            <div class="icon">👑</div>
+            <h3>Dzisiaj</h3>
+            <p>
+                LOVE1 rozwija swoją stronę,
+                Discord oraz gamingową społeczność.
+            </p>
+        </div>
 
-<h2>
-💜 Początek LOVE1
-</h2>
-
-<p>
-Powstaje klan LOVE1 i zaczyna się wspólna przygoda.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<h2>
-⚔️ Rozwój PvP
-</h2>
-
-<p>
-Ekipa zaczyna organizować wspólne klepy i treningi.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<h2>
-💬 Discord
-</h2>
-
-<p>
-Powstaje społeczność Discord LOVE1.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<h2>
-🏆 System LOVE1
-</h2>
-
-<p>
-Dodajemy ranking, punkty, odznaki i nagrody.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<h2>
-🚀 Przyszłość
-</h2>
-
-<p>
-LOVE1 dalej się rozwija.
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1325,113 +856,38 @@ LOVE1 dalej się rozwija.
 
 <section id="badges" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>🏅 Odznaki</h2>
+        <p>Specjalne osiągnięcia LOVE1</p>
+    </div>
 
-<h1>
-🏅 ODZNAKI LOVE1
-</h1>
+    <div class="grid">
 
-<div class="grid">
+        <div class="card">
+            <div class="icon">👑</div>
+            <h3>OWNER</h3>
+            <p>Właściciel LOVE1.</p>
+        </div>
 
-<div class="badge-card">
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>PvP MASTER</h3>
+            <p>Mistrz walk PvP.</p>
+        </div>
 
-<div style="font-size:55px">
-💜
-</div>
+        <div class="card">
+            <div class="icon">🔥</div>
+            <h3>AKTYWNY</h3>
+            <p>Aktywny członek społeczności.</p>
+        </div>
 
-<h2>
-Pierwszy krok
-</h2>
+        <div class="card">
+            <div class="icon">🏆</div>
+            <h3>TOP GRACZ</h3>
+            <p>Gracz z najwyższych pozycji rankingu.</p>
+        </div>
 
-<p>
-Dołącz do LOVE1.
-</p>
-
-</div>
-
-<div class="badge-card">
-
-<div style="font-size:55px">
-⚔️
-</div>
-
-<h2>
-Wojownik PvP
-</h2>
-
-<p>
-Zdobyj doświadczenie PvP.
-</p>
-
-</div>
-
-<div class="badge-card">
-
-<div style="font-size:55px">
-🔥
-</div>
-
-<h2>
-Aktywny
-</h2>
-
-<p>
-Bądź aktywnym członkiem.
-</p>
-
-</div>
-
-<div class="badge-card">
-
-<div style="font-size:55px">
-🏆
-</div>
-
-<h2>
-Mistrz Eventów
-</h2>
-
-<p>
-Bierz udział w eventach.
-</p>
-
-</div>
-
-<div class="badge-card">
-
-<div style="font-size:55px">
-🚀
-</div>
-
-<h2>
-Booster
-</h2>
-
-<p>
-Wesprzyj serwer Discord.
-</p>
-
-</div>
-
-<div class="badge-card">
-
-<div style="font-size:55px">
-👑
-</div>
-
-<h2>
-Legenda LOVE1
-</h2>
-
-<p>
-Osiągnij 5000 punktów.
-</p>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1440,15 +896,32 @@ Osiągnij 5000 punktów.
 
 <section id="events" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>📅 Eventy</h2>
+        <p>Nadchodzące wydarzenia</p>
+    </div>
 
-<h1>
-📅 KALENDARZ EVENTÓW
-</h1>
+    <div class="grid">
 
-<div id="eventsList"></div>
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h3>Turniej PvP</h3>
+            <p>Wielki turniej PvP LOVE1.</p>
+        </div>
 
-</div>
+        <div class="card">
+            <div class="icon">🎮</div>
+            <h3>Gaming Night</h3>
+            <p>Wspólna noc grania.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏆</div>
+            <h3>Ranking Challenge</h3>
+            <p>Walcz o pierwsze miejsce.</p>
+        </div>
+
+    </div>
 
 </section>
 
@@ -1457,23 +930,61 @@ Osiągnij 5000 punktów.
 
 <section id="notifications" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>🔔 Powiadomienia</h2>
+        <p>Najważniejsze informacje</p>
+    </div>
 
-<h1>
-🔔 CENTRUM POWIADOMIEŃ
-</h1>
+    <div class="grid">
 
-<div id="notificationsList"></div>
+        <div class="card">
+            <h3>🔥 LOVE1</h3>
+            <p>Witaj na oficjalnej stronie klanu!</p>
+        </div>
 
-<button class="btn"
-onclick="markNotificationsRead()"
-style="margin-top:20px">
+        <div class="card">
+            <h3>🎮 Event</h3>
+            <p>Sprawdzaj zakładkę Eventy.</p>
+        </div>
 
-✅ OZNACZ JAKO PRZECZYTANE
+    </div>
 
-</button>
+</section>
 
-</div>
+
+<!-- REKRUTACJA -->
+
+<section id="recruitment" class="page">
+
+    <div class="section-title">
+        <h2>📋 Rekrutacja LOVE1</h2>
+        <p>Dołącz do naszego klanu</p>
+    </div>
+
+    <div class="card">
+
+        <h3>Wymagania</h3>
+
+        <br>
+
+        <span class="badge">13+ lat</span>
+        <span class="badge">Dobry mikrofon</span>
+        <span class="badge">PvP</span>
+        <span class="badge">Aktywność</span>
+
+        <br><br>
+
+        <h3>Dlaczego LOVE1?</h3>
+
+        <p>
+            ⚔️ PvP<br>
+            🌍 Klan wieloserwerowy<br>
+            🤝 Nowi znajomi<br>
+            🔥 Wspólna zabawa<br>
+            🏆 Eventy i rankingi
+        </p>
+
+    </div>
 
 </section>
 
@@ -1482,37 +993,25 @@ style="margin-top:20px">
 
 <section id="chat" class="page">
 
-<div class="card">
+    <div class="section-title">
+        <h2>💬 Czat LOVE1</h2>
+        <p>Prosty lokalny czat</p>
+    </div>
 
-<h1>
-💬 CZAT LOVE1
-</h1>
+    <div class="card">
 
-<p>
-Wiadomości są przechowywane tylko podczas działania strony.
-</p>
+        <div id="chatMessages"></div>
 
-<div id="chatMessages"
-class="chat-box"
-style="margin-top:20px">
-</div>
+        <input
+            id="chatInput"
+            placeholder="Napisz wiadomość..."
+        >
 
-<div style="display:flex;gap:10px;margin-top:15px">
+        <button class="btn" onclick="sendMessage()">
+            Wyślij
+        </button>
 
-<input id="chatInput"
-placeholder="Napisz wiadomość..."
-style="margin:0">
-
-<button class="btn"
-onclick="sendChatMessage()">
-
-Wyślij
-
-</button>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
@@ -1521,101 +1020,31 @@ Wyślij
 
 <section id="youtube" class="page">
 
-<div class="youtube-hero">
+    <div class="hero">
 
-<div class="youtube-icon">
-▶️
-</div>
+        <div class="hero-content">
 
-<div class="youtube-label">
-OFICJALNY KANAŁ
-</div>
+            <h1>▶️</h1>
 
-<div class="youtube-title">
-TOPXD25
-</div>
+            <h2 style="font-size:42px">
+                LOVE1 YouTube
+            </h2>
 
-<p class="youtube-text">
-Minecraft, PvP, gameplaye oraz materiały związane z LOVE1.
-</p>
+            <p>
+                Filmy, Minecraft, PvP i najlepsze momenty.
+            </p>
 
-<div class="grid4">
+            <a
+                class="btn"
+                href="https://youtube.com/@topxd25?si=xJjV83Y2wXEZHUbG"
+                target="_blank"
+            >
+                Otwórz YouTube
+            </a>
 
-<div class="feature">
+        </div>
 
-<div class="feature-icon">
-🎮
-</div>
-
-<h3>
-Gameplay
-</h3>
-
-<p>
-Gamingowe materiały.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-⚔️
-</div>
-
-<h3>
-PvP
-</h3>
-
-<p>
-Walki i klepy.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-⛏️
-</div>
-
-<h3>
-Minecraft
-</h3>
-
-<p>
-Minecraftowe akcje.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-💜
-</div>
-
-<h3>
-LOVE1
-</h3>
-
-<p>
-Materiały klanu.
-</p>
-
-</div>
-
-</div>
-
-<button class="youtube-button"
-onclick="openYouTube()"
-style="margin-top:30px">
-
-▶️ ODWIEDŹ KANAŁ
-
-</button>
-
-</div>
+    </div>
 
 </section>
 
@@ -1624,101 +1053,31 @@ style="margin-top:30px">
 
 <section id="discord" class="page">
 
-<div class="discord-hero">
+    <div class="hero">
 
-<div class="discord-icon">
-💬
-</div>
+        <div class="hero-content">
 
-<h4 style="color:#bd7cff;letter-spacing:4px">
-OFICJALNY SERWER
-</h4>
+            <h1>💬</h1>
 
-<div class="discord-title">
-DISCORD LOVE1
-</div>
+            <h2 style="font-size:42px">
+                LOVE1 Discord
+            </h2>
 
-<p style="max-width:700px;margin:15px auto">
-Dołącz do naszej społeczności.
-Graj z ekipą, rozmawiaj i bierz udział w eventach. 💜
-</p>
+            <p>
+                Dołącz do naszej społeczności Discord.
+            </p>
 
-<div class="grid4" style="margin-top:30px">
+            <a
+                class="btn"
+                href="https://discord.gg/6GUdm5ZBtT"
+                target="_blank"
+            >
+                Dołącz na Discord
+            </a>
 
-<div class="feature">
+        </div>
 
-<div class="feature-icon">
-⚔️
-</div>
-
-<h3>
-PvP
-</h3>
-
-<p>
-Klepy.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-🎮
-</div>
-
-<h3>
-Gaming
-</h3>
-
-<p>
-Wspólna gra.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-🏆
-</div>
-
-<h3>
-Eventy
-</h3>
-
-<p>
-Wydarzenia.
-</p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">
-🤝
-</div>
-
-<h3>
-Ekipa
-</h3>
-
-<p>
-Zgrany LOVE1.
-</p>
-
-</div>
-
-</div>
-
-<button class="discord-button"
-onclick="openDiscord()">
-
-💜 DOŁĄCZ DO DISCORDA
-
-</button>
-
-</div>
+    </div>
 
 </section>
 
@@ -1727,698 +1086,465 @@ onclick="openDiscord()">
 
 <section id="about" class="page">
 
-<div class="about-hero">
+    <div class="section-title">
+        <h2>💜 O LOVE1</h2>
+        <p>Gamingowa społeczność</p>
+    </div>
 
-<div style="font-size:70px">
-💜
-</div>
+    <div class="card">
 
-<h1 style="font-size:50px;margin-top:10px">
-O LOVE1
-</h1>
+        <p>
+            LOVE1 to gamingowy klan skupiony na Minecraft,
+            PvP, Discordzie oraz wspólnej zabawie.
+        </p>
 
-<p style="max-width:750px;margin:20px auto">
-LOVE1 to gamingowa ekipa skupiona na Minecraft,
-PvP, wspólnej zabawie i budowaniu aktywnej społeczności.
-</p>
+        <br>
 
-</div>
+        <p>
+            Naszym celem jest stworzenie aktywnej,
+            przyjaznej i rozwijającej się społeczności.
+        </p>
 
-<div class="card">
+    </div>
 
-<h2>
-💜 NASZE ZASADY
-</h2>
+</section>
 
-<div class="grid" style="margin-top:20px">
 
-<div class="feature">
+<!-- PRYWATNOŚĆ -->
 
-<div class="feature-icon">
-🤝
-</div>
+<section id="privacy" class="page">
 
-<h3>
-Szacunek
-</h3>
+    <div class="section-title">
+        <h2>🔒 Prywatność</h2>
+        <p>Informacje dotyczące danych</p>
+    </div>
 
-<p>
-Szanujemy innych członków.
-</p>
+    <div class="card">
 
-</div>
+        <p>
+            Strona wykorzystuje lokalne dane przeglądarki
+            do przechowywania niektórych ustawień i informacji.
+        </p>
 
-<div class="feature">
+        <br>
 
-<div class="feature-icon">
-🔥
-</div>
+        <p>
+            Dane zapisane w localStorage pozostają
+            na urządzeniu użytkownika.
+        </p>
 
-<h3>
-Aktywność
-</h3>
+    </div>
 
-<p>
-Wspólnie rozwijamy ekipę.
-</p>
+</section>
 
-</div>
 
-<div class="feature">
+<!-- KONTO -->
 
-<div class="feature-icon">
-🏆
-</div>
+<section id="login" class="page">
 
-<h3>
-Rywalizacja
-</h3>
+    <div class="section-title">
+        <h2>👤 Konto</h2>
+        <p>Zaloguj się do panelu</p>
+    </div>
 
-<p>
-Gramy i rozwijamy swoje umiejętności.
-</p>
+    <div class="card">
 
-</div>
+        <input
+            id="loginName"
+            placeholder="Nazwa użytkownika"
+        >
 
-</div>
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Hasło"
+        >
 
-</div>
+        <button class="btn" onclick="login()">
+            Zaloguj
+        </button>
 
-<div class="card">
+        <p id="loginResult" style="margin-top:15px"></p>
 
-<h2>
-🚀 CEL LOVE1
-</h2>
+    </div>
 
-<p style="margin-top:15px">
-Budowanie zgranej społeczności gamingowej,
-organizowanie wspólnych wydarzeń i rozwijanie klanu.
-</p>
+</section>
 
-</div>
+
+<!-- WŁAŚCICIEL -->
+
+<section id="owner" class="page">
+
+    <div class="section-title">
+        <h2>👑 Panel właściciela</h2>
+        <p>LOVE1 Administration</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Członkowie</h3>
+            <p>Zarządzanie społecznością LOVE1.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏆</div>
+            <h3>Ranking</h3>
+            <p>Zarządzanie punktami graczy.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📢</div>
+            <h3>Ogłoszenia</h3>
+            <p>Panel administracyjny.</p>
+        </div>
+
+    </div>
 
 </section>
 
 </main>
 
 
+<div class="ufo">🛸</div>
+
+
 <footer>
-
-<strong style="color:#d99aff">
-💜 LOVE1
-</strong>
-
-<br><br>
-
-JEDNA EKIPA • JEDEN CEL 🏆
-
-<br>
-
-<span style="font-size:12px">
-Minecraft • PvP • Gaming • Discord • YouTube
-</span>
-
+    💜 LOVE1 Gaming Clan • 2026
 </footer>
-
-
-<!-- UFO -->
-
-<div class="love1-ufo" aria-hidden="true">
-
-<div class="ufo-light"></div>
-
-<div class="ufo-body">
-
-<div class="ufo-window"></div>
-
-</div>
-
-<div class="ufo-beam"></div>
-
-</div>
 
 
 <script>
 
-const YOUTUBE_URL =
-"https://youtube.com/@topxd25?si=xJjV83Y2wXEZHUbG";
+/* =========================
+   PARTICLES
+========================= */
 
-const DISCORD_URL =
-"https://discord.gg/6GUdm5ZBtT";
+const particles =
+    document.getElementById("particles");
 
+for(let i = 0; i < 45; i++){
 
-/* PAGE SYSTEM */
+    const p = document.createElement("div");
 
-function showPage(pageId){
+    p.className = "particle";
 
-document.querySelectorAll(".page").forEach(function(page){
+    p.style.left =
+        Math.random() * 100 + "%";
 
-page.classList.remove("active");
+    p.style.animationDuration =
+        (8 + Math.random() * 15) + "s";
 
-});
+    p.style.animationDelay =
+        Math.random() * 10 + "s";
 
-const page=document.getElementById(pageId);
+    p.style.opacity =
+        Math.random();
 
-if(!page)return;
+    const size =
+        2 + Math.random() * 4;
 
-page.classList.add("active");
+    p.style.width = size + "px";
+    p.style.height = size + "px";
 
-if(pageId==="ranking"){
-renderRanking();
-}
-
-if(pageId==="points"){
-renderPoints();
-}
-
-if(pageId==="events"){
-renderEvents();
-}
-
-if(pageId==="notifications"){
-renderNotifications();
-}
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
+    particles.appendChild(p);
 }
 
 
-/* LINKS */
+/* =========================
+   PAGE SYSTEM
+========================= */
 
-function openYouTube(){
+function showPage(id){
 
-window.open(
-YOUTUBE_URL,
-"_blank",
-"noopener,noreferrer"
-);
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
 
-}
+    const page =
+        document.getElementById(id);
 
-function openDiscord(){
-
-window.open(
-DISCORD_URL,
-"_blank",
-"noopener,noreferrer"
-);
-
-}
-
-
-/* STORAGE */
-
-function getData(key,fallback){
-
-try{
-
-const value=localStorage.getItem(key);
-
-return value ?
-JSON.parse(value) :
-fallback;
-
-}catch(error){
-
-return fallback;
-
-}
-
-}
-
-function saveData(key,data){
-
-localStorage.setItem(
-key,
-JSON.stringify(data)
-);
-
+    if(page){
+        page.classList.add("active");
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
 }
 
 
-/* INITIAL DATA */
+/* =========================
+   RANKING
+========================= */
 
-function initializeData(){
+let players =
+    JSON.parse(
+        localStorage.getItem("love1_players")
+    ) || [
 
-if(!localStorage.getItem("love1Members")){
+        {
+            name:"Topxd",
+            points:1250
+        },
 
-saveData("love1Members",[
+        {
+            name:"LOVE1_Player",
+            points:850
+        },
 
-{
-name:"Topxd25",
-points:0,
-badges:["💜 Pierwszy krok"]
-}
+        {
+            name:"PvPMaster",
+            points:650
+        },
 
-]);
+        {
+            name:"Warrior",
+            points:400
+        }
 
-}
+    ];
 
-if(!localStorage.getItem("love1Events")){
-
-saveData("love1Events",[
-
-{
-date:"2026-10-05",
-title:"⚔️ Turniej PvP",
-description:"Wspólny turniej PvP LOVE1."
-},
-
-{
-date:"2026-10-12",
-title:"🎮 Wieczór Minecraft",
-description:"Wspólna gra członków LOVE1."
-},
-
-{
-date:"2026-10-20",
-title:"🏆 Event LOVE1",
-description:"Specjalny event dla ekipy."
-}
-
-]);
-
-}
-
-if(!localStorage.getItem("love1Notifications")){
-
-saveData("love1Notifications",[
-
-{
-id:1,
-title:"💜 Witaj w LOVE1!",
-text:"System LOVE1 został uruchomiony.",
-read:false
-},
-
-{
-id:2,
-title:"🏆 Ranking",
-text:"Zdobywaj punkty i rozwijaj swoją rangę.",
-read:false
-}
-
-]);
-
-}
-
-if(!localStorage.getItem("love1Points")){
-
-localStorage.setItem(
-"love1Points",
-"0"
-);
-
-}
-
-}
-
-
-/* RANKING */
 
 function renderRanking(){
 
-const container=document.getElementById(
-"rankingList"
-);
+    const table =
+        document.getElementById(
+            "rankingTable"
+        );
 
-if(!container)return;
+    if(!table) return;
 
-const members=getData(
-"love1Members",
-[]
-);
+    players.sort(
+        (a,b)=>b.points-a.points
+    );
 
-members.sort(function(a,b){
-return b.points-a.points;
-});
+    table.innerHTML = "";
 
-if(members.length===0){
+    players.forEach(
+        (player,index)=>{
 
-container.innerHTML=
-'<div class="empty">Brak członków.</div>';
+            let level =
+                Math.floor(player.points / 250) + 1;
 
-return;
+            const tr =
+                document.createElement("tr");
 
+            tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>💜 ${player.name}</td>
+                <td>${player.points}</td>
+                <td>LVL ${level}</td>
+            `;
+
+            table.appendChild(tr);
+
+        }
+    );
+
+    localStorage.setItem(
+        "love1_players",
+        JSON.stringify(players)
+    );
 }
-
-container.innerHTML="";
-
-members.forEach(function(member,index){
-
-const card=document.createElement("div");
-
-card.className="rank-card";
-
-card.innerHTML=`
-
-<div style="
-display:flex;
-justify-content:space-between;
-gap:15px;
-align-items:center;
-flex-wrap:wrap">
-
-<div>
-
-<div class="rank-position">
-#${index+1}
-</div>
-
-<h2>
-${escapeHTML(member.name)}
-</h2>
-
-<p>
-🏅 Odznaki: ${member.badges.length}
-</p>
-
-</div>
-
-<div class="points">
-⭐ ${member.points} pkt
-</div>
-
-</div>
-
-<div class="rank-bar">
-
-<div style="
-width:${Math.min(member.points/50,100)}%">
-</div>
-
-</div>
-
-`;
-
-container.appendChild(card);
-
-});
-
-}
-
-
-/* POINTS */
-
-function getMyPoints(){
-
-return Number(
-localStorage.getItem("love1Points")||"0"
-);
-
-}
-
-function renderPoints(){
-
-const element=document.getElementById(
-"myPoints"
-);
-
-if(element){
-
-element.textContent=getMyPoints();
-
-}
-
-}
-
-function claimReward(cost,name){
-
-const points=getMyPoints();
-
-const message=document.getElementById(
-"rewardMessage"
-);
-
-if(points<cost){
-
-message.style.color="#ff6680";
-
-message.textContent=
-"❌ Nie masz wystarczającej liczby punktów.";
-
-return;
-
-}
-
-localStorage.setItem(
-"love1Points",
-String(points-cost)
-);
-
-message.style.color="#76ff9b";
-
-message.textContent=
-"✅ Odebrano nagrodę: "+name+"!";
-
-renderPoints();
-
-}
-
-
-/* EVENTS */
-
-function renderEvents(){
-
-const container=document.getElementById(
-"eventsList"
-);
-
-if(!container)return;
-
-const events=getData(
-"love1Events",
-[]
-);
-
-container.innerHTML="";
-
-if(events.length===0){
-
-container.innerHTML=
-'<div class="empty">Brak zaplanowanych eventów.</div>';
-
-return;
-
-}
-
-events.forEach(function(event){
-
-const card=document.createElement("div");
-
-card.className="event-card";
-
-card.innerHTML=`
-
-<div class="event-date">
-📅 ${escapeHTML(event.date)}
-</div>
-
-<h2 style="margin-top:8px">
-${escapeHTML(event.title)}
-</h2>
-
-<p style="margin-top:8px">
-${escapeHTML(event.description)}
-</p>
-
-`;
-
-container.appendChild(card);
-
-});
-
-}
-
-
-/* NOTIFICATIONS */
-
-function renderNotifications(){
-
-const container=document.getElementById(
-"notificationsList"
-);
-
-if(!container)return;
-
-const notifications=getData(
-"love1Notifications",
-[]
-);
-
-container.innerHTML="";
-
-if(notifications.length===0){
-
-container.innerHTML=
-'<div class="empty">Brak powiadomień.</div>';
-
-return;
-
-}
-
-notifications.forEach(function(notification){
-
-const card=document.createElement("div");
-
-card.className=
-"notification-card "+
-(notification.read ? "" : "unread");
-
-card.innerHTML=`
-
-<h2>
-${escapeHTML(notification.title)}
-</h2>
-
-<p style="margin-top:8px">
-${escapeHTML(notification.text)}
-</p>
-
-<p style="
-margin-top:10px;
-font-size:12px;
-color:#8f7b98">
-
-${notification.read ?
-"Przeczytane" :
-"NOWE"}
-
-</p>
-
-`;
-
-container.appendChild(card);
-
-});
-
-}
-
-function markNotificationsRead(){
-
-const notifications=getData(
-"love1Notifications",
-[]
-);
-
-notifications.forEach(function(n){
-
-n.read=true;
-
-});
-
-saveData(
-"love1Notifications",
-notifications
-);
-
-renderNotifications();
-
-}
-
-
-/* CHAT */
-
-function sendChatMessage(){
-
-const input=document.getElementById(
-"chatInput"
-);
-
-const messages=document.getElementById(
-"chatMessages"
-);
-
-if(!input||!messages)return;
-
-const text=input.value.trim();
-
-if(!text)return;
-
-const message=document.createElement("div");
-
-message.className="chat-message";
-
-message.innerHTML=`
-
-<div class="chat-name">
-💜 LOVE1
-</div>
-
-<div>
-${escapeHTML(text)}
-</div>
-
-`;
-
-messages.appendChild(message);
-
-input.value="";
-
-messages.scrollTop=
-messages.scrollHeight;
-
-}
-
-
-/* SECURITY */
-
-function escapeHTML(text){
-
-return String(text)
-
-.replace(/&/g,"&amp;")
-
-.replace(/</g,"&lt;")
-
-.replace(/>/g,"&gt;")
-
-.replace(/"/g,"&quot;")
-
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* START */
-
-initializeData();
 
 renderRanking();
 
-renderPoints();
 
-renderEvents();
+/* =========================
+   LOGIN
+========================= */
 
-renderNotifications();
+function login(){
+
+    const name =
+        document.getElementById(
+            "loginName"
+        ).value.trim();
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+    const result =
+        document.getElementById(
+            "loginResult"
+        );
+
+    if(
+        name === "Topxd" &&
+        password === "LOVE1"
+    ){
+
+        localStorage.setItem(
+            "love1_owner",
+            "true"
+        );
+
+        document.getElementById(
+            "ownerButton"
+        ).style.display =
+            "inline-block";
+
+        result.innerHTML =
+            "👑 Zalogowano jako właściciel!";
+
+        result.style.color =
+            "#d98cff";
+
+    }else{
+
+        result.innerHTML =
+            "❌ Nieprawidłowa nazwa lub hasło.";
+
+        result.style.color =
+            "#ff6b9d";
+
+    }
+
+}
 
 
-const chatInput=document.getElementById(
-"chatInput"
+/* =========================
+   OWNER SESSION
+========================= */
+
+if(
+    localStorage.getItem(
+        "love1_owner"
+    ) === "true"
+){
+
+    document.getElementById(
+        "ownerButton"
+    ).style.display =
+        "inline-block";
+
+}
+
+
+/* =========================
+   CHAT
+========================= */
+
+let chat =
+    JSON.parse(
+        localStorage.getItem(
+            "love1_chat"
+        )
+    ) || [
+
+        {
+            user:"LOVE1",
+            text:"Witaj na czacie! 💜"
+        }
+
+    ];
+
+
+function renderChat(){
+
+    const box =
+        document.getElementById(
+            "chatMessages"
+        );
+
+    if(!box) return;
+
+    box.innerHTML = "";
+
+    chat.forEach(message => {
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+        div.className = "card";
+
+        div.style.marginBottom = "10px";
+
+        div.innerHTML = `
+            <strong>💜 ${message.user}</strong>
+            <p>${escapeHTML(message.text)}</p>
+        `;
+
+        box.appendChild(div);
+
+    });
+
+}
+
+
+function sendMessage(){
+
+    const input =
+        document.getElementById(
+            "chatInput"
+        );
+
+    const text =
+        input.value.trim();
+
+    if(!text) return;
+
+    chat.push({
+        user:"Gość",
+        text:text
+    });
+
+    localStorage.setItem(
+        "love1_chat",
+        JSON.stringify(chat)
+    );
+
+    input.value = "";
+
+    renderChat();
+
+}
+
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+renderChat();
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Enter" &&
+            document.activeElement.id ===
+            "chatInput"
+        ){
+
+            sendMessage();
+
+        }
+
+    }
 );
-
-if(chatInput){
-
-chatInput.addEventListener(
-"keydown",
-function(event){
-
-if(event.key==="Enter"){
-
-event.preventDefault();
-
-sendChatMessage();
-
-}
-
-}
-);
-
-}
 
 </script>
 
