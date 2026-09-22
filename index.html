@@ -1,5 +1,5 @@
-```html
 <!DOCTYPE html>
+
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
@@ -9,145 +9,935 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+
 body{
-font-family:Arial,Helvetica,sans-serif;color:white;min-height:100vh;
+font-family:Arial,Helvetica,sans-serif;
+color:white;
+min-height:100vh;
 background:
 radial-gradient(circle at 50% -10%,#5b0088 0%,transparent 35%),
 radial-gradient(circle at 10% 50%,#26003d 0%,transparent 30%),
-radial-gradient(circle at 90% 80%,#32004f 0%,transparent 30%),#07000d
+radial-gradient(circle at 90% 80%,#32004f 0%,transparent 30%),
+#07000d;
+overflow-x:hidden;
 }
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background-image:
+radial-gradient(circle,rgba(190,80,255,.35) 1px,transparent 1px),
+radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1px);
+background-size:75px 75px,120px 120px;
+animation:starsMove 18s linear infinite;
+opacity:.35;
+z-index:-1;
+}
+
+@keyframes starsMove{
+from{background-position:0 0,0 0}
+to{background-position:75px 75px,120px 120px}
+}
+
 ::-webkit-scrollbar{width:9px}
 ::-webkit-scrollbar-track{background:#09000f}
-::-webkit-scrollbar-thumb{background:linear-gradient(#8a00d4,#c000ff);border-radius:10px}
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#8a00d4,#c000ff);
+border-radius:10px
+}
 
 header{
-text-align:center;padding:55px 20px 45px;background:
+text-align:center;
+padding:55px 20px 45px;
+background:
 radial-gradient(circle at center,rgba(170,0,255,.22),transparent 45%),
-rgba(7,0,13,.95);border-bottom:1px solid #7800b5;
+rgba(7,0,13,.95);
+border-bottom:1px solid #7800b5;
 box-shadow:0 0 35px rgba(150,0,255,.25)
 }
-.logo{font-size:62px;font-weight:1000;color:#e09cff;text-shadow:0 0 8px #a000ff,0 0 25px #8b00ff,0 0 50px rgba(180,0,255,.6)}
-.subtitle{margin-top:12px;color:#cdb4d9;font-size:15px;letter-spacing:3px}
+
+.logo{
+font-size:62px;
+font-weight:1000;
+color:#e09cff;
+text-shadow:0 0 8px #a000ff,0 0 25px #8b00ff,0 0 50px rgba(180,0,255,.6)
+}
+
+.subtitle{
+margin-top:12px;
+color:#cdb4d9;
+font-size:15px;
+letter-spacing:3px
+}
 
 nav{
-position:sticky;top:0;z-index:999;display:flex;justify-content:center;
-flex-wrap:wrap;gap:9px;padding:13px;background:rgba(7,0,13,.94);
-backdrop-filter:blur(15px);border-bottom:1px solid #3e0059
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:9px;
+padding:13px;
+background:rgba(7,0,13,.94);
+backdrop-filter:blur(15px);
+border-bottom:1px solid #3e0059
 }
-nav button{
-border:1px solid #6800a5;background:linear-gradient(135deg,#15001f,#22002f);
-color:#eee;padding:11px 15px;border-radius:10px;cursor:pointer;font-weight:bold;transition:.2s
-}
-nav button:hover{transform:translateY(-3px);background:linear-gradient(135deg,#5e008e,#8c00c9);box-shadow:0 0 15px rgba(160,0,255,.6)}
 
-main{max-width:1150px;margin:auto;padding:35px 15px 60px}
-.page{display:none;animation:pageIn .35s ease}
+nav button{
+border:1px solid #6800a5;
+background:linear-gradient(135deg,#15001f,#22002f);
+color:#eee;
+padding:11px 15px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+transition:.2s
+}
+
+nav button:hover{
+transform:translateY(-3px);
+background:linear-gradient(135deg,#5e008e,#8c00c9);
+box-shadow:0 0 15px rgba(160,0,255,.6)
+}
+
+main{
+max-width:1150px;
+margin:auto;
+padding:35px 15px 60px
+}
+
+.page{
+display:none;
+animation:pageIn .35s ease
+}
+
 .page.active{display:block}
-@keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+@keyframes pageIn{
+from{opacity:0;transform:translateY(12px)}
+to{opacity:1;transform:translateY(0)}
+}
 
 .card{
 background:linear-gradient(145deg,rgba(30,0,45,.92),rgba(11,0,18,.94));
-border:1px solid #62009b;border-radius:20px;padding:27px;margin-bottom:20px;
-box-shadow:0 0 25px rgba(120,0,190,.12);transition:.25s
+border:1px solid #62009b;
+border-radius:20px;
+padding:27px;
+margin-bottom:20px;
+box-shadow:0 0 25px rgba(120,0,190,.12);
+transition:.25s
 }
-.card:hover{border-color:#a000e8;box-shadow:0 0 30px rgba(150,0,255,.2)}
-h1{color:#e19cff;text-shadow:0 0 15px rgba(160,0,255,.5)}
-h2{color:#d98eff}h3{color:#d29aff}
-p{color:#cdbbd5;line-height:1.6}
+
+.card:hover{
+border-color:#a000e8;
+box-shadow:0 0 30px rgba(150,0,255,.2)
+}
+
+h1{
+color:#e19cff;
+text-shadow:0 0 15px rgba(160,0,255,.5)
+}
+
+h2{color:#d98eff}
+h3{color:#d29aff}
+
+p{
+color:#cdbbd5;
+line-height:1.6
+}
 
 .btn{
-border:none;background:linear-gradient(135deg,#7800bd,#b000ff);color:white;
-padding:13px 20px;border-radius:11px;cursor:pointer;font-weight:900;transition:.2s;
+border:none;
+background:linear-gradient(135deg,#7800bd,#b000ff);
+color:white;
+padding:13px 20px;
+border-radius:11px;
+cursor:pointer;
+font-weight:900;
+transition:.2s;
 box-shadow:0 0 12px rgba(160,0,255,.18)
 }
-.btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 25px rgba(170,0,255,.55)}
 
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.btn:hover{
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 0 25px rgba(170,0,255,.55)
+}
+
+.btn.small{
+padding:9px 13px;
+font-size:12px
+}
+
+.btn.danger{
+background:linear-gradient(135deg,#8d0038,#e0005d)
+}
+
+.btn.gold{
+background:linear-gradient(135deg,#996500,#ffc400);
+color:#170d00
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px
+}
+
+.grid4{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px
+}
 
 .hero-home{
-text-align:center;padding:60px 25px;border-radius:25px;
-background:radial-gradient(circle at center,rgba(160,0,255,.24),transparent 50%),linear-gradient(145deg,#250039,#09000f);
-border:1px solid #8500ca;box-shadow:0 0 45px rgba(130,0,255,.2)
+text-align:center;
+padding:60px 25px;
+border-radius:25px;
+background:
+radial-gradient(circle at center,rgba(160,0,255,.24),transparent 50%),
+linear-gradient(145deg,#250039,#09000f);
+border:1px solid #8500ca;
+box-shadow:0 0 45px rgba(130,0,255,.2)
 }
-.hero-icon{font-size:75px;animation:pulse 2.5s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-.hero-home h1{font-size:48px;margin:12px 0}
-.hero-home p{max-width:700px;margin:auto}
 
-.stat{text-align:center;padding:23px 12px;border-radius:16px;background:linear-gradient(145deg,rgba(50,0,75,.7),rgba(15,0,25,.9));border:1px solid #60009a}
-.stat-number{font-size:34px;font-weight:1000;color:#e4a5ff;text-shadow:0 0 15px #8d00d4}
-.stat-label{color:#9e8ba7;margin-top:5px;font-size:13px}
+.hero-icon{
+font-size:75px;
+animation:pulse 2.5s infinite
+}
 
-.feature{text-align:center;padding:28px 18px;border-radius:18px;background:rgba(20,0,30,.85);border:1px solid #530080;transition:.25s}
-.feature:hover{transform:translateY(-6px);border-color:#a000e8;box-shadow:0 0 25px rgba(150,0,255,.25)}
-.feature-icon{font-size:45px;margin-bottom:12px}
+@keyframes pulse{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.08)}
+}
 
-.announcement{display:flex;gap:18px;padding:20px;margin-top:15px;border-radius:15px;background:linear-gradient(135deg,rgba(45,0,65,.8),rgba(15,0,23,.9));border-left:4px solid #a000ff}
+.hero-home h1{
+font-size:48px;
+margin:12px 0
+}
+
+.hero-home p{
+max-width:700px;
+margin:auto
+}
+
+.stat{
+text-align:center;
+padding:23px 12px;
+border-radius:16px;
+background:linear-gradient(145deg,rgba(50,0,75,.7),rgba(15,0,25,.9));
+border:1px solid #60009a
+}
+
+.stat-number{
+font-size:34px;
+font-weight:1000;
+color:#e4a5ff;
+text-shadow:0 0 15px #8d00d4
+}
+
+.stat-label{
+color:#9e8ba7;
+margin-top:5px;
+font-size:13px
+}
+
+.feature{
+text-align:center;
+padding:28px 18px;
+border-radius:18px;
+background:rgba(20,0,30,.85);
+border:1px solid #530080;
+transition:.25s
+}
+
+.feature:hover{
+transform:translateY(-6px);
+border-color:#a000e8;
+box-shadow:0 0 25px rgba(150,0,255,.25)
+}
+
+.feature-icon{
+font-size:45px;
+margin-bottom:12px
+}
+
+.announcement{
+display:flex;
+gap:18px;
+padding:20px;
+margin-top:15px;
+border-radius:15px;
+background:linear-gradient(135deg,rgba(45,0,65,.8),rgba(15,0,23,.9));
+border-left:4px solid #a000ff
+}
+
 .announcement-icon{font-size:32px}
-.badge{display:inline-block;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:bold;background:#560080;color:#edcaff}
 
-.goal{padding:20px;margin-top:15px;border-radius:15px;background:rgba(30,0,45,.8);border:1px solid #5d008e}
-.goal-top{display:flex;justify-content:space-between;margin-bottom:9px}
-.progress{width:100%;height:11px;background:#16001f;border-radius:20px;overflow:hidden;border:1px solid #3c005a}
-.progress-bar{height:100%;background:linear-gradient(90deg,#7100b5,#d000ff);border-radius:20px;box-shadow:0 0 12px #a000ff}
+.badge{
+display:inline-block;
+padding:5px 10px;
+border-radius:20px;
+font-size:11px;
+font-weight:bold;
+background:#560080;
+color:#edcaff
+}
 
-.recruit-hero{text-align:center;padding:35px;border-radius:22px;background:radial-gradient(circle,rgba(150,0,255,.2),transparent 55%),#100019;border:1px solid #7d00bd}
-.requirement{padding:20px;border-radius:15px;background:rgba(35,0,52,.8);border:1px solid #5d008c;transition:.2s}
-.requirement:hover{transform:translateY(-4px);border-color:#a900ee;box-shadow:0 0 20px rgba(160,0,255,.2)}
-.requirement-icon{font-size:36px;margin-bottom:10px}
+.goal{
+padding:20px;
+margin-top:15px;
+border-radius:15px;
+background:rgba(30,0,45,.8);
+border:1px solid #5d008e
+}
+
+.goal-top{
+display:flex;
+justify-content:space-between;
+margin-bottom:9px
+}
+
+.progress{
+width:100%;
+height:11px;
+background:#16001f;
+border-radius:20px;
+overflow:hidden;
+border:1px solid #3c005a
+}
+
+.progress-bar{
+height:100%;
+background:linear-gradient(90deg,#7100b5,#d000ff);
+border-radius:20px;
+box-shadow:0 0 12px #a000ff
+}
+
+.recruit-hero{
+text-align:center;
+padding:35px;
+border-radius:22px;
+background:radial-gradient(circle,rgba(150,0,255,.2),transparent 55%),#100019;
+border:1px solid #7d00bd
+}
+
+.requirement{
+padding:20px;
+border-radius:15px;
+background:rgba(35,0,52,.8);
+border:1px solid #5d008c;
+transition:.2s
+}
+
+.requirement:hover{
+transform:translateY(-4px);
+border-color:#a900ee;
+box-shadow:0 0 20px rgba(160,0,255,.2)
+}
+
+.requirement-icon{
+font-size:36px;
+margin-bottom:10px
+}
+
 .steps{counter-reset:recruit}
-.step{position:relative;padding:20px 20px 20px 70px;margin-top:13px;border-radius:14px;background:#13001d;border:1px solid #4d006f}
-.step::before{counter-increment:recruit;content:counter(recruit);position:absolute;left:20px;top:17px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#8a00cf;font-weight:900}
 
-input,textarea,select{width:100%;padding:13px;margin-top:7px;margin-bottom:15px;border-radius:10px;border:1px solid #62009a;background:#0d0015;color:white;outline:none}
-input:focus,textarea:focus,select:focus{border-color:#bb00ff;box-shadow:0 0 12px rgba(180,0,255,.25)}
-textarea{min-height:120px;resize:vertical}
-label{color:#d9c2e2;font-weight:bold}
+.step{
+position:relative;
+padding:20px 20px 20px 70px;
+margin-top:13px;
+border-radius:14px;
+background:#13001d;
+border:1px solid #4d006f
+}
 
-.chat-box{height:430px;overflow-y:auto;padding:18px;border-radius:16px;background:#08000d;border:1px solid #4f0078}
-.chat-message{padding:13px;margin-bottom:10px;border-radius:12px;background:linear-gradient(135deg,#180022,#0e0015);border:1px solid #400060}
-.chat-name{color:#d58cff;font-weight:bold;margin-bottom:4px}
+.step::before{
+counter-increment:recruit;
+content:counter(recruit);
+position:absolute;
+left:20px;
+top:17px;
+width:34px;
+height:34px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:#8a00cf;
+font-weight:900
+}
 
-.youtube-hero,.discord-hero{text-align:center;padding:60px 25px;border-radius:25px}
-.youtube-hero{background:radial-gradient(circle at 50% 15%,rgba(255,0,70,.2),transparent 35%),linear-gradient(145deg,#38002e,#10000f);border:1px solid #a00065}
-.youtube-icon,.discord-icon{width:125px;height:125px;margin:auto auto 25px;display:flex;align-items:center;justify-content:center;border-radius:35px;font-size:65px}
-.youtube-icon{background:linear-gradient(145deg,#ff003c,#b80035);box-shadow:0 0 30px rgba(255,0,60,.55)}
-.youtube-title{font-size:52px;font-weight:1000;color:white;text-shadow:0 0 15px #a000ff}
-.youtube-label{color:#ff6688;letter-spacing:4px;font-size:13px;font-weight:bold}
-.youtube-text{max-width:700px;margin:15px auto 30px}
-.youtube-button,.discord-button{padding:16px 28px;border-radius:12px;color:white;border:none;cursor:pointer;font-weight:900}
-.youtube-button{background:linear-gradient(135deg,#ff003d,#ca0055)}
-.discord-hero{background:radial-gradient(circle at center,rgba(130,0,255,.25),transparent 50%),linear-gradient(145deg,#270044,#09000f);border:1px solid #8d00d4}
-.discord-icon{border-radius:50%;background:#6900ae;box-shadow:0 0 30px #9000ff}
-.discord-title{font-size:48px;font-weight:1000;text-shadow:0 0 20px #a000ff}
-.discord-button{margin-top:20px;background:linear-gradient(135deg,#6500ad,#a000ff)}
+input,textarea,select{
+width:100%;
+padding:13px;
+margin-top:7px;
+margin-bottom:15px;
+border-radius:10px;
+border:1px solid #62009a;
+background:#0d0015;
+color:white;
+outline:none
+}
 
-.account-hero{text-align:center;padding:30px}
-.avatar{width:100px;height:100px;margin:auto auto 15px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:45px;background:linear-gradient(145deg,#7300b7,#b000ff);box-shadow:0 0 30px #8e00d4}
+input:focus,textarea:focus,select:focus{
+border-color:#bb00ff;
+box-shadow:0 0 12px rgba(180,0,255,.25)
+}
 
-.owner-header{padding:30px;border-radius:20px;text-align:center;background:#12000b;border:1px solid #9c6400}
-.owner-title{color:#ffd15c;font-size:38px;text-shadow:0 0 15px rgba(255,180,0,.4)}
-.owner-stat{text-align:center;padding:22px;border-radius:15px;background:#15001f;border:1px solid #560080}
-.application-card{padding:24px;margin-top:15px;border-radius:17px;background:linear-gradient(145deg,#1a0027,#0c0013);border:1px solid #62009a}
+textarea{
+min-height:120px;
+resize:vertical
+}
 
-.privacy-box,.privacy-info{padding:18px;margin-top:15px;border-radius:15px;background:rgba(70,0,100,.15);border:1px solid #62009a}
-.privacy-list{margin:15px 0 0 25px;color:#cdbbd5;line-height:2}
-.privacy-warning{margin-top:18px;padding:15px;border-radius:12px;background:rgba(255,180,0,.08);border:1px solid rgba(255,180,0,.3);color:#e8d5aa}
-.link-btn{background:none;border:none;color:#df9dff;text-decoration:underline;cursor:pointer;font:inherit}
+label{
+color:#d9c2e2;
+font-weight:bold
+}
 
-footer{text-align:center;padding:35px 15px;color:#8e7b98;border-top:1px solid #270038;background:#06000a}
+.chat-box{
+height:430px;
+overflow-y:auto;
+padding:18px;
+border-radius:16px;
+background:#08000d;
+border:1px solid #4f0078
+}
+
+.chat-message{
+padding:13px;
+margin-bottom:10px;
+border-radius:12px;
+background:linear-gradient(135deg,#180022,#0e0015);
+border:1px solid #400060
+}
+
+.chat-name{
+color:#d58cff;
+font-weight:bold;
+margin-bottom:4px
+}
+
+.youtube-hero,
+.discord-hero,
+.support-hero{
+text-align:center;
+padding:60px 25px;
+border-radius:25px
+}
+
+.youtube-hero{
+background:radial-gradient(circle at 50% 15%,rgba(255,0,70,.2),transparent 35%),linear-gradient(145deg,#38002e,#10000f);
+border:1px solid #a00065
+}
+
+.youtube-icon,
+.discord-icon,
+.support-icon{
+width:125px;
+height:125px;
+margin:auto auto 25px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:35px;
+font-size:65px
+}
+
+.youtube-icon{
+background:linear-gradient(145deg,#ff003c,#b80035);
+box-shadow:0 0 30px rgba(255,0,60,.55)
+}
+
+.youtube-title{
+font-size:52px;
+font-weight:1000;
+color:white;
+text-shadow:0 0 15px #a000ff
+}
+
+.youtube-label{
+color:#ff6688;
+letter-spacing:4px;
+font-size:13px;
+font-weight:bold
+}
+
+.youtube-text{
+max-width:700px;
+margin:15px auto 30px
+}
+
+.youtube-button,
+.discord-button,
+.support-button{
+padding:16px 28px;
+border-radius:12px;
+color:white;
+border:none;
+cursor:pointer;
+font-weight:900
+}
+
+.youtube-button{
+background:linear-gradient(135deg,#ff003d,#ca0055)
+}
+
+.discord-hero{
+background:radial-gradient(circle at center,rgba(130,0,255,.25),transparent 50%),linear-gradient(145deg,#270044,#09000f);
+border:1px solid #8d00d4
+}
+
+.discord-icon{
+border-radius:50%;
+background:#6900ae;
+box-shadow:0 0 30px #9000ff
+}
+
+.discord-title{
+font-size:48px;
+font-weight:1000;
+text-shadow:0 0 20px #a000ff
+}
+
+.discord-button{
+margin-top:20px;
+background:linear-gradient(135deg,#6500ad,#a000ff)
+}
+
+.support-hero{
+background:radial-gradient(circle at center,rgba(170,0,255,.28),transparent 50%),linear-gradient(145deg,#30004d,#09000f);
+border:1px solid #a000e8;
+box-shadow:0 0 45px rgba(160,0,255,.18)
+}
+
+.support-icon{
+border-radius:50%;
+background:linear-gradient(145deg,#7300b7,#b000ff);
+box-shadow:0 0 35px rgba(160,0,255,.6)
+}
+
+.support-title{
+font-size:48px;
+font-weight:1000;
+color:#f0c8ff;
+text-shadow:0 0 20px #a000ff
+}
+
+.support-text{
+max-width:760px;
+margin:15px auto 30px
+}
+
+.support-button{
+margin-top:20px;
+background:linear-gradient(135deg,#6500ad,#a000ff);
+box-shadow:0 0 20px rgba(160,0,255,.3)
+}
+
+.support-card{
+text-align:center;
+padding:30px 20px;
+border-radius:18px;
+background:linear-gradient(145deg,rgba(40,0,60,.9),rgba(12,0,20,.95));
+border:1px solid #65009f;
+transition:.25s
+}
+
+.support-card:hover{
+transform:translateY(-6px);
+border-color:#b000ff;
+box-shadow:0 0 28px rgba(160,0,255,.25)
+}
+
+.support-card-icon{
+font-size:50px;
+margin-bottom:12px
+}
+
+.account-hero{
+text-align:center;
+padding:30px
+}
+
+.avatar{
+width:100px;
+height:100px;
+margin:auto auto 15px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:45px;
+background:linear-gradient(145deg,#7300b7,#b000ff);
+box-shadow:0 0 30px #8e00d4
+}
+
+.owner-header{
+padding:30px;
+border-radius:20px;
+text-align:center;
+background:#12000b;
+border:1px solid #9c6400
+}
+
+.owner-title{
+color:#ffd15c;
+font-size:38px;
+text-shadow:0 0 15px rgba(255,180,0,.4)
+}
+
+.owner-stat{
+text-align:center;
+padding:22px;
+border-radius:15px;
+background:#15001f;
+border:1px solid #560080
+}
+
+.application-card{
+padding:24px;
+margin-top:15px;
+border-radius:17px;
+background:linear-gradient(145deg,#1a0027,#0c0013);
+border:1px solid #62009a
+}
+
+.privacy-box,
+.privacy-info{
+padding:18px;
+margin-top:15px;
+border-radius:15px;
+background:rgba(70,0,100,.15);
+border:1px solid #62009a
+}
+
+.privacy-list{
+margin:15px 0 0 25px;
+color:#cdbbd5;
+line-height:2
+}
+
+.privacy-warning{
+margin-top:18px;
+padding:15px;
+border-radius:12px;
+background:rgba(255,180,0,.08);
+border:1px solid rgba(255,180,0,.3);
+color:#e8d5aa
+}
+
+.link-btn{
+background:none;
+border:none;
+color:#df9dff;
+text-decoration:underline;
+cursor:pointer;
+font:inherit
+}
+
+/* RANKING */
+.rank-card{
+display:flex;
+align-items:center;
+gap:18px;
+padding:18px;
+margin-top:12px;
+border-radius:15px;
+background:linear-gradient(145deg,#1b0028,#0b0012);
+border:1px solid #59008a;
+transition:.2s
+}
+
+.rank-card:hover{
+transform:translateX(5px);
+border-color:#a000e8
+}
+
+.rank-position{
+width:48px;
+height:48px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:#35004e;
+font-weight:1000;
+font-size:20px
+}
+
+.rank-avatar{
+width:48px;
+height:48px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:linear-gradient(135deg,#6500a5,#bd00ff);
+font-size:22px
+}
+
+.rank-info{
+flex:1
+}
+
+.rank-name{
+font-weight:900;
+color:#edcaff
+}
+
+.rank-points{
+color:#ad7fc0;
+font-size:13px;
+margin-top:4px
+}
+
+.level-bar{
+height:8px;
+background:#180021;
+border-radius:10px;
+overflow:hidden;
+margin-top:8px
+}
+
+.level-fill{
+height:100%;
+background:linear-gradient(90deg,#7000b5,#d000ff);
+border-radius:10px
+}
+
+/* BADGES */
+.badge-big{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:9px 13px;
+border-radius:15px;
+background:#300047;
+border:1px solid #7600ad;
+margin:4px
+}
+
+/* EVENTS */
+.event-card{
+padding:22px;
+border-radius:17px;
+background:linear-gradient(145deg,#1d002a,#0c0013);
+border:1px solid #61009b;
+margin-top:14px;
+position:relative;
+overflow:hidden
+}
+
+.event-card::after{
+content:"";
+position:absolute;
+top:0;
+right:0;
+width:90px;
+height:90px;
+background:radial-gradient(circle,rgba(180,0,255,.25),transparent 70%);
+pointer-events:none
+}
+
+.event-date{
+color:#e29cff;
+font-weight:900;
+font-size:13px
+}
+
+/* NOTIFICATIONS */
+.notification{
+padding:18px;
+border-radius:15px;
+margin-top:12px;
+background:linear-gradient(145deg,#190024,#0b0011);
+border-left:4px solid #a000ff;
+transition:.2s
+}
+
+.notification:hover{
+transform:translateX(4px)
+}
+
+.notification.unread{
+box-shadow:0 0 20px rgba(160,0,255,.12)
+}
+
+/* SERVER STATUS */
+.status-online{
+color:#63ff9a;
+font-weight:900
+}
+
+.status-dot{
+display:inline-block;
+width:11px;
+height:11px;
+border-radius:50%;
+background:#52ff88;
+box-shadow:0 0 12px #52ff88;
+margin-right:8px;
+animation:statusPulse 1.5s infinite
+}
+
+@keyframes statusPulse{
+50%{opacity:.4;transform:scale(.8)}
+}
+
+/* HISTORY */
+.timeline{
+position:relative;
+margin-top:25px;
+padding-left:35px
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:10px;
+top:0;
+bottom:0;
+width:2px;
+background:linear-gradient(#a000ff,transparent)
+}
+
+.timeline-item{
+position:relative;
+padding:0 0 30px 20px
+}
+
+.timeline-item::before{
+content:"";
+position:absolute;
+left:-30px;
+top:3px;
+width:15px;
+height:15px;
+border-radius:50%;
+background:#b000ff;
+box-shadow:0 0 15px #b000ff
+}
+
+.timeline-year{
+color:#d79aff;
+font-weight:1000
+}
+
+/* ABOUT */
+.about-logo{
+font-size:90px;
+text-align:center;
+animation:pulse 3s infinite
+}
+
+/* UFO */
+.love1-ufo{
+position:fixed;
+top:18px;
+right:22px;
+width:65px;
+height:55px;
+z-index:9999;
+pointer-events:none;
+animation:ufoFloat 3.5s ease-in-out infinite
+}
+
+.ufo-body{
+position:absolute;
+top:12px;
+left:5px;
+width:55px;
+height:25px;
+background:linear-gradient(135deg,#9b4dff,#5b00b8);
+border-radius:50%;
+box-shadow:0 0 10px #a855f7,0 0 25px rgba(168,85,247,.45)
+}
+
+.ufo-body::after{
+content:"";
+position:absolute;
+left:8px;
+right:8px;
+bottom:2px;
+height:7px;
+border-radius:50%;
+background:#d8a7ff;
+box-shadow:0 0 12px #c084fc
+}
+
+.ufo-window{
+position:absolute;
+top:-9px;
+left:18px;
+width:19px;
+height:15px;
+border-radius:50% 50% 40% 40%;
+background:linear-gradient(135deg,#e9d5ff,#8b5cf6);
+box-shadow:0 0 10px #c084fc
+}
+
+.ufo-light{
+position:absolute;
+top:7px;
+left:29px;
+width:7px;
+height:7px;
+border-radius:50%;
+background:white;
+box-shadow:0 0 12px #fff;
+animation:ufoBlink 1.8s ease-in-out infinite
+}
+
+.ufo-beam{
+position:absolute;
+top:35px;
+left:18px;
+width:30px;
+height:20px;
+background:linear-gradient(to bottom,rgba(168,85,247,.35),rgba(168,85,247,0));
+clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);
+opacity:.55
+}
+
+@keyframes ufoFloat{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+}
+
+@keyframes ufoBlink{
+0%,100%{opacity:1}
+50%{opacity:.35}
+}
+
+footer{
+text-align:center;
+padding:35px 15px;
+color:#8e7b98;
+border-top:1px solid #270038;
+background:#06000a
+}
 
 @media(max-width:800px){
-.grid4{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}
-.youtube-title,.discord-title{font-size:38px}.hero-home h1{font-size:38px}
+.grid4{grid-template-columns:repeat(2,1fr)}
+.grid{grid-template-columns:1fr}
+.youtube-title,.discord-title,.support-title{font-size:38px}
+.hero-home h1{font-size:38px}
 }
+
 @media(max-width:520px){
-.logo{font-size:43px}.subtitle{font-size:11px}nav{gap:6px}
-nav button{font-size:11px;padding:9px 10px}.grid4{grid-template-columns:1fr}
-.card{padding:20px}.hero-home,.youtube-hero,.discord-hero{padding:40px 18px}
+.logo{font-size:43px}
+.subtitle{font-size:11px}
+nav{gap:6px}
+nav button{font-size:11px;padding:9px 10px}
+.grid4{grid-template-columns:1fr}
+.card{padding:20px}
+.hero-home,.youtube-hero,.discord-hero,.support-hero{padding:40px 18px}
 }
 </style>
+
 </head>
 
 <body>
@@ -161,10 +951,16 @@ nav button{font-size:11px;padding:9px 10px}.grid4{grid-template-columns:1fr}
 <button onclick="showPage('home')">🏠 Start</button>
 <button onclick="showPage('announcements')">📢 Ogłoszenia</button>
 <button onclick="showPage('goals')">🎯 Cele</button>
+<button onclick="showPage('ranking')">🏆 Ranking</button>
+<button onclick="showPage('events')">📅 Eventy</button>
 <button onclick="showPage('recruitment')">⚔️ Rekrutacja</button>
 <button onclick="showPage('chat')">💬 Czat</button>
+<button onclick="showPage('notifications')">🔔 Powiadomienia</button>
+<button onclick="showPage('history')">📜 Historia</button>
+<button onclick="showPage('about')">💜 O LOVE1</button>
 <button onclick="showPage('youtube')">▶️ YouTube</button>
 <button onclick="showPage('discord')">💜 Discord</button>
+<button onclick="showPage('support')">💜 Wsparcie LOVE1</button>
 <button onclick="showPage('privacy')">🔒 Prywatność</button>
 <button onclick="showPage('login')">👤 Konto</button>
 <button id="ownerNav" onclick="showPage('owner')" style="display:none">👑 Właściciel</button>
@@ -172,11 +968,15 @@ nav button{font-size:11px;padding:9px 10px}.grid4{grid-template-columns:1fr}
 
 <main>
 
+<!-- START -->
+
 <section id="home" class="page active">
+
 <div class="hero-home">
 <div class="hero-icon">💜</div>
 <h1>WITAJ W LOVE1</h1>
 <p>Oficjalna aplikacja klanu LOVE1. Minecraft • PvP • Gaming • Discord • YouTube</p>
+
 <div style="margin-top:25px">
 <button class="btn" onclick="showPage('recruitment')">⚔️ DOŁĄCZ DO LOVE1</button>
 <button class="btn" onclick="showPage('discord')" style="margin-left:8px">💬 DISCORD</button>
@@ -184,100 +984,401 @@ nav button{font-size:11px;padding:9px 10px}.grid4{grid-template-columns:1fr}
 </div>
 
 <div class="grid4" style="margin-top:20px">
-<div class="stat"><div class="stat-number">💜</div><div class="stat-label">LOVE1</div></div>
-<div class="stat"><div class="stat-number">⚔️</div><div class="stat-label">PvP</div></div>
-<div class="stat"><div class="stat-number">🎮</div><div class="stat-label">GAMING</div></div>
-<div class="stat"><div class="stat-number">🏆</div><div class="stat-label">TEAM</div></div>
+
+<div class="stat">
+<div class="stat-number">💜</div>
+<div class="stat-label">LOVE1</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">⚔️</div>
+<div class="stat-label">PvP</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">🎮</div>
+<div class="stat-label">GAMING</div>
+</div>
+
+<div class="stat">
+<div class="stat-number">🏆</div>
+<div class="stat-label">TEAM</div>
+</div>
+
 </div>
 
 <div class="card" style="margin-top:20px">
+
 <h2>👥 EKIPA LOVE1</h2>
-<p style="margin-top:8px">Aktualny licznik ekipy oraz podań rekrutacyjnych.</p>
+<p style="margin-top:8px">Aktualne statystyki klanu.</p>
+
 <div class="grid4" style="margin-top:18px">
-<div class="stat"><div id="memberCount" class="stat-number">1</div><div class="stat-label">CZŁONKÓW</div></div>
-<div class="stat"><div id="acceptedCount" class="stat-number">0</div><div class="stat-label">PRZYJĘTYCH</div></div>
-<div class="stat"><div id="pendingCount" class="stat-number">0</div><div class="stat-label">OCZEKUJĄCYCH</div></div>
-<div class="stat"><div class="stat-number">🟢</div><div class="stat-label">LOVE1 ONLINE</div></div>
+
+<div class="stat">
+<div id="memberCount" class="stat-number">1</div>
+<div class="stat-label">CZŁONKÓW</div>
+</div>
+
+<div class="stat">
+<div id="acceptedCount" class="stat-number">0</div>
+<div class="stat-label">PRZYJĘTYCH</div>
+</div>
+
+<div class="stat">
+<div id="pendingCount" class="stat-number">0</div>
+<div class="stat-label">OCZEKUJĄCYCH</div>
+</div>
+
+<div class="stat">
+<div class="stat-number"><span class="status-dot"></span></div>
+<div class="stat-label">LOVE1 ONLINE</div>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>🟢 STATUS SERWERA</h2>
+
+<div style="text-align:center;margin-top:20px;padding:25px;border-radius:16px;background:#0b0012;border:1px solid #450067">
+<div style="font-size:45px">🟢</div>
+<h2 class="status-online" style="margin-top:10px">LOVE1 ONLINE</h2>
+<p style="margin-top:8px">Serwer społeczności działa.</p>
+<p style="font-size:13px;margin-top:5px">Ostatnie sprawdzenie: <span id="statusTime">teraz</span></p>
 </div>
 </div>
 
 <div class="card">
 <h2>🔥 CO ZNAJDZIESZ W LOVE1?</h2>
+
 <div class="grid" style="margin-top:20px">
-<div class="feature"><div class="feature-icon">⚔️</div><h3>PvP</h3><p>Klepy, treningi i wspólna rywalizacja.</p></div>
-<div class="feature"><div class="feature-icon">⛏️</div><h3>Minecraft</h3><p>Wspólna gra i różne tryby.</p></div>
-<div class="feature"><div class="feature-icon">🤝</div><h3>Ekipa</h3><p>Wspólna zabawa i rozwój klanu.</p></div>
+
+<div class="feature">
+<div class="feature-icon">⚔️</div>
+<h3>PvP</h3>
+<p>Klepy, treningi i wspólna rywalizacja.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">⛏️</div>
+<h3>Minecraft</h3>
+<p>Wspólna gra i różne tryby.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🤝</div>
+<h3>Ekipa</h3>
+<p>Wspólna zabawa i rozwój klanu.</p>
+</div>
+
 </div>
 </div>
+
 </section>
+
+<!-- OGLOSZENIA -->
 
 <section id="announcements" class="page">
+
 <div class="card">
+
 <h1>📢 OGŁOSZENIA LOVE1</h1>
 <p>Najważniejsze informacje dotyczące klanu.</p>
-<div class="announcement"><div class="announcement-icon">🔥</div><div><span class="badge">REKRUTACJA</span><h3>Rekrutacja do LOVE1 jest otwarta!</h3><p>Przejdź do zakładki Rekrutacja i wyślij swoje podanie.</p></div></div>
-<div class="announcement"><div class="announcement-icon">💜</div><div><span class="badge">DISCORD</span><h3>Oficjalny Discord LOVE1</h3><p>Dołącz do naszej społeczności i graj razem z ekipą.</p></div></div>
-<div class="announcement"><div class="announcement-icon">▶️</div><div><span class="badge">YOUTUBE</span><h3>Kanał TOPXD25</h3><p>Sprawdź materiały z Minecrafta, PvP i LOVE1.</p></div></div>
+
+<div class="announcement">
+<div class="announcement-icon">🔥</div>
+<div>
+<span class="badge">REKRUTACJA</span>
+<h3>Rekrutacja do LOVE1 jest otwarta!</h3>
+<p>Przejdź do zakładki Rekrutacja i wyślij swoje podanie.</p>
+</div>
+</div>
+
+<div class="announcement">
+<div class="announcement-icon">💜</div>
+<div>
+<span class="badge">DISCORD</span>
+<h3>Oficjalny Discord LOVE1</h3>
+<p>Dołącz do naszej społeczności i graj razem z ekipą.</p>
+</div>
+</div>
+
+<div class="announcement">
+<div class="announcement-icon">▶️</div>
+<div>
+<span class="badge">YOUTUBE</span>
+<h3>Kanał TOPXD25</h3>
+<p>Sprawdź materiały z Minecrafta, PvP i LOVE1.</p>
+</div>
+</div>
+
+<div class="announcement">
+<div class="announcement-icon">💜</div>
+<div>
+<span class="badge">WSPARCIE</span>
+<h3>Wesprzyj LOVE1!</h3>
+<p>Możesz wesprzeć nasz serwer Discord lub podarować właścicielowi Nitro.</p>
+</div>
+</div>
+
+<div class="announcement">
+<div class="announcement-icon">🏆</div>
+<div>
+<span class="badge">NOWOŚĆ</span>
+<h3>Ranking LOVE1</h3>
+<p>Zdobywaj punkty i rozwijaj swój poziom w ekipie.</p>
+</div>
+</div>
+
 </div>
 </section>
+
+<!-- CELE -->
 
 <section id="goals" class="page">
+
 <div class="card">
+
 <h1>🎯 CELE LOVE1</h1>
 <p>Rozwijamy klan krok po kroku.</p>
-<div class="goal"><div class="goal-top"><strong>⚔️ Rozwój PvP</strong><span>80%</span></div><div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
-<div class="goal"><div class="goal-top"><strong>🤝 Rozbudowa ekipy</strong><span>65%</span></div><div class="progress"><div class="progress-bar" style="width:65%"></div></div></div>
-<div class="goal"><div class="goal-top"><strong>🏆 Wspólne eventy</strong><span>50%</span></div><div class="progress"><div class="progress-bar" style="width:50%"></div></div></div>
-<div class="goal"><div class="goal-top"><strong>📈 Rozwój LOVE1</strong><span>70%</span></div><div class="progress"><div class="progress-bar" style="width:70%"></div></div></div>
+
+<div class="goal">
+<div class="goal-top">
+<strong>⚔️ Rozwój PvP</strong>
+<span>80%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" style="width:80%"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<strong>🤝 Rozbudowa ekipy</strong>
+<span>65%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" style="width:65%"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<strong>🏆 Wspólne eventy</strong>
+<span>50%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" style="width:50%"></div>
+</div>
+</div>
+
+<div class="goal">
+<div class="goal-top">
+<strong>📈 Rozwój LOVE1</strong>
+<span>70%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" style="width:70%"></div>
+</div>
+</div>
+
 </div>
 </section>
 
+<!-- RANKING -->
+
+<section id="ranking" class="page">
+
+<div class="card">
+
+<h1>🏆 RANKING LOVE1</h1>
+
+<p style="margin-top:8px">
+Ranking członków na podstawie punktów zdobywanych w ekipie.
+</p>
+
+<div id="rankingList" style="margin-top:20px"></div>
+
+</div>
+
+<div class="card">
+
+<h2>⭐ SYSTEM POZIOMÓW</h2>
+
+<div class="grid" style="margin-top:20px">
+
+<div class="feature">
+<div class="feature-icon">🌱</div>
+<h3>NOWY</h3>
+<p>0–49 punktów</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">⚔️</div>
+<h3>WOJOWNIK</h3>
+<p>50–149 punktów</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🔥</div>
+<h3>ELITA</h3>
+<p>150+ punktów</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🎖️ ODZNAKI</h2>
+
+<div style="margin-top:15px">
+
+<span class="badge-big">⚔️ Wojownik PvP</span> <span class="badge-big">🔥 Aktywny</span> <span class="badge-big">💜 Wspierający</span> <span class="badge-big">🚀 Booster</span> <span class="badge-big">🏆 Elita LOVE1</span>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EVENTY -->
+
+<section id="events" class="page">
+
+<div class="card">
+
+<h1>📅 KALENDARZ LOVE1</h1>
+<p>Planowane wydarzenia i wspólne granie.</p>
+
+<div class="event-card">
+<div class="event-date">⚔️ EVENT PvP</div>
+<h2 style="margin-top:7px">Wielka Klepa LOVE1</h2>
+<p style="margin-top:8px">
+Turniej PvP dla członków klanu.
+</p>
+<span class="badge" style="margin-top:12px">PvP</span>
+</div>
+
+<div class="event-card">
+<div class="event-date">🎮 WSPÓLNA GRA</div>
+<h2 style="margin-top:7px">Minecraft Night</h2>
+<p style="margin-top:8px">
+Wspólne granie i zabawa z ekipą.
+</p>
+<span class="badge" style="margin-top:12px">GAMING</span>
+</div>
+
+<div class="event-card">
+<div class="event-date">🏆 EVENT</div>
+<h2 style="margin-top:7px">LOVE1 Challenge</h2>
+<p style="margin-top:8px">
+Specjalne wyzwanie dla członków LOVE1.
+</p>
+<span class="badge" style="margin-top:12px">CHALLENGE</span>
+</div>
+
+</div>
+
+</section>
+
+<!-- REKRUTACJA -->
+
 <section id="recruitment" class="page">
+
 <div class="recruit-hero">
+
 <div style="font-size:55px">⚔️</div>
 <h1>REKRUTACJA LOVE1</h1>
 <p>Szukamy aktywnych osób do naszej ekipy!</p>
+
 </div>
 
 <div class="card">
+
 <h2>📋 WYMAGANIA</h2>
+
 <div class="grid4" style="margin-top:20px">
-<div class="requirement"><div class="requirement-icon">🎂</div><h3>13+</h3><p>Minimum 13 lat.</p></div>
-<div class="requirement"><div class="requirement-icon">🎙️</div><h3>Mikrofon</h3><p>Sprawny mikrofon.</p></div>
-<div class="requirement"><div class="requirement-icon">⚔️</div><h3>PvP</h3><p>Umiejętność PvP.</p></div>
-<div class="requirement"><div class="requirement-icon">🤝</div><h3>Kultura</h3><p>Szacunek do innych.</p></div>
+
+<div class="requirement">
+<div class="requirement-icon">🎂</div>
+<h3>13+</h3>
+<p>Minimum 13 lat.</p>
+</div>
+
+<div class="requirement">
+<div class="requirement-icon">🎙️</div>
+<h3>Mikrofon</h3>
+<p>Sprawny mikrofon.</p>
+</div>
+
+<div class="requirement">
+<div class="requirement-icon">⚔️</div>
+<h3>PvP</h3>
+<p>Umiejętność PvP.</p>
+</div>
+
+<div class="requirement">
+<div class="requirement-icon">🤝</div>
+<h3>Kultura</h3>
+<p>Szacunek do innych.</p>
+</div>
+
 </div>
 </div>
 
 <div class="card">
+
 <h2>🚀 JAK WYGLĄDA REKRUTACJA?</h2>
+
 <div class="steps">
-<div class="step"><h3>Wyślij podanie</h3><p>Wypełnij formularz poniżej.</p></div>
-<div class="step"><h3>Sprawdzimy podanie</h3><p>Właściciel lub administracja sprawdzi zgłoszenie.</p></div>
-<div class="step"><h3>Kontakt</h3><p>Jeśli podanie przejdzie dalej, skontaktujemy się z Tobą.</p></div>
+
+<div class="step">
+<h3>Wyślij podanie</h3>
+<p>Wypełnij formularz poniżej.</p>
+</div>
+
+<div class="step">
+<h3>Sprawdzimy podanie</h3>
+<p>Właściciel lub administracja sprawdzi zgłoszenie.</p>
+</div>
+
+<div class="step">
+<h3>Kontakt</h3>
+<p>Jeśli podanie przejdzie dalej, skontaktujemy się z Tobą.</p>
+</div>
+
 </div>
 </div>
 
 <div class="card">
+
 <h2>📝 FORMULARZ PODANIA</h2>
 
-<label>Nick Minecraft / Discord</label>
-<input id="appNick" placeholder="Np. Topxd25">
+<label>Nick Minecraft / Discord</label> <input id="appNick" placeholder="Np. Topxd25">
 
-<label>Wiek</label>
-<input id="appAge" type="number" min="1" placeholder="Twój wiek">
+<label>Wiek</label> <input id="appAge" type="number" min="1" placeholder="Twój wiek">
 
 <label>Mikrofon</label>
-<select id="appMic"><option value="Tak">🎙️ Tak</option><option value="Nie">❌ Nie</option></select>
+
+<select id="appMic">
+<option value="Tak">🎙️ Tak</option>
+<option value="Nie">❌ Nie</option>
+</select>
 
 <label>Doświadczenie PvP</label>
+
 <textarea id="appPvp" placeholder="Opisz swoje doświadczenie PvP..."></textarea>
 
 <label>Dlaczego chcesz dołączyć?</label>
+
 <textarea id="appReason" placeholder="Napisz kilka zdań..."></textarea>
 
 <div class="privacy-box">
+
 <h3>🔒 Informacja o prywatności</h3>
+
 <p style="margin-top:8px">
 Dane podane w formularzu są wykorzystywane w celu rozpatrzenia
 zgłoszenia do LOVE1 oraz kontaktu w sprawie rekrutacji.
@@ -285,7 +1386,9 @@ Nie podawaj danych, które nie są potrzebne do tego celu.
 </p>
 
 <label style="display:flex;gap:10px;align-items:flex-start;margin-top:15px">
+
 <input id="privacyConsent" type="checkbox" style="width:auto;margin:4px 0 0">
+
 <span>
 Potwierdzam, że zapoznałem/am się z
 <button type="button" class="link-btn" onclick="showPage('privacy')">
@@ -293,95 +1396,442 @@ informacją o prywatności
 </button>
 i podaję dane dobrowolnie.
 </span>
+
 </label>
+
 </div>
 
 <button class="btn" onclick="sendApplication()">📩 WYŚLIJ PODANIE</button>
+
 <p id="applicationMessage" style="margin-top:15px"></p>
+
 </div>
 </section>
+
+<!-- CHAT -->
 
 <section id="chat" class="page">
+
 <div class="card">
+
 <h1>💬 CZAT LOVE1</h1>
 <p>Napisz wiadomość do ekipy.</p>
+
 <div id="chatMessages" class="chat-box" style="margin-top:20px"></div>
+
 <div style="display:flex;gap:10px;margin-top:15px">
+
 <input id="chatInput" placeholder="Napisz wiadomość..." style="margin:0">
+
 <button class="btn" onclick="sendChatMessage()">Wyślij</button>
+
 </div>
+
 </div>
 </section>
+
+<!-- POWIADOMIENIA -->
+
+<section id="notifications" class="page">
+
+<div class="card">
+
+<h1>🔔 POWIADOMIENIA LOVE1</h1>
+
+<p style="margin-top:8px">
+Najważniejsze informacje dla członków klanu.
+</p>
+
+<div id="notificationsList" style="margin-top:20px"></div>
+
+<button class="btn" onclick="markNotificationsRead()" style="margin-top:20px">
+✅ OZNACZ JAKO PRZECZYTANE
+</button>
+
+</div>
+
+</section>
+
+<!-- HISTORIA -->
+
+<section id="history" class="page">
+
+<div class="card">
+
+<h1>📜 HISTORIA LOVE1</h1>
+
+<p style="margin-top:8px">
+Najważniejsze momenty rozwoju naszej ekipy.
+</p>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-year">💜 START</div>
+<h2 style="margin-top:6px">Powstanie LOVE1</h2>
+<p style="margin-top:6px">
+Początek wspólnej przygody i budowania ekipy.
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">⚔️ PvP</div>
+<h2 style="margin-top:6px">Rozwój PvP</h2>
+<p style="margin-top:6px">
+LOVE1 zaczyna skupiać się na wspólnych walkach i treningach.
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">💬 DISCORD</div>
+<h2 style="margin-top:6px">Powstaje społeczność</h2>
+<p style="margin-top:6px">
+Discord staje się centrum komunikacji LOVE1.
+</p>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">🏆 ROZWÓJ</div>
+<h2 style="margin-top:6px">Nowe funkcje LOVE1</h2>
+<p style="margin-top:6px">
+Powstaje aplikacja, ranking, system eventów i system nagród.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- O LOVE1 -->
+
+<section id="about" class="page">
+
+<div class="card">
+
+<div class="about-logo">💜</div>
+
+<h1 style="text-align:center;margin-top:10px">O LOVE1</h1>
+
+<p style="text-align:center;max-width:750px;margin:15px auto">
+LOVE1 to gamingowa ekipa skupiająca się na Minecraft,
+PvP, wspólnej zabawie, Discordzie i rozwijaniu społeczności.
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="feature">
+<div class="feature-icon">⚔️</div>
+<h3>PvP</h3>
+<p>Wspólne walki, treningi i rywalizacja.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🎮</div>
+<h3>Gaming</h3>
+<p>Wspólna gra i organizowanie eventów.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🤝</div>
+<h3>Ekipa</h3>
+<p>Budowanie aktywnej społeczności.</p>
+</div>
+
+</div>
+
+<div class="card" style="text-align:center;margin-top:20px">
+
+<h2>💜 JEDNA EKIPA. JEDEN CEL.</h2>
+
+<p style="max-width:700px;margin:15px auto">
+LOVE1 rozwija się razem z członkami.
+Dołącz, graj, zdobywaj punkty, bierz udział w eventach
+i rozwijaj swoją rangę.
+</p>
+
+<button class="btn" onclick="showPage('recruitment')">
+⚔️ DOŁĄCZ DO LOVE1
+</button>
+
+</div>
+
+</section>
+
+<!-- YOUTUBE -->
 
 <section id="youtube" class="page">
+
 <div class="youtube-hero">
+
 <div class="youtube-icon">▶️</div>
+
 <div class="youtube-label">OFICJALNY KANAŁ</div>
+
 <div class="youtube-title">TOPXD25</div>
-<p class="youtube-text">Witaj na oficjalnym kanale TOPXD25! Minecraft, PvP, gameplaye oraz materiały związane z LOVE1. 🔥</p>
+
+<p class="youtube-text">
+Witaj na oficjalnym kanale TOPXD25!
+Minecraft, PvP, gameplaye oraz materiały związane z LOVE1. 🔥
+</p>
+
 <div class="grid4">
-<div class="feature"><div class="feature-icon">🎮</div><h3>Gameplay</h3><p>Gamingowe materiały.</p></div>
-<div class="feature"><div class="feature-icon">⚔️</div><h3>PvP</h3><p>Walki i klepy.</p></div>
-<div class="feature"><div class="feature-icon">⛏️</div><h3>Minecraft</h3><p>Minecraftowe akcje.</p></div>
-<div class="feature"><div class="feature-icon">💜</div><h3>LOVE1</h3><p>Materiały klanu.</p></div>
+
+<div class="feature">
+<div class="feature-icon">🎮</div>
+<h3>Gameplay</h3>
+<p>Gamingowe materiały.</p>
 </div>
-<button class="youtube-button" onclick="openYouTube()" style="margin-top:30px">▶️ ODWIEDŹ KANAŁ</button>
+
+<div class="feature">
+<div class="feature-icon">⚔️</div>
+<h3>PvP</h3>
+<p>Walki i klepy.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">⛏️</div>
+<h3>Minecraft</h3>
+<p>Minecraftowe akcje.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">💜</div>
+<h3>LOVE1</h3>
+<p>Materiały klanu.</p>
+</div>
+
+</div>
+
+<button class="youtube-button" onclick="openYouTube()" style="margin-top:30px">
+▶️ ODWIEDŹ KANAŁ
+</button>
+
 </div>
 </section>
+
+<!-- DISCORD -->
 
 <section id="discord" class="page">
+
 <div class="discord-hero">
+
 <div class="discord-icon">💬</div>
-<h4 style="color:#bd7cff;letter-spacing:4px">OFICJALNY SERWER</h4>
+
+<h4 style="color:#bd7cff;letter-spacing:4px">
+OFICJALNY SERWER
+</h4>
+
 <div class="discord-title">DISCORD LOVE1</div>
-<p style="max-width:700px;margin:15px auto">Dołącz do naszej społeczności. Graj z ekipą, rozmawiaj, bierz udział w PvP i wspólnych eventach. 💜</p>
+
+<p style="max-width:700px;margin:15px auto">
+Dołącz do naszej społeczności. Graj z ekipą,
+rozmawiaj, bierz udział w PvP i wspólnych eventach. 💜
+</p>
+
 <div class="grid4" style="margin-top:30px">
-<div class="feature"><div class="feature-icon">⚔️</div><h3>PvP</h3><p>Klepy i rywalizacja.</p></div>
-<div class="feature"><div class="feature-icon">🎮</div><h3>Gaming</h3><p>Wspólna gra.</p></div>
-<div class="feature"><div class="feature-icon">🏆</div><h3>Eventy</h3><p>Wspólne wydarzenia.</p></div>
-<div class="feature"><div class="feature-icon">🤝</div><h3>Ekipa</h3><p>Zgrany LOVE1.</p></div>
+
+<div class="feature">
+<div class="feature-icon">⚔️</div>
+<h3>PvP</h3>
+<p>Klepy i rywalizacja.</p>
 </div>
-<button class="discord-button" onclick="openDiscord()">💜 DOŁĄCZ DO DISCORDA</button>
+
+<div class="feature">
+<div class="feature-icon">🎮</div>
+<h3>Gaming</h3>
+<p>Wspólna gra.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🏆</div>
+<h3>Eventy</h3>
+<p>Wspólne wydarzenia.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🤝</div>
+<h3>Ekipa</h3>
+<p>Zgrany LOVE1.</p>
+</div>
+
+</div>
+
+<button class="discord-button" onclick="openDiscord()">
+💜 DOŁĄCZ DO DISCORDA
+</button>
+
 </div>
 </section>
 
-<!-- 🔒 NOWA ZAKŁADKA PRYWATNOŚĆ -->
+<!-- WSPARCIE -->
+
+<section id="support" class="page">
+
+<div class="support-hero">
+
+<div class="support-icon">💜</div>
+
+<div style="color:#c98aff;letter-spacing:4px;font-size:13px;font-weight:bold">
+WESPRZYJ NASZĄ EKIPĘ
+</div>
+
+<div class="support-title">WSPARCIE LOVE1</div>
+
+<p class="support-text">
+Chcesz pomóc w rozwoju LOVE1? 💜
+Możesz wesprzeć nasz klan poprzez wzmocnienie serwera Discord
+lub podarowanie właścicielowi Nitro.
+Każde wsparcie pomaga nam rozwijać społeczność i organizować
+jeszcze więcej wspólnej zabawy! 🔥
+</p>
+
+<div class="grid" style="margin-top:30px">
+
+<div class="support-card">
+
+<div class="support-card-icon">🛡️</div>
+
+<h2>Wzmocnij serwer Discord</h2>
+
+<p style="margin-top:12px">
+Jeżeli chcesz wesprzeć LOVE1, możesz wzmocnić
+klanowy serwer Discord.
+</p>
+
+<button class="support-button" onclick="openDiscord()">
+💜 WESPRZYJ SERWER
+</button>
+
+</div>
+
+<div class="support-card">
+
+<div class="support-card-icon">🎁</div>
+
+<h2>Podaruj właścicielowi Nitro</h2>
+
+<p style="margin-top:12px">
+Możesz również podarować właścicielowi LOVE1
+Discord Nitro jako formę wsparcia.
+</p>
+
+<div style="margin-top:18px;color:#b995c9;font-size:13px">
+🎁 Szczegóły dotyczące Nitro ustalisz bezpośrednio
+z właścicielem na Discordzie.
+</div>
+
+<button class="support-button" onclick="openDiscord()">
+🎁 PRZEJDŹ NA DISCORDA
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card" style="text-align:center">
+
+<div style="font-size:50px">🏆</div>
+
+<h2>RANGA ZA WSPARCIE</h2>
+
+<p style="max-width:750px;margin:15px auto">
+Za pomoc w rozwoju LOVE1 możesz otrzymać specjalną rangę
+na naszym Discordzie.
+</p>
+
+<div class="grid" style="margin-top:25px">
+
+<div class="feature">
+<div class="feature-icon">💜</div>
+<h3>WSPERAJĄCY</h3>
+<p>Ranga dla osób, które pomagają rozwijać LOVE1.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🚀</div>
+<h3>BOOSTER</h3>
+<p>Ranga dla osób, które boostują serwer Discord LOVE1.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🏆</div>
+<h3>DOCENIAMY WSPARCIE</h3>
+<p>Dziękujemy każdej osobie, która pomaga naszej ekipie.</p>
+</div>
+
+</div>
+
+<button class="support-button" onclick="openDiscord()" style="margin-top:25px">
+💜 WESPRZYJ LOVE1 NA DISCORDZIE
+</button>
+
+</div>
+
+</section>
+
+<!-- PRYWATNOŚĆ -->
+
 <section id="privacy" class="page">
 
 <div class="card">
+
 <div style="text-align:center;font-size:55px">🔒</div>
-<h1 style="text-align:center;margin-top:10px">POLITYKA PRYWATNOŚCI LOVE1</h1>
+
+<h1 style="text-align:center;margin-top:10px">
+POLITYKA PRYWATNOŚCI LOVE1
+</h1>
+
 <p style="text-align:center;margin-top:12px">
 Informacje dotyczące danych przekazywanych podczas korzystania
 ze strony LOVE1 i formularza rekrutacyjnego.
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>👤 Administrator danych</h2>
+
 <p style="margin-top:12px">
 Administratorem danych jest:
 </p>
+
 <div class="privacy-info">
-<strong>[TU WPISZ NAZWĘ LUB IMIĘ I NAZWISKO ADMINISTRATORA]</strong>
+<strong>Eryk Mizera</strong>
 </div>
-<p style="margin-top:15px">Kontakt w sprawach dotyczących prywatności:</p>
+
+<p style="margin-top:15px">
+Kontakt w sprawach dotyczących prywatności:
+</p>
+
 <div class="privacy-info">
-<strong>[TU WPISZ ADRES E-MAIL]</strong>
+<strong>topxd18@gmail.com</strong>
 </div>
+
 </div>
 
 <div class="card">
+
 <h2>🎯 W jakim celu zbieramy dane?</h2>
+
 <p style="margin-top:12px">
 Dane przekazane za pomocą formularza rekrutacyjnego są wykorzystywane
 w celu rozpatrzenia zgłoszenia do klanu LOVE1 oraz kontaktu
 w sprawie rekrutacji.
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>📋 Jakie dane mogą być zbierane?</h2>
+
 <ul class="privacy-list">
 <li>Nick Minecraft / Discord</li>
 <li>Wiek</li>
@@ -389,49 +1839,64 @@ w sprawie rekrutacji.
 <li>Doświadczenie PvP</li>
 <li>Uzasadnienie chęci dołączenia do LOVE1</li>
 </ul>
+
 <div class="privacy-warning">
 ⚠️ Nie podawaj haseł, adresu zamieszkania, numeru telefonu,
 danych dokumentów ani innych niepotrzebnych danych osobowych.
 </div>
+
 </div>
 
 <div class="card">
+
 <h2>⚖️ Podstawa przetwarzania</h2>
+
 <p style="margin-top:12px">
 Dane osobowe powinny być przetwarzane na odpowiedniej podstawie
 prawnej przewidzianej przez RODO, zależnie od rzeczywistego celu
 i sposobu działania strony.
 </p>
+
 <p style="margin-top:12px">
 Właściwa podstawa prawna powinna zostać ustalona przez administratora
 dla konkretnego sposobu przetwarzania danych.
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>⏳ Jak długo przechowujemy dane?</h2>
+
 <p style="margin-top:12px">
 Dane powinny być przechowywane tylko przez okres niezbędny
 do realizacji celu, dla którego zostały zebrane, a następnie
 usunięte zgodnie z przyjętymi zasadami przechowywania danych.
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>🗑️ Usunięcie danych</h2>
+
 <p style="margin-top:12px">
 Osoba, której dane dotyczą, może skontaktować się z administratorem
 w sprawie swoich danych oraz, w przypadkach przewidzianych przez RODO,
 zażądać ich usunięcia.
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>✏️ Twoje prawa</h2>
+
 <p style="margin-top:12px">
 W zależności od sytuacji osobie, której dane dotyczą, mogą przysługiwać
-prawa określone w RODO, w szczególności:
+prawa określone w RODO.
 </p>
+
 <ul class="privacy-list">
 <li>prawo dostępu do danych</li>
 <li>prawo do sprostowania danych</li>
@@ -439,168 +1904,424 @@ prawa określone w RODO, w szczególności:
 <li>prawo do ograniczenia przetwarzania</li>
 <li>inne prawa przewidziane przez RODO</li>
 </ul>
+
 </div>
 
 <div class="card">
+
 <h2>👶 Osoby niepełnoletnie</h2>
+
 <p style="margin-top:12px">
 Rekrutacja LOVE1 może być dostępna dla osób niepełnoletnich.
 Nie należy podawać danych wykraczających poza informacje potrzebne
 do rozpatrzenia zgłoszenia.
 </p>
+
 <p style="margin-top:12px">
 Jeżeli w konkretnym przypadku przepisy wymagają udziału lub zgody
 rodzica albo opiekuna prawnego, należy zastosować odpowiednią procedurę.
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>🏛️ Prawo do skargi</h2>
+
 <p style="margin-top:12px">
 Jeżeli osoba uważa, że jej dane są przetwarzane niezgodnie
 z obowiązującymi przepisami, może mieć prawo do wniesienia
 skargi do właściwego organu nadzorczego.
 </p>
+
 </div>
 
 <div class="card">
+
 <h2>📅 Aktualizacja</h2>
+
 <p style="margin-top:12px;color:#a995ad">
-Ostatnia aktualizacja: <strong>[TU WPISZ DATĘ]</strong>
+Ostatnia aktualizacja: <strong>22.09.2026</strong>
 </p>
+
 </div>
 
 </section>
+
+<!-- KONTO -->
 
 <section id="login" class="page">
+
 <div class="card account-hero">
+
 <div class="avatar">👤</div>
+
 <h1>TWOJE KONTO</h1>
+
 <p>Zaloguj się do systemu LOVE1.</p>
+
 </div>
 
 <div class="card">
-<label>Login</label>
-<input id="loginUser" placeholder="Login">
-<label>Hasło</label>
-<input id="loginPass" type="password" placeholder="Hasło">
+
+<label>Login</label> <input id="loginUser" placeholder="Login">
+
+<label>Hasło</label> <input id="loginPass" type="password" placeholder="Hasło">
+
 <button class="btn" onclick="login()">🔐 ZALOGUJ</button>
+
 <p id="loginMessage" style="margin-top:15px"></p>
+
 </div>
 
 <div class="card">
+
 <h2>👑 ROLE LOVE1</h2>
+
 <div class="grid" style="margin-top:20px">
-<div class="feature"><div class="feature-icon">👑</div><h3>WŁAŚCICIEL</h3><p>Pełny dostęp do panelu.</p></div>
-<div class="feature"><div class="feature-icon">🛡️</div><h3>ADMIN</h3><p>Zarządzanie wybranymi funkcjami.</p></div>
-<div class="feature"><div class="feature-icon">💎</div><h3>CZŁONEK LOVE1</h3><p>Dostęp do funkcji klanu.</p></div>
+
+<div class="feature">
+<div class="feature-icon">👑</div>
+<h3>WŁAŚCICIEL</h3>
+<p>Pełny dostęp do panelu.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🛡️</div>
+<h3>ADMIN</h3>
+<p>Zarządzanie wybranymi funkcjami.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">💎</div>
+<h3>CZŁONEK LOVE1</h3>
+<p>Dostęp do funkcji klanu.</p>
+</div>
+
 </div>
 </div>
+
 </section>
 
+<!-- PANEL WŁAŚCICIELA -->
+
 <section id="owner" class="page">
+
 <div class="owner-header">
+
 <div class="owner-title">👑 PANEL WŁAŚCICIELA</div>
+
 <p>Centrum zarządzania LOVE1</p>
+
 </div>
 
 <div class="grid4" style="margin-top:20px">
-<div class="owner-stat"><div id="ownerApplicationsCount" style="font-size:30px;color:#e19cff;font-weight:900">0</div><p>Podania</p></div>
-<div class="owner-stat"><div style="font-size:30px">⚔️</div><p>PvP</p></div>
-<div class="owner-stat"><div style="font-size:30px">💜</div><p>LOVE1</p></div>
-<div class="owner-stat"><div style="font-size:30px">🏆</div><p>Clan</p></div>
+
+<div class="owner-stat">
+<div id="ownerApplicationsCount" style="font-size:30px;color:#e19cff;font-weight:900">0</div>
+<p>Podania</p>
 </div>
 
-<div id="applicationsList" style="margin-top:20px"></div>
+<div class="owner-stat">
+<div id="ownerAcceptedCount" style="font-size:30px;color:#76ff9b;font-weight:900">0</div>
+<p>Przyjęci</p>
+</div>
+
+<div class="owner-stat">
+<div style="font-size:30px">💜</div>
+<p>LOVE1</p>
+</div>
+
+<div class="owner-stat">
+<div style="font-size:30px">🏆</div>
+<p>Ranking</p>
+</div>
+
+</div>
+
+<div class="card" style="margin-top:20px">
+
+<h2>🏆 ZARZĄDZANIE PUNKTAMI</h2>
+
+<p style="margin-top:8px">
+Możesz dodawać punkty zaakceptowanym członkom.
+</p>
+
+<div id="ownerMembersList" style="margin-top:20px"></div>
+
+</div>
 
 <div class="card">
-<button class="btn" onclick="logout()">🚪 WYLOGUJ</button>
+
+<h2>📋 PODANIA REKRUTACYJNE</h2>
+
+<div id="applicationsList" style="margin-top:10px"></div>
+
 </div>
+
+<div class="card">
+
+<h2>🔔 SZYBKIE AKCJE</h2>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:15px">
+
+<button class="btn" onclick="showPage('ranking')">
+🏆 ZOBACZ RANKING
+</button>
+
+<button class="btn" onclick="showPage('events')">
+📅 EVENTY
+</button>
+
+<button class="btn" onclick="showPage('notifications')">
+🔔 POWIADOMIENIA
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<button class="btn danger" onclick="logout()">
+🚪 WYLOGUJ
+</button>
+
+</div>
+
 </section>
 
 </main>
 
 <footer>
+
 <strong style="color:#d99aff">💜 LOVE1</strong>
+
 <br><br>
+
 JEDNA EKIPA • JEDEN CEL 🏆
+
 <br>
-<span style="font-size:12px">Minecraft • PvP • Gaming • Discord • YouTube</span>
+
+<span style="font-size:12px">
+Minecraft • PvP • Gaming • Discord • YouTube
+</span>
+
 </footer>
 
+<!-- UFO -->
+
+<div class="love1-ufo" aria-hidden="true">
+
+<div class="ufo-light"></div>
+
+<div class="ufo-body">
+<div class="ufo-window"></div>
+</div>
+
+<div class="ufo-beam"></div>
+
+</div>
+
 <script>
+
 const YOUTUBE_URL="https://youtube.com/@topxd25?si=xJjV83Y2wXEZHUbG";
 const DISCORD_URL="https://discord.gg/6GUdm5ZBtT";
 
 let isOwner=false;
 
 function showPage(pageId){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.remove("active");
+});
+
 const page=document.getElementById(pageId);
-if(page) page.classList.add("active");
-if(pageId==="owner") loadApplications();
-window.scrollTo({top:0,behavior:"smooth"});
+
+if(page){
+page.classList.add("active");
+}
+
+if(pageId==="owner"){
+loadApplications();
+loadOwnerMembers();
+}
+
+if(pageId==="ranking"){
+loadRanking();
+}
+
+if(pageId==="notifications"){
+loadNotifications();
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
 
 function openYouTube(){
-window.open(YOUTUBE_URL,"_blank","noopener,noreferrer");
+
+window.open(
+YOUTUBE_URL,
+"_blank",
+"noopener,noreferrer"
+);
+
 }
 
 function openDiscord(){
-window.open(DISCORD_URL,"_blank","noopener,noreferrer");
+
+window.open(
+DISCORD_URL,
+"_blank",
+"noopener,noreferrer"
+);
+
 }
 
 function login(){
+
 const user=document.getElementById("loginUser").value.trim();
 const pass=document.getElementById("loginPass").value;
 const message=document.getElementById("loginMessage");
 
 if(user==="Topxd" && pass==="LOVE1"){
+
 isOwner=true;
+
 document.getElementById("ownerNav").style.display="block";
+
 message.style.color="#76ff9b";
 message.textContent="✅ Zalogowano jako WŁAŚCICIEL.";
-setTimeout(()=>showPage("owner"),500);
+
+setTimeout(()=>{
+showPage("owner");
+},500);
+
 }else{
+
 message.style.color="#ff5c7a";
 message.textContent="❌ Nieprawidłowy login lub hasło.";
+
 }
+
 }
 
 function logout(){
+
 isOwner=false;
+
 document.getElementById("ownerNav").style.display="none";
+
 showPage("home");
+
 }
 
 function escapeHTML(text){
+
 return String(text)
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
 .replace(/"/g,"&quot;")
 .replace(/'/g,"&#039;");
+
 }
 
 function getApplications(){
-return JSON.parse(localStorage.getItem("love1Applications")||"[]");
+
+return JSON.parse(
+localStorage.getItem("love1Applications")||"[]"
+);
+
+}
+
+function getMembers(){
+
+return JSON.parse(
+localStorage.getItem("love1Members")||"[]"
+);
+
+}
+
+function saveMembers(members){
+
+localStorage.setItem(
+"love1Members",
+JSON.stringify(members)
+);
+
+}
+
+function syncMembers(){
+
+const applications=getApplications();
+const members=getMembers();
+
+applications
+.filter(a=>a.status==="Zaakceptowane")
+.forEach(app=>{
+
+const exists=members.find(m=>m.id===app.id);
+
+if(!exists){
+
+members.push({
+id:app.id,
+nick:app.nick,
+points:50,
+badges:["💎 Członek LOVE1"]
+});
+
+}
+
+});
+
+saveMembers(members);
+
 }
 
 function updateMemberStats(){
+
 const apps=getApplications();
-const accepted=apps.filter(a=>a.status==="Zaakceptowane").length;
-const pending=apps.filter(a=>a.status==="Oczekuje").length;
+
+const accepted=apps.filter(
+a=>a.status==="Zaakceptowane"
+).length;
+
+const pending=apps.filter(
+a=>a.status==="Oczekuje"
+).length;
 
 const member=document.getElementById("memberCount");
 const acceptedEl=document.getElementById("acceptedCount");
 const pendingEl=document.getElementById("pendingCount");
 
-if(member) member.textContent=1+accepted;
-if(acceptedEl) acceptedEl.textContent=accepted;
-if(pendingEl) pendingEl.textContent=pending;
+if(member){
+member.textContent=1+accepted;
+}
+
+if(acceptedEl){
+acceptedEl.textContent=accepted;
+}
+
+if(pendingEl){
+pendingEl.textContent=pending;
+}
+
+const ownerAccepted=document.getElementById("ownerAcceptedCount");
+
+if(ownerAccepted){
+ownerAccepted.textContent=accepted;
+}
+
 }
 
 function sendApplication(){
+
 const nick=document.getElementById("appNick").value.trim();
 const age=document.getElementById("appAge").value.trim();
 const mic=document.getElementById("appMic").value;
@@ -610,20 +2331,27 @@ const consent=document.getElementById("privacyConsent");
 const message=document.getElementById("applicationMessage");
 
 if(!consent.checked){
+
 message.style.color="#ffb84d";
 message.textContent="⚠️ Zapoznaj się z informacją o prywatności.";
+
 return;
+
 }
 
 if(!nick||!age||!pvp||!reason){
+
 message.style.color="#ff5c7a";
 message.textContent="❌ Uzupełnij wszystkie pola.";
+
 return;
+
 }
 
 const applications=getApplications();
 
 applications.push({
+
 id:Date.now(),
 nick,
 age,
@@ -631,9 +2359,13 @@ mic,
 pvp,
 reason,
 status:"Oczekuje"
+
 });
 
-localStorage.setItem("love1Applications",JSON.stringify(applications));
+localStorage.setItem(
+"love1Applications",
+JSON.stringify(applications)
+);
 
 message.style.color="#76ff9b";
 message.textContent="✅ Podanie zostało wysłane!";
@@ -642,99 +2374,494 @@ document.getElementById("appNick").value="";
 document.getElementById("appAge").value="";
 document.getElementById("appPvp").value="";
 document.getElementById("appReason").value="";
+
 consent.checked=false;
 
 updateMemberStats();
+
 }
 
 function loadApplications(){
+
 const container=document.getElementById("applicationsList");
 
 if(!isOwner){
-container.innerHTML='<div class="card"><h2>🔒 Brak dostępu</h2></div>';
+
+container.innerHTML=
+'<div class="card"><h2>🔒 Brak dostępu</h2></div>';
+
 return;
+
 }
 
 const applications=getApplications();
-const count=document.getElementById("ownerApplicationsCount");
 
-if(count) count.textContent=applications.length;
+const count=document.getElementById(
+"ownerApplicationsCount"
+);
+
+if(count){
+count.textContent=applications.length;
+}
 
 if(applications.length===0){
-container.innerHTML='<div class="card"><h2>📭 Brak podań</h2><p>Aktualnie nie ma żadnych podań rekrutacyjnych.</p></div>';
+
+container.innerHTML=
+'<div class="card"><h2>📭 Brak podań</h2><p>Aktualnie nie ma żadnych podań rekrutacyjnych.</p></div>';
+
 updateMemberStats();
+
 return;
+
 }
 
 container.innerHTML="";
 
 applications.forEach(app=>{
+
 const card=document.createElement("div");
+
 card.className="application-card";
 
 card.innerHTML=`
+
 <h2>👤 ${escapeHTML(app.nick)}</h2>
-<p style="margin-top:12px">🎂 Wiek: <b>${escapeHTML(app.age)}</b></p>
-<p style="margin-top:7px">🎙️ Mikrofon: <b>${escapeHTML(app.mic)}</b></p>
-<p style="margin-top:12px">⚔️ Doświadczenie PvP:</p>
+
+<p style="margin-top:12px">
+🎂 Wiek: <b>${escapeHTML(app.age)}</b>
+</p>
+
+<p style="margin-top:7px">
+🎙️ Mikrofon: <b>${escapeHTML(app.mic)}</b>
+</p>
+
+<p style="margin-top:12px">
+⚔️ Doświadczenie PvP:
+</p>
+
 <p>${escapeHTML(app.pvp)}</p>
-<p style="margin-top:12px">📝 Dlaczego chce dołączyć:</p>
+
+<p style="margin-top:12px">
+📝 Dlaczego chce dołączyć:
+</p>
+
 <p>${escapeHTML(app.reason)}</p>
-<p style="margin-top:15px;color:#d89aff">📌 Status: <b>${escapeHTML(app.status)}</b></p>
+
+<p style="margin-top:15px;color:#d89aff">
+📌 Status: <b>${escapeHTML(app.status)}</b>
+</p>
 
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:20px">
-<button class="btn" onclick="setApplicationStatus(${app.id},'Zaakceptowane')">✅ AKCEPTUJ</button>
-<button class="btn" onclick="setApplicationStatus(${app.id},'Odrzucone')">❌ ODRZUĆ</button>
-<button class="btn" onclick="deleteApplication(${app.id})">🗑️ USUŃ</button>
-</div>`;
+
+<button class="btn"
+onclick="setApplicationStatus(${app.id},'Zaakceptowane')">
+✅ AKCEPTUJ
+</button>
+
+<button class="btn"
+onclick="setApplicationStatus(${app.id},'Odrzucone')">
+❌ ODRZUĆ
+</button>
+
+<button class="btn danger"
+onclick="deleteApplication(${app.id})">
+🗑️ USUŃ
+</button>
+
+</div>
+
+`;
 
 container.appendChild(card);
+
 });
 
 updateMemberStats();
+
 }
 
 function setApplicationStatus(id,status){
+
 const applications=getApplications();
-const application=applications.find(a=>a.id===id);
-if(application) application.status=status;
-localStorage.setItem("love1Applications",JSON.stringify(applications));
+
+const application=applications.find(
+a=>a.id===id
+);
+
+if(application){
+application.status=status;
+}
+
+localStorage.setItem(
+"love1Applications",
+JSON.stringify(applications)
+);
+
+syncMembers();
 loadApplications();
+loadOwnerMembers();
 updateMemberStats();
+
 }
 
 function deleteApplication(id){
-const updated=getApplications().filter(a=>a.id!==id);
-localStorage.setItem("love1Applications",JSON.stringify(updated));
+
+const updated=getApplications().filter(
+a=>a.id!==id
+);
+
+localStorage.setItem(
+"love1Applications",
+JSON.stringify(updated)
+);
+
+const members=getMembers().filter(
+m=>m.id!==id
+);
+
+saveMembers(members);
+
 loadApplications();
+loadOwnerMembers();
 updateMemberStats();
+
+}
+
+function getLevel(points){
+
+if(points>=150){
+return {
+name:"🔥 ELITA",
+percent:100
+};
+}
+
+if(points>=50){
+return {
+name:"⚔️ WOJOWNIK",
+percent:Math.min(100,Math.round(points/1.5))
+};
+}
+
+return {
+name:"🌱 NOWY",
+percent:Math.min(100,Math.round(points*2))
+};
+
+}
+
+function loadRanking(){
+
+syncMembers();
+
+const container=document.getElementById("rankingList");
+
+if(!container)return;
+
+const members=getMembers()
+.sort((a,b)=>b.points-a.points);
+
+if(members.length===0){
+
+container.innerHTML=`
+<div class="card">
+<h2>📭 Brak członków w rankingu</h2>
+<p>Zaakceptuj pierwsze podanie, aby pojawił się członek.</p>
+</div>
+`;
+
+return;
+
+}
+
+container.innerHTML="";
+
+members.forEach((member,index)=>{
+
+const level=getLevel(member.points);
+
+const card=document.createElement("div");
+
+card.className="rank-card";
+
+card.innerHTML=`
+
+<div class="rank-position">
+${index+1}
+</div>
+
+<div class="rank-avatar">
+💜
+</div>
+
+<div class="rank-info">
+
+<div class="rank-name">
+${escapeHTML(member.nick)}
+</div>
+
+<div class="rank-points">
+${member.points} punktów • ${level.name}
+</div>
+
+<div class="level-bar">
+<div class="level-fill" style="width:${level.percent}%"></div>
+</div>
+
+<div style="margin-top:8px">
+${(member.badges||[]).map(b=>`
+<span class="badge">${escapeHTML(b)}</span>
+`).join("")}
+</div>
+
+</div>
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+function loadOwnerMembers(){
+
+if(!isOwner)return;
+
+syncMembers();
+
+const container=document.getElementById("ownerMembersList");
+
+if(!container)return;
+
+const members=getMembers();
+
+if(members.length===0){
+
+container.innerHTML=
+'<p>Brak zaakceptowanych członków.</p>';
+
+return;
+
+}
+
+container.innerHTML="";
+
+members.forEach(member=>{
+
+const level=getLevel(member.points);
+
+const div=document.createElement("div");
+
+div.className="application-card";
+
+div.innerHTML=`
+
+<h2>💜 ${escapeHTML(member.nick)}</h2>
+
+<p style="margin-top:8px">
+🏆 Punkty: <b>${member.points}</b>
+</p>
+
+<p style="margin-top:5px">
+🎖️ Poziom: <b>${level.name}</b>
+</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:15px">
+
+<button class="btn small"
+onclick="changePoints(${member.id},10)">
+➕ +10
+</button>
+
+<button class="btn small"
+onclick="changePoints(${member.id},50)">
+🔥 +50
+</button>
+
+<button class="btn small danger"
+onclick="changePoints(${member.id},-10)">
+➖ -10
+</button>
+
+</div>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+function changePoints(id,amount){
+
+if(!isOwner)return;
+
+const members=getMembers();
+
+const member=members.find(
+m=>m.id===id
+);
+
+if(!member)return;
+
+member.points=Math.max(
+0,
+member.points+amount
+);
+
+saveMembers(members);
+
+loadOwnerMembers();
+loadRanking();
+
 }
 
 function sendChatMessage(){
+
 const input=document.getElementById("chatInput");
 const messages=document.getElementById("chatMessages");
+
 const text=input.value.trim();
 
 if(!text)return;
 
 const message=document.createElement("div");
+
 message.className="chat-message";
+
 message.innerHTML=`
+
 <div class="chat-name">💜 LOVE1</div>
-<div>${escapeHTML(text)}</div>`;
+
+<div>${escapeHTML(text)}</div>
+
+`;
 
 messages.appendChild(message);
+
 input.value="";
+
 messages.scrollTop=messages.scrollHeight;
+
 }
 
-document.getElementById("chatInput").addEventListener("keydown",function(event){
-if(event.key==="Enter")sendChatMessage();
+function getNotifications(){
+
+return [
+{
+id:1,
+icon:"🔥",
+title:"Rekrutacja jest otwarta!",
+text:"Możesz wysłać podanie do LOVE1."
+},
+{
+id:2,
+icon:"🏆",
+title:"Ranking LOVE1",
+text:"Zdobywaj punkty i rozwijaj swój poziom."
+},
+{
+id:3,
+icon:"📅",
+title:"Nowe eventy",
+text:"Sprawdź zakładkę Eventy."
+},
+{
+id:4,
+icon:"💜",
+title:"Wsparcie LOVE1",
+text:"Możesz wesprzeć serwer poprzez Discord."
+}
+];
+
+}
+
+function loadNotifications(){
+
+const container=document.getElementById("notificationsList");
+
+if(!container)return;
+
+const read=localStorage.getItem("love1NotificationsRead")==="true";
+
+container.innerHTML="";
+
+getNotifications().forEach(notification=>{
+
+const div=document.createElement("div");
+
+div.className=
+"notification"+(read?"":" unread");
+
+div.innerHTML=`
+
+<div style="font-size:28px">${notification.icon}</div>
+
+<h3 style="margin-top:6px">
+${notification.title}
+</h3>
+
+<p style="margin-top:6px">
+${notification.text}
+</p>
+
+`;
+
+container.appendChild(div);
+
 });
 
+}
+
+function markNotificationsRead(){
+
+localStorage.setItem(
+"love1NotificationsRead",
+"true"
+);
+
+loadNotifications();
+
+}
+
+document.getElementById("chatInput").addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+sendChatMessage();
+}
+
+}
+);
+
+function updateStatusTime(){
+
+const element=document.getElementById("statusTime");
+
+if(element){
+
+const now=new Date();
+
+element.textContent=
+now.toLocaleTimeString("pl-PL",{
+hour:"2-digit",
+minute:"2-digit"
+});
+
+}
+
+}
+
+syncMembers();
 updateMemberStats();
+updateStatusTime();
+loadNotifications();
+
+setInterval(updateStatusTime,30000);
+
 </script>
 
 </body>
 </html>
-```
