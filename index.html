@@ -1,1647 +1,1041 @@
 ```html
-<div id="butelka-site">
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>1ButelkaKaucyjna • Gaming</title>
 
 <style>
-#butelka-site,
-#butelka-site *{
-    box-sizing:border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#050008;color:#fff;overflow-x:hidden
+}
+body:before{
+content:"";position:fixed;inset:0;z-index:-5;
+background:
+radial-gradient(circle at 50% 10%,#45006e 0,transparent 35%),
+radial-gradient(circle at 0 100%,#240044 0,transparent 30%),
+#050008
+}
+body:after{
+content:"";position:fixed;inset:0;z-index:-4;pointer-events:none;
+background-image:
+radial-gradient(#fff 1px,transparent 1px),
+radial-gradient(#b000ff 1px,transparent 1px);
+background-size:120px 120px,180px 180px;
+opacity:.16;animation:stars 25s linear infinite
+}
+@keyframes stars{to{background-position:0 120px,0 180px}}
+
+.aura{
+position:fixed;width:500px;height:500px;border-radius:50%;
+background:#8b00ff;filter:blur(140px);opacity:.2;
+pointer-events:none;z-index:-3;animation:aura 8s infinite alternate
+}
+.a1{top:-250px;left:-200px}
+.a2{bottom:-250px;right:-200px;animation-delay:2s}
+@keyframes aura{to{transform:translate(130px,80px) scale(1.25)}}
+
+nav{
+position:sticky;top:0;z-index:100;
+display:flex;justify-content:space-between;align-items:center;
+padding:14px 5%;background:rgba(5,0,8,.88);
+backdrop-filter:blur(18px);
+border-bottom:1px solid #580078
+}
+.logo{
+font-weight:1000;font-size:21px;color:#e09aff;
+text-shadow:0 0 18px #a000ff
+}
+nav .links{display:flex;gap:15px;flex-wrap:wrap}
+nav a{
+color:#cfc3d3;text-decoration:none;font-size:13px;font-weight:bold
+}
+nav a:hover{color:#df7cff}
+
+.hero{
+min-height:88vh;display:flex;justify-content:center;align-items:center;
+text-align:center;padding:70px 20px
+}
+.hero-content{max-width:1000px}
+.live{
+display:inline-block;padding:8px 16px;border-radius:30px;
+background:#180021;border:1px solid #9700dc;color:#df8cff;
+box-shadow:0 0 25px #61008c;margin-bottom:22px
+}
+.hero h1{
+font-size:clamp(43px,9vw,105px);font-weight:1000;
+letter-spacing:4px;
+background:linear-gradient(90deg,#fff,#cf5dff,#8500ff,#fff);
+background-size:300%;color:transparent;
+-webkit-background-clip:text;
+animation:title 5s linear infinite;
+filter:drop-shadow(0 0 20px #7500a8)
+}
+@keyframes title{to{background-position:300%}}
+.hero p{
+max-width:720px;margin:22px auto;color:#c9bacf;
+font-size:18px;line-height:1.7
+}
+.buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{
+display:inline-block;border:0;border-radius:14px;padding:14px 22px;
+background:linear-gradient(135deg,#6800b5,#c000ff);
+color:white;text-decoration:none;font-weight:900;cursor:pointer;
+box-shadow:0 0 25px #7300a044;transition:.25s
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 35px #a000ff99}
+.btn.dark{background:#120817;border:1px solid #64117a}
+
+section{padding:70px 5%}
+.title{text-align:center;font-size:38px;margin-bottom:8px}
+.subtitle{text-align:center;color:#998da0;margin-bottom:35px}
+
+.grid{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:18px;max-width:1200px;margin:auto
+}
+.card{
+background:linear-gradient(145deg,#1c0825dd,#09030dcc);
+border:1px solid #59106d;border-radius:22px;padding:24px;
+box-shadow:0 15px 50px #0008,inset 0 0 30px #9000ff08;
+transition:.25s
+}
+.card:hover{
+transform:translateY(-6px);border-color:#bd00ff;
+box-shadow:0 15px 50px #0008,0 0 30px #9400ff33
+}
+.icon{font-size:40px;margin-bottom:12px}
+.card h3{margin-bottom:10px}
+.card p{color:#aaa0ae;line-height:1.6}
+
+.stats{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;max-width:1000px;margin:auto
+}
+.statbox{text-align:center}
+.statbig{
+font-size:45px;font-weight:1000;color:#d67aff;
+text-shadow:0 0 20px #8b00ff
 }
 
-#butelka-site{
-    --purple:#a000ff;
-    --purple2:#d000ff;
-    --violet:#6500ff;
-    --bg:#040108;
-    --text:#fff;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
-    min-height:100vh;
-    overflow:hidden;
-    position:relative;
-    background:
-        radial-gradient(circle at 50% -10%,
-        rgba(188,0,255,.35),
-        transparent 34%),
-        radial-gradient(circle at 0% 45%,
-        rgba(76,0,255,.20),
-        transparent 30%),
-        radial-gradient(circle at 100% 65%,
-        rgba(225,0,255,.15),
-        transparent 30%),
-        #040108;
+.subbox{max-width:850px;margin:auto;text-align:center}
+.progress{
+height:20px;background:#16091d;border-radius:20px;
+overflow:hidden;margin:22px 0;border:1px solid #4d0b60
+}
+.bar{
+height:100%;width:40%;
+background:linear-gradient(90deg,#7200ff,#db00ff);
+box-shadow:0 0 20px #9d00ff;transition:1s
+}
+
+.quiz{max-width:800px;margin:auto}
+.question{font-size:24px;font-weight:900;margin-bottom:20px}
+.answers{display:grid;gap:10px}
+.answer{
+padding:15px;border-radius:13px;background:#100714;
+border:1px solid #461052;color:white;text-align:left;
+cursor:pointer;font-weight:bold
+}
+.answer:hover{border-color:#c000ff;background:#1d0927}
+.result{min-height:30px;margin-top:18px;font-weight:bold}
+
+.profile{
+display:grid;grid-template-columns:300px 1fr;gap:20px;
+max-width:900px;margin:auto
+}
+.avatar{
+width:105px;height:105px;margin:auto auto 15px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;font-size:48px;
+background:linear-gradient(135deg,#6800ff,#d000ff);
+box-shadow:0 0 35px #8d00ff
+}
+input,textarea,select{
+width:100%;padding:13px;border-radius:12px;
+border:1px solid #57116b;background:#0d0611;color:white;
+outline:none;margin:7px 0
+}
+textarea{min-height:100px;resize:vertical}
+input:focus,textarea:focus,select:focus{
+border-color:#c000ff;box-shadow:0 0 15px #9000ff44
+}
+.line{
+display:flex;justify-content:space-between;padding:13px 0;
+border-bottom:1px solid #28112e
+}
+.line:last-child{border:0}
+
+.rank{
+display:flex;align-items:center;gap:15px;
+padding:15px;border-radius:13px;background:#100714;
+border:1px solid #32103c;margin-bottom:9px
+}
+.ranknum{width:35px;color:#db7fff;font-size:21px;font-weight:1000}
+.rankname{flex:1;font-weight:bold;color:#fff}
+.rankxp{color:#a999aa}
+
+.task{
+display:flex;align-items:center;gap:15px;
+padding:15px;border-radius:14px;background:#100714;
+border:1px solid #32103c;margin-bottom:10px
+}
+.tasktext{flex:1}
+
+.badges{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px
+}
+.badge{text-align:center}
+.badgeicon{font-size:48px;margin-bottom:10px}
+
+#ownerPanel{display:none}
+.owner-warning{
+padding:13px;border-radius:12px;background:#26000d;
+border:1px solid #ff0055;color:#ff8aaa;margin-bottom:15px
+}
+
+.toast{
+position:fixed;right:20px;bottom:20px;z-index:999;
+background:#17091e;border:1px solid #a000ff;
+box-shadow:0 0 30px #7d00ff66;border-radius:14px;
+padding:15px 20px;transform:translateY(150px);
+transition:.3s
+}
+.toast.show{transform:translateY(0)}
+
+footer{
+padding:45px 20px;text-align:center;color:#7f7284;
+border-top:1px solid #3a0a49
+}
+footer b{color:#d67aff}
+
+@media(max-width:700px){
+nav{flex-direction:column;gap:10px}
+nav .links{justify-content:center}
+.profile{grid-template-columns:1fr}
+section{padding:55px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="aura a1"></div>
+<div class="aura a2"></div>
+
+<nav>
+  <div class="logo">💜 1BUTELKAKAUCYJNA</div>
+  <div class="links">
+    <a href="#start">START</a>
+    <a href="#minecraft">MINECRAFT</a>
+    <a href="#widzowie">WIDZOWIE</a>
+    <a href="#quiz">QUIZ</a>
+    <a href="#ranking">RANKING</a>
+    <a href="#konto">KONTO</a>
+    <a href="#owner">⚙️</a>
+  </div>
+</nav>
+
+<!-- START -->
+
+<section class="hero" id="start">
+<div class="hero-content">
+
+<div class="live">🟣 STREFA 1BUTELKAKAUCYJNA</div>
+
+<h1>1BUTELKAKAUCYJNA</h1>
+
+<p>
+Minecraft • Gaming • Widzowie • Quizy • Nagrody
+<br>
+Jedna strona. Cała społeczność.
+</p>
+
+<div class="buttons">
+<a class="btn" href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH" target="_blank">▶️ YOUTUBE</a>
+<a class="btn dark" href="https://discord.gg/aN5GPpBkTv" target="_blank">💜 DISCORD</a>
+<a class="btn dark" href="#widzowie">👥 STREFA WIDZÓW</a>
+</div>
+
+</div>
+</section>
+
+<!-- STATYSTYKI -->
+
+<section>
+<h2 class="title">📊 SPOŁECZNOŚĆ</h2>
+<p class="subtitle">Wspólnie budujemy kanał</p>
+
+<div class="stats">
+
+<div class="card statbox">
+<div class="statbig" id="subCount">40</div>
+<p>▶️ SUBÓW</p>
+</div>
+
+<div class="card statbox">
+<div class="statbig" id="playerCount">1</div>
+<p>👥 AKTYWNYCH GRACZY</p>
+</div>
+
+<div class="card statbox">
+<div class="statbig" id="totalXp">0</div>
+<p>⭐ TWOJE XP</p>
+</div>
+
+<div class="card statbox">
+<div class="statbig" id="totalCoins">0</div>
+<p>🪙 MONET</p>
+</div>
+
+</div>
+</section>
+
+<!-- OBSYDIAN -->
+
+<section>
+<h2 class="title">🧱 1 SUB = 1 BLOK OBSYDIANU</h2>
+<p class="subtitle">Cel społeczności: 100 subów</p>
+
+<div class="card subbox">
+
+<div class="statbig" id="subBig">40</div>
+
+<div style="font-size:50px;margin:10px">🟪</div>
+
+<div class="progress">
+<div class="bar" id="subBar"></div>
+</div>
+
+<p id="subText">40 / 100</p>
+
+</div>
+</section>
+
+<!-- MINECRAFT -->
+
+<section id="minecraft">
+<h2 class="title">🎮 MINECRAFT</h2>
+<p class="subtitle">Strefa Minecraft</p>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">⚔️</div>
+<h3>PVP</h3>
+<p>Klepy, walki i Minecraftowe akcje.</p>
+</div>
+
+<div class="card">
+<div class="icon">⛏️</div>
+<h3>ANARCHIA</h3>
+<p>Rynek, itemy, handel i zdobywanie wyposażenia.</p>
+</div>
+
+<div class="card">
+<div class="icon">💎</div>
+<h3>ITEMY</h3>
+<p>Zbroje, miecze, kilofy, perły i rzadkie przedmioty.</p>
+</div>
+
+<div class="card">
+<div class="icon">🔥</div>
+<h3>WYZWANIA</h3>
+<p>Specjalne wyzwania dla społeczności.</p>
+</div>
+
+</div>
+</section>
+
+<!-- WIDZOWIE -->
+
+<section id="widzowie">
+<h2 class="title">👥 STREFA WIDZÓW</h2>
+<p class="subtitle">Aktywność = XP + monety + odznaki</p>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">🎁</div>
+<h3>NAGRODA DNIA</h3>
+<p>Codziennie możesz odebrać darmową nagrodę.</p>
+<br>
+<button class="btn" onclick="dailyReward()">🎁 ODBIERZ</button>
+</div>
+
+<div class="card">
+<div class="icon">🔥</div>
+<h3>PASSA QUIZÓW</h3>
+<p>Odpowiadaj poprawnie i zwiększaj swoją passę.</p>
+<br>
+<b id="streak1">🔥 0</b>
+</div>
+
+<div class="card">
+<div class="icon">⭐</div>
+<h3>XP</h3>
+<p>Zdobywaj doświadczenie i odblokowuj kolejne poziomy.</p>
+<br>
+<b id="level1">Poziom 1</b>
+</div>
+
+<div class="card">
+<div class="icon">🪙</div>
+<h3>MONETY</h3>
+<p>Wydawaj je w przyszłym sklepie społeczności.</p>
+<br>
+<b id="coins1">🪙 0</b>
+</div>
+
+</div>
+</section>
+
+<!-- QUIZ -->
+
+<section id="quiz">
+<h2 class="title">🧠 QUIZ DNIA</h2>
+<p class="subtitle">Jedno pytanie dziennie</p>
+
+<div class="card quiz">
+
+<div class="question" id="question"></div>
+
+<div class="answers" id="answers"></div>
+
+<div class="result" id="quizResult"></div>
+
+<div style="margin-top:15px;color:#d77cff" id="streak2">
+🔥 Passa: 0
+</div>
+
+</div>
+</section>
+
+<!-- RANKING -->
+
+<section id="ranking">
+<h2 class="title">🏆 RANKING</h2>
+<p class="subtitle">Ranking społeczności</p>
+
+<div class="card" id="rankingList"></div>
+</section>
+
+<!-- ZADANIA -->
+
+<section>
+<h2 class="title">🎯 ZADANIA</h2>
+<p class="subtitle">Wykonuj zadania i zdobywaj nagrody</p>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">🧠</div>
+<h3>QUIZ DNIA</h3>
+<p>Odpowiedz na dzisiejsze pytanie.</p>
+<br>
+<button class="btn" onclick="location.href='#quiz'">ZAGRAJ</button>
+</div>
+
+<div class="card">
+<div class="icon">▶️</div>
+<h3>YOUTUBE</h3>
+<p>Odwiedź kanał 1ButelkaKaucyjna.</p>
+<br>
+<a class="btn" target="_blank"
+href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH">OTWÓRZ</a>
+</div>
+
+<div class="card">
+<div class="icon">💜</div>
+<h3>DISCORD</h3>
+<p>Dołącz do społeczności Discord.</p>
+<br>
+<a class="btn" target="_blank"
+href="https://discord.gg/aN5GPpBkTv">DOŁĄCZ</a>
+</div>
+
+</div>
+</section>
+
+<!-- ODZNAKI -->
+
+<section>
+<h2 class="title">🏅 ODZNAKI</h2>
+<p class="subtitle">Odblokowuj osiągnięcia</p>
+
+<div class="badges">
+
+<div class="card badge">
+<div class="badgeicon">🟣</div>
+<h3>PIERWSZY KROK</h3>
+<p>Utwórz konto.</p>
+</div>
+
+<div class="card badge">
+<div class="badgeicon">🔥</div>
+<h3>PASSA</h3>
+<p>Zdobywaj kolejne poprawne quizy.</p>
+</div>
+
+<div class="card badge">
+<div class="badgeicon">⭐</div>
+<h3>100 XP</h3>
+<p>Zdobyj pierwsze 100 XP.</p>
+</div>
+
+<div class="card badge">
+<div class="badgeicon">👑</div>
+<h3>LEGENDA</h3>
+<p>Osiągnij poziom 10.</p>
+</div>
+
+</div>
+</section>
+
+<!-- KONTO -->
+
+<section id="konto">
+<h2 class="title">👤 KONTO</h2>
+<p class="subtitle">Twój profil</p>
+
+<div class="profile">
+
+<div class="card" style="text-align:center">
+<div class="avatar">💜</div>
+<h2 id="profileName">Gracz</h2>
+<p id="profileLevel">Poziom 1</p>
+</div>
+
+<div class="card">
+
+<h3>✏️ Twoja nazwa</h3>
+
+<input id="nickname" maxlength="20" placeholder="Wpisz nazwę">
+
+<button class="btn" onclick="saveName()">💾 ZAPISZ</button>
+
+<div class="line">
+<span>⭐ XP</span>
+<b id="xp2">0</b>
+</div>
+
+<div class="line">
+<span>🪙 Monety</span>
+<b id="coins2">0</b>
+</div>
+
+<div class="line">
+<span>🏆 Poziom</span>
+<b id="level2">1</b>
+</div>
+
+<div class="line">
+<span>🔥 Passa</span>
+<b id="streak3">0</b>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- PANEL WŁAŚCICIELA -->
+
+<section id="owner">
+<h2 class="title">⚙️ PANEL WŁAŚCICIELA</h2>
+<p class="subtitle">Panel administracyjny strony</p>
+
+<div class="card" id="ownerPanel">
+
+<div class="owner-warning">
+⚠️ Ten panel działa lokalnie w przeglądarce. Zmiany nie są publikowane na YouTube.
+</div>
+
+<h3>🔢 Liczba subów</h3>
+
+<input id="adminSubs" type="number" min="0" value="40">
+
+<button class="btn" onclick="changeSubs()">💾 ZMIEŃ SUBY</button>
+
+<hr style="border-color:#32103c;margin:25px 0">
+
+<h3>➕ Dodaj XP</h3>
+
+<input id="adminXp" type="number" value="100">
+
+<button class="btn" onclick="addAdminXp()">⭐ DODAJ XP</button>
+
+<hr style="border-color:#32103c;margin:25px 0">
+
+<h3>🪙 Dodaj monety</h3>
+
+<input id="adminCoins" type="number" value="50">
+
+<button class="btn" onclick="addAdminCoins()">🪙 DODAJ</button>
+
+<hr style="border-color:#32103c;margin:25px 0">
+
+<h3>🧹 Reset danych</h3>
+
+<button class="btn dark" onclick="resetAll()">RESETUJ KONTO</button>
+
+</div>
+
+<div class="card" id="ownerLogin">
+
+<h3>🔐 Dostęp właściciela</h3>
+
+<p style="margin:10px 0;color:#aaa">
+Wpisz kod właściciela, aby otworzyć panel.
+</p>
+
+<input id="ownerCode" type="password" placeholder="Kod">
+
+<button class="btn" onclick="loginOwner()">🔓 ODBLOKUJ</button>
+
+</div>
+
+</section>
+
+<!-- PRYWATNOŚĆ -->
+
+<section>
+<h2 class="title">🔒 PRYWATNOŚĆ</h2>
+
+<div class="card" style="max-width:900px;margin:auto">
+
+<p>
+Nazwa gracza, XP, monety, passa i lokalne ustawienia
+są przechowywane w pamięci przeglądarki.
+Strona nie wymaga hasła do zwykłego korzystania.
+</p>
+
+<br>
+
+<p style="color:#a99">
+Informacje o prawdziwej liczbie subskrybentów YouTube
+nie są pobierane automatycznie — licznik na tej stronie
+jest lokalnym licznikiem demonstracyjnym.
+</p>
+
+</div>
+</section>
+
+<footer>
+<b>💜 1ButelkaKaucyjna</b>
+<br><br>
+Minecraft • Gaming • Widzowie • Quizy
+<br><br>
+© 2026
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* =========================
+   DANE
+========================= */
+
+let xp=Number(localStorage.getItem("bk_xp")||0);
+let coins=Number(localStorage.getItem("bk_coins")||0);
+let streak=Number(localStorage.getItem("bk_streak")||0);
+let subs=Number(localStorage.getItem("bk_subs")||40);
+let name=localStorage.getItem("bk_name")||"Gracz";
+
+const today=new Date().toISOString().slice(0,10);
+
+const questions=[
+{
+q:"Który przedmiot służy do wydobywania obsydianu?",
+a:["Kilof","Łopata","Siekiera","Motyka"],
+c:0
+},
+{
+q:"Co wyrzuca Creeper?",
+a:["Proch","Diament","Obsydian","Perłę"],
+c:0
+},
+{
+q:"Który przedmiot teleportuje gracza?",
+a:["Perła Endu","Śnieżka","Jajko","Patyk"],
+c:0
+},
+{
+q:"W jakim wymiarze znajduje się Smok Endu?",
+a:["Nether","End","Overworld","Aether"],
+c:1
+},
+{
+q:"Który blok jest bardzo odporny na wybuchy?",
+a:["Drewno","Piasek","Obsydian","Trawa"],
+c:2
+}
+];
+
+let questionIndex=
+Number(today.replaceAll("-",""))%questions.length;
+
+let currentQuestion=questions[questionIndex];
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(text){
+
+const t=document.getElementById("toast");
+
+t.textContent=text;
+t.classList.add("show");
+
+setTimeout(()=>{
+t.classList.remove("show");
+},2500);
+
 }
 
 /* =========================
-   AURA
+   ZAPIS
 ========================= */
 
-#butelka-site::before{
-    content:"";
-    position:fixed;
-    inset:-45%;
-    z-index:0;
-    pointer-events:none;
+function save(){
 
-    background:
-        conic-gradient(
-            from 0deg,
-            transparent 0deg,
-            rgba(142,0,255,.10) 55deg,
-            transparent 100deg,
-            rgba(213,0,255,.13) 165deg,
-            transparent 220deg,
-            rgba(78,0,255,.10) 290deg,
-            transparent 360deg
-        );
+localStorage.setItem("bk_xp",xp);
+localStorage.setItem("bk_coins",coins);
+localStorage.setItem("bk_streak",streak);
+localStorage.setItem("bk_subs",subs);
+localStorage.setItem("bk_name",name);
 
-    filter:blur(70px);
-
-    animation:
-        btAuraRotate 25s linear infinite,
-        btAuraPulse 8s ease-in-out infinite;
-}
-
-#butelka-site::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:0;
-    pointer-events:none;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            transparent 0%,
-            rgba(5,0,15,.05) 35%,
-            rgba(0,0,0,.65) 100%
-        );
-}
-
-@keyframes btAuraRotate{
-    from{transform:rotate(0deg) scale(1.1)}
-    to{transform:rotate(360deg) scale(1.1)}
-}
-
-@keyframes btAuraPulse{
-    0%,100%{opacity:.65}
-    50%{opacity:1}
 }
 
 /* =========================
-   GWIAZDY
+   POZIOM
 ========================= */
 
-#butelka-site .bt-stars,
-#butelka-site .bt-stars2{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:1;
-}
+function level(){
 
-#butelka-site .bt-stars{
-    background-image:
-        radial-gradient(circle,#fff 1px,transparent 1px);
-    background-size:95px 95px;
-    opacity:.25;
-    animation:btStars 28s linear infinite;
-}
+return Math.floor(xp/250)+1;
 
-#butelka-site .bt-stars2{
-    background-image:
-        radial-gradient(circle,#d783ff 1px,transparent 1px);
-    background-size:155px 155px;
-    opacity:.20;
-    animation:btStars2 42s linear infinite;
-}
-
-@keyframes btStars{
-    from{transform:translateY(0)}
-    to{transform:translateY(95px)}
-}
-
-@keyframes btStars2{
-    from{transform:translate(0,0)}
-    to{transform:translate(-100px,155px)}
 }
 
 /* =========================
-   PARTICLES
+   UI
 ========================= */
 
-#butelka-site .bt-particles{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:2;
-}
+function update(){
 
-#butelka-site .bt-particle{
-    position:absolute;
-    border-radius:50%;
-    background:#d98cff;
+document.getElementById("subCount").textContent=subs;
+document.getElementById("subBig").textContent=subs;
 
-    box-shadow:
-        0 0 7px #d000ff,
-        0 0 18px #8a00ff,
-        0 0 35px rgba(180,0,255,.7);
+document.getElementById("subBar").style.width=
+Math.min(subs,100)+"%";
 
-    animation:btParticleFloat linear infinite;
-}
+document.getElementById("subText").textContent=
+subs+" / 100";
 
-@keyframes btParticleFloat{
-    0%{
-        transform:translate3d(0,110vh,0) scale(.2);
-        opacity:0;
-    }
+document.getElementById("totalXp").textContent=xp;
+document.getElementById("totalCoins").textContent=coins;
 
-    10%{opacity:1}
+document.getElementById("xp2").textContent=xp;
+document.getElementById("coins2").textContent=coins;
+document.getElementById("level2").textContent=level();
 
-    50%{
-        transform:translate3d(35px,50vh,0) scale(1);
-    }
+document.getElementById("level1").textContent=
+"Poziom "+level();
 
-    90%{opacity:1}
+document.getElementById("coins1").textContent=
+"🪙 "+coins;
 
-    100%{
-        transform:translate3d(-30px,-20vh,0) scale(.5);
-        opacity:0;
-    }
+document.getElementById("streak1").textContent=
+"🔥 "+streak;
+
+document.getElementById("streak2").textContent=
+"🔥 Passa: "+streak;
+
+document.getElementById("streak3").textContent=streak;
+
+document.getElementById("profileName").textContent=name;
+
+document.getElementById("profileLevel").textContent=
+"Poziom "+level();
+
+document.getElementById("nickname").value=name;
+
 }
 
 /* =========================
-   WRAPPER
+   KONTO
 ========================= */
 
-#butelka-site .bt-wrap{
-    position:relative;
-    z-index:5;
-    width:min(1320px,94%);
-    margin:auto;
+function saveName(){
+
+let value=document.getElementById("nickname").value.trim();
+
+if(!value){
+toast("❌ Wpisz nazwę");
+return;
 }
 
-/* =========================
-   HEADER
-========================= */
+name=value;
+save();
+update();
+toast("💾 Nazwa zapisana!");
 
-#butelka-site .bt-header{
-    text-align:center;
-    padding:30px 15px 15px;
-}
-
-#butelka-site .bt-logo{
-    font-size:clamp(32px,6vw,58px);
-    font-weight:1000;
-    letter-spacing:4px;
-
-    color:#fff;
-
-    text-shadow:
-        0 0 5px #fff,
-        0 0 14px #fff,
-        0 0 28px #c500ff,
-        0 0 55px #9300ff,
-        0 0 90px #6200ff;
-
-    animation:btLogoPulse 3s ease-in-out infinite;
-}
-
-@keyframes btLogoPulse{
-    0%,100%{filter:brightness(1)}
-    50%{filter:brightness(1.35)}
-}
-
-#butelka-site .bt-sublogo{
-    color:#d9b0ff;
-    margin-top:8px;
-    font-weight:800;
-}
-
-/* =========================
-   HERO
-========================= */
-
-#butelka-site .bt-hero{
-    position:relative;
-    min-height:600px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    overflow:hidden;
-
-    border-radius:38px;
-    padding:60px 25px;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(164,0,255,.28),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(76,0,255,.18),
-            transparent 25%
-        ),
-        linear-gradient(
-            145deg,
-            rgba(47,0,75,.65),
-            rgba(8,1,18,.85)
-        );
-
-    border:1px solid rgba(205,90,255,.28);
-
-    box-shadow:
-        0 0 35px rgba(131,0,255,.20),
-        0 0 100px rgba(115,0,255,.08),
-        inset 0 0 100px rgba(145,0,255,.10);
-}
-
-#butelka-site .bt-hero::before{
-    content:"";
-    position:absolute;
-
-    width:520px;
-    height:520px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(180,0,255,.35),
-            rgba(90,0,255,.12) 40%,
-            transparent 70%
-        );
-
-    filter:blur(35px);
-
-    animation:btHeroGlow 5s ease-in-out infinite;
-}
-
-@keyframes btHeroGlow{
-    0%,100%{
-        transform:scale(.8);
-        opacity:.55;
-    }
-
-    50%{
-        transform:scale(1.18);
-        opacity:1;
-    }
-}
-
-#butelka-site .bt-hero-content{
-    position:relative;
-    z-index:3;
-}
-
-#butelka-site .bt-hero h1{
-    margin:0;
-
-    font-size:clamp(55px,11vw,135px);
-    font-weight:1000;
-    letter-spacing:clamp(3px,1.5vw,15px);
-
-    text-shadow:
-        0 0 7px #fff,
-        0 0 17px #fff,
-        0 0 35px #d000ff,
-        0 0 65px #a000ff,
-        0 0 110px #6500ff;
-
-    animation:btTitleFloat 4s ease-in-out infinite;
-}
-
-@keyframes btTitleFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-7px)}
-}
-
-#butelka-site .bt-hero-subtitle{
-    font-size:clamp(17px,3vw,27px);
-    font-weight:900;
-    color:#e4baff;
-
-    text-shadow:0 0 15px rgba(200,0,255,.6);
-
-    margin-top:10px;
-}
-
-#butelka-site .bt-hero p{
-    max-width:780px;
-    margin:20px auto;
-
-    color:#d6c5e4;
-    font-size:19px;
-    line-height:1.8;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-#butelka-site .bt-buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:14px;
-    margin-top:30px;
-}
-
-#butelka-site .bt-btn{
-    display:inline-block;
-
-    padding:14px 24px;
-
-    border-radius:15px;
-
-    color:#fff !important;
-    text-decoration:none !important;
-
-    font-weight:900;
-    cursor:pointer;
-
-    border:1px solid #b100ff;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(126,0,255,.52),
-            rgba(210,0,255,.22)
-        );
-
-    box-shadow:
-        0 0 15px rgba(165,0,255,.32),
-        inset 0 0 18px rgba(255,255,255,.03);
-
-    transition:.25s;
-}
-
-#butelka-site .bt-btn:hover{
-    transform:translateY(-3px) scale(1.03);
-
-    box-shadow:
-        0 0 20px #b000ff,
-        0 0 55px rgba(130,0,255,.45);
-}
-
-/* =========================
-   SEKCJE
-========================= */
-
-#butelka-site .bt-section{
-    padding:75px 0 0;
-}
-
-#butelka-site .bt-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-#butelka-site .bt-title h2{
-    margin:0;
-    font-size:clamp(32px,5vw,50px);
-
-    text-shadow:
-        0 0 10px #c000ff,
-        0 0 30px rgba(150,0,255,.7);
-}
-
-#butelka-site .bt-title p{
-    margin-top:10px;
-    color:#a99bb5;
-}
-
-/* =========================
-   GRID
-========================= */
-
-#butelka-site .bt-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(245px,1fr));
-    gap:20px;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-#butelka-site .bt-card{
-    position:relative;
-
-    padding:28px;
-
-    border-radius:23px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(82,0,125,.27),
-            rgba(18,4,31,.68)
-        );
-
-    border:1px solid rgba(183,0,255,.22);
-
-    box-shadow:
-        0 12px 45px rgba(0,0,0,.25),
-        inset 0 0 30px rgba(150,0,255,.035);
-
-    transition:.3s;
-
-    overflow:hidden;
-}
-
-#butelka-site .bt-card::before{
-    content:"";
-
-    position:absolute;
-
-    width:180px;
-    height:180px;
-
-    right:-95px;
-    top:-95px;
-
-    border-radius:50%;
-
-    background:#a000ff;
-
-    opacity:.08;
-
-    filter:blur(25px);
-
-    transition:.4s;
-}
-
-#butelka-site .bt-card::after{
-    content:"";
-
-    position:absolute;
-
-    left:-100%;
-    top:0;
-
-    width:70%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.035),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    transition:.7s;
-}
-
-#butelka-site .bt-card:hover{
-    transform:translateY(-7px);
-
-    border-color:rgba(208,0,255,.68);
-
-    box-shadow:
-        0 18px 55px rgba(70,0,110,.35),
-        0 0 28px rgba(160,0,255,.20);
-}
-
-#butelka-site .bt-card:hover::before{
-    transform:scale(1.5);
-    opacity:.15;
-}
-
-#butelka-site .bt-card:hover::after{
-    left:140%;
-}
-
-#butelka-site .bt-card h3{
-    margin:0 0 12px;
-    font-size:22px;
-}
-
-#butelka-site .bt-card p{
-    color:#bdb0c8;
-    line-height:1.7;
-}
-
-#butelka-site .bt-icon{
-    font-size:42px;
-    margin-bottom:15px;
-    filter:drop-shadow(0 0 10px #a000ff);
-}
-
-/* =========================
-   SUB COUNTER
-========================= */
-
-#butelka-site .bt-sub-card{
-    text-align:center;
-}
-
-#butelka-site .bt-sub-number{
-    font-size:70px;
-    font-weight:1000;
-
-    color:#fff;
-
-    text-shadow:
-        0 0 10px #fff,
-        0 0 30px #d000ff,
-        0 0 70px #8500ff;
-}
-
-#butelka-site .bt-sub-label{
-    font-size:22px;
-    font-weight:900;
-    color:#e5b8ff;
-}
-
-#butelka-site .bt-obsidian{
-    margin-top:22px;
-
-    font-size:48px;
-    letter-spacing:4px;
-
-    filter:
-        drop-shadow(0 0 5px #fff)
-        drop-shadow(0 0 15px #8000ff);
-
-    animation:btObsidian 2s ease-in-out infinite;
-}
-
-@keyframes btObsidian{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.08)}
-}
-
-/* =========================
-   VIEWERS
-========================= */
-
-#butelka-site .bt-viewer{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-#butelka-site .bt-avatar{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:27px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7200ff,
-            #d000ff
-        );
-
-    box-shadow:
-        0 0 18px rgba(180,0,255,.6);
 }
 
 /* =========================
    QUIZ
 ========================= */
 
-#butelka-site .bt-quiz{
-    max-width:850px;
-    margin:auto;
+function loadQuiz(){
+
+document.getElementById("question").textContent=
+currentQuestion.q;
+
+let box=document.getElementById("answers");
+
+box.innerHTML="";
+
+currentQuestion.a.forEach((answer,index)=>{
+
+let button=document.createElement("button");
+
+button.className="answer";
+
+button.textContent=
+String.fromCharCode(65+index)+". "+answer;
+
+button.onclick=()=>answerQuiz(index);
+
+box.appendChild(button);
+
+});
+
+if(localStorage.getItem("bk_quiz")===today){
+
+document.getElementById("quizResult").textContent=
+"✅ Quiz na dziś został już wykonany.";
+
 }
 
-#butelka-site .bt-question{
-    font-size:25px;
-    font-weight:900;
-    margin-bottom:22px;
 }
 
-#butelka-site .bt-answers{
-    display:grid;
-    gap:12px;
+function answerQuiz(index){
+
+if(localStorage.getItem("bk_quiz")===today){
+
+toast("⏳ Wróć jutro po nowy quiz!");
+return;
+
 }
 
-#butelka-site .bt-answer{
-    width:100%;
+if(index===currentQuestion.c){
 
-    padding:16px 20px;
+streak++;
+xp+=100;
+coins+=25;
 
-    border-radius:15px;
+document.getElementById("quizResult").textContent=
+"🎉 POPRAWNA ODPOWIEDŹ! +100 XP +25 monet";
 
-    border:1px solid rgba(183,0,255,.30);
+toast("🔥 Quiz zaliczony!");
 
-    background:rgba(40,0,65,.45);
+}else{
 
-    color:white;
+streak=0;
 
-    text-align:left;
+document.getElementById("quizResult").textContent=
+"❌ Zła odpowiedź. Passa została wyzerowana.";
 
-    cursor:pointer;
+toast("❌ Niestety!");
 
-    font-weight:800;
-
-    transition:.2s;
 }
 
-#butelka-site .bt-answer:hover{
-    transform:translateX(5px);
+localStorage.setItem("bk_quiz",today);
 
-    border-color:#c000ff;
+save();
+update();
 
-    box-shadow:0 0 20px rgba(180,0,255,.25);
 }
 
-#butelka-site .bt-result{
-    margin-top:20px;
-    min-height:25px;
+/* =========================
+   NAGRODA DNIA
+========================= */
 
-    font-weight:900;
-    color:#e6baff;
+function dailyReward(){
+
+if(localStorage.getItem("bk_reward")===today){
+
+toast("🎁 Nagroda już odebrana!");
+
+return;
+
+}
+
+coins+=50;
+xp+=50;
+
+localStorage.setItem("bk_reward",today);
+
+save();
+update();
+
+toast("🎁 +50 XP i +50 monet!");
+
+}
+
+/* =========================
+   OWNER
+========================= */
+
+function loginOwner(){
+
+let code=document.getElementById("ownerCode").value;
+
+/*
+  DEMO KOD WŁAŚCICIELA:
+  LOVE1ADMIN
+*/
+
+if(code==="LOVE1ADMIN"){
+
+document.getElementById("ownerLogin").style.display="none";
+document.getElementById("ownerPanel").style.display="block";
+
+toast("🔓 Panel właściciela odblokowany!");
+
+}else{
+
+toast("❌ Nieprawidłowy kod!");
+
+}
+
+}
+
+function changeSubs(){
+
+let value=Number(document.getElementById("adminSubs").value);
+
+if(value<0)value=0;
+
+subs=value;
+
+save();
+update();
+
+toast("🧱 Liczba subów zmieniona!");
+
+}
+
+function addAdminXp(){
+
+let value=Number(document.getElementById("adminXp").value)||0;
+
+xp+=value;
+
+save();
+update();
+
+toast("⭐ Dodano "+value+" XP!");
+
+}
+
+function addAdminCoins(){
+
+let value=Number(document.getElementById("adminCoins").value)||0;
+
+coins+=value;
+
+save();
+update();
+
+toast("🪙 Dodano "+value+" monet!");
+
+}
+
+function resetAll(){
+
+if(!confirm("Na pewno zresetować dane?"))return;
+
+localStorage.removeItem("bk_xp");
+localStorage.removeItem("bk_coins");
+localStorage.removeItem("bk_streak");
+localStorage.removeItem("bk_subs");
+localStorage.removeItem("bk_name");
+localStorage.removeItem("bk_quiz");
+localStorage.removeItem("bk_reward");
+
+location.reload();
+
 }
 
 /* =========================
    RANKING
 ========================= */
 
-#butelka-site .bt-ranking{
-    display:grid;
-    gap:12px;
-    max-width:900px;
-    margin:auto;
-}
-
-#butelka-site .bt-rank{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:17px 20px;
-
-    border-radius:17px;
-
-    background:rgba(70,0,105,.22);
-
-    border:1px solid rgba(190,0,255,.16);
-
-    transition:.25s;
-}
-
-#butelka-site .bt-rank:hover{
-    transform:translateX(5px);
-    border-color:#b000ff;
-}
-
-#butelka-site .bt-rank-name{
-    font-weight:900;
-}
-
-#butelka-site .bt-rank-points{
-    color:#d98cff;
-    font-weight:1000;
-}
-
-/* =========================
-   PASSA
-========================= */
-
-#butelka-site .bt-streak{
-    text-align:center;
-}
-
-#butelka-site .bt-fire{
-    font-size:85px;
-
-    filter:
-        drop-shadow(0 0 10px #ff5c00)
-        drop-shadow(0 0 35px #b000ff);
-
-    animation:btFire 1.4s ease-in-out infinite;
-}
-
-@keyframes btFire{
-    0%,100%{transform:scale(1) translateY(0)}
-    50%{transform:scale(1.1) translateY(-6px)}
-}
-
-#butelka-site .bt-streak-number{
-    font-size:55px;
-    font-weight:1000;
-}
-
-/* =========================
-   MINECRAFT
-========================= */
-
-#butelka-site .bt-minecraft{
-    position:relative;
-    text-align:center;
-}
-
-#butelka-site .bt-mc-logo{
-    font-size:90px;
-    filter:
-        drop-shadow(0 0 10px #00ff88)
-        drop-shadow(0 0 30px #00aa66);
-
-    animation:btMc 3s ease-in-out infinite;
-}
-
-@keyframes btMc{
-    0%,100%{transform:translateY(0) rotate(-2deg)}
-    50%{transform:translateY(-10px) rotate(2deg)}
-}
-
-/* =========================
-   LINKS
-========================= */
-
-#butelka-site .bt-social{
-    text-align:center;
-}
-
-#butelka-site .bt-social .bt-btn{
-    margin:6px;
-}
-
-/* =========================
-   PRIVACY / ACCOUNT
-========================= */
-
-#butelka-site .bt-info{
-    max-width:900px;
-    margin:auto;
-}
-
-#butelka-site .bt-info h3{
-    color:#e8b4ff;
-    margin-bottom:12px;
-    font-size:25px;
-}
-
-#butelka-site .bt-info p{
-    color:#c7b9d0;
-    line-height:1.8;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-#butelka-site .bt-footer{
-    margin-top:80px;
-
-    padding:40px 20px;
-
-    text-align:center;
-
-    color:#75697f;
-
-    border-top:1px solid rgba(170,0,255,.15);
-
-    background:rgba(5,0,12,.30);
-}
-
-#butelka-site .bt-footer strong{
-    color:#c88cff;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:700px){
-
-    #butelka-site .bt-hero{
-        min-height:540px;
-        border-radius:25px;
-        padding:40px 17px;
-    }
-
-    #butelka-site .bt-hero h1{
-        font-size:55px;
-    }
-
-    #butelka-site .bt-hero p{
-        font-size:16px;
-    }
-
-    #butelka-site .bt-card{
-        padding:21px;
-    }
-
-    #butelka-site .bt-section{
-        padding-top:55px;
-    }
-}
-</style>
-
-
-<!-- TŁO -->
-<div class="bt-stars"></div>
-<div class="bt-stars2"></div>
-<div class="bt-particles" id="btParticles"></div>
-
-
-<div class="bt-wrap">
-
-    <!-- HEADER -->
-    <header class="bt-header">
-
-        <div class="bt-logo">
-            💜 1BUTELKAKAUCYJNA
-        </div>
-
-        <div class="bt-sublogo">
-            MINECRAFT • GAMING • WIDZOWIE
-        </div>
-
-    </header>
-
-
-    <!-- HERO -->
-    <section class="bt-hero">
-
-        <div class="bt-hero-content">
-
-            <h1>1BUTELKAKAUCYJNA</h1>
-
-            <div class="bt-hero-subtitle">
-                🎮 MINECRAFT • 👥 WIDZOWIE • 💜 COMMUNITY
-            </div>
-
-            <p>
-                Oficjalna strefa widzów 1ButelkaKaucyjna.
-                Minecraft, quizy, rankingi, subskrypcje,
-                wyzwania i wspólna zabawa.
-            </p>
-
-            <div class="bt-buttons">
-
-                <a
-                    class="bt-btn"
-                    href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    ▶️ YouTube 1ButelkaKaucyjna
-                </a>
-
-                <a
-                    class="bt-btn"
-                    href="https://discord.gg/aN5GPpBkTv"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    💜 Dołącz na Discord
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SUBY -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-            <h2>🧱 1 SUB = 1 BLOK OBSYDIANU</h2>
-            <p>Każdy sub dokłada kolejny blok do naszej ściany.</p>
-        </div>
-
-        <div class="bt-card bt-sub-card">
-
-            <div class="bt-sub-number" id="btSubs">
-                40
-            </div>
-
-            <div class="bt-sub-label">
-                SUBSKRYPCJI
-            </div>
-
-            <div class="bt-obsidian" id="btObsidian">
-                🟪🟪🟪🟪🟪
-            </div>
-
-            <p style="margin-top:20px">
-                Cel: budujemy razem obsydianową konstrukcję!
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- MINECRAFT -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-            <h2>🎮 Minecraft</h2>
-            <p>Główna gra naszej społeczności.</p>
-        </div>
-
-        <div class="bt-grid">
-
-            <div class="bt-card bt-minecraft">
-
-                <div class="bt-mc-logo">
-                    ⛏️
-                </div>
-
-                <h3>MINECRAFT</h3>
-
-                <p>
-                    Wspólna gra, PvP, budowanie,
-                    wyzwania i materiały na YouTube.
-                </p>
-
-            </div>
-
-
-            <div class="bt-card">
-
-                <div class="bt-icon">⚔️</div>
-
-                <h3>PvP</h3>
-
-                <p>
-                    Sprawdzaj swoje umiejętności
-                    i rywalizuj z innymi widzami.
-                </p>
-
-            </div>
-
-
-            <div class="bt-card">
-
-                <div class="bt-icon">🏆</div>
-
-                <h3>Wyzwania</h3>
-
-                <p>
-                    Specjalne wyzwania dla społeczności
-                    i aktywnych widzów.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- STREFA WIDZÓW -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-            <h2>👥 Strefa widzów</h2>
-            <p>Miejsce stworzone dla społeczności.</p>
-        </div>
-
-        <div class="bt-grid">
-
-            <div class="bt-card bt-viewer">
-
-                <div class="bt-avatar">🎮</div>
-
-                <div>
-                    <h3>Widzowie</h3>
-                    <p>Dołącz do naszej społeczności.</p>
-                </div>
-
-            </div>
-
-
-            <div class="bt-card bt-viewer">
-
-                <div class="bt-avatar">🏆</div>
-
-                <div>
-                    <h3>Rywalizacja</h3>
-                    <p>Zdobywaj punkty i miejsce w rankingu.</p>
-                </div>
-
-            </div>
-
-
-            <div class="bt-card bt-viewer">
-
-                <div class="bt-avatar">🔥</div>
-
-                <div>
-                    <h3>Aktywność</h3>
-                    <p>Rozwiązuj quizy i buduj swoją passę.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- QUIZ -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-
-            <h2>🧠 Quiz dnia</h2>
-
-            <p>
-                Codziennie nowe pytanie.
-            </p>
-
-        </div>
-
-
-        <div class="bt-card bt-quiz">
-
-            <div
-                class="bt-question"
-                id="btQuestion"
-            >
-                Ładowanie pytania...
-            </div>
-
-            <div
-                class="bt-answers"
-                id="btAnswers"
-            ></div>
-
-            <div
-                class="bt-result"
-                id="btQuizResult"
-            ></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PASSA -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-
-            <h2>🔥 Passa quizów</h2>
-
-            <p>
-                Nie przerywaj swojej serii!
-            </p>
-
-        </div>
-
-
-        <div class="bt-card bt-streak">
-
-            <div class="bt-fire">
-                🔥
-            </div>
-
-            <div
-                class="bt-streak-number"
-                id="btStreak"
-            >
-                0
-            </div>
-
-            <p>
-                dni z rzędu
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- RANKING -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-
-            <h2>🏆 Ranking widzów</h2>
-
-            <p>
-                Przykładowa tabela społeczności.
-            </p>
-
-        </div>
-
-
-        <div class="bt-ranking">
-
-            <div class="bt-rank">
-
-                <span class="bt-rank-name">
-                    🥇 1. Top Player
-                </span>
-
-                <span class="bt-rank-points">
-                    1250 pkt
-                </span>
-
-            </div>
-
-
-            <div class="bt-rank">
-
-                <span class="bt-rank-name">
-                    🥈 2. MinecraftFan
-                </span>
-
-                <span class="bt-rank-points">
-                    980 pkt
-                </span>
-
-            </div>
-
-
-            <div class="bt-rank">
-
-                <span class="bt-rank-name">
-                    🥉 3. KacperPvP
-                </span>
-
-                <span class="bt-rank-points">
-                    850 pkt
-                </span>
-
-            </div>
-
-
-            <div class="bt-rank">
-
-                <span class="bt-rank-name">
-                    💜 4. WidzLOVE1
-                </span>
-
-                <span class="bt-rank-points">
-                    720 pkt
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- YOUTUBE -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-            <h2>▶️ YouTube</h2>
-            <p>1ButelkaKaucyjna</p>
-        </div>
-
-
-        <div class="bt-card bt-social">
-
-            <div class="bt-icon">
-                ▶️
-            </div>
-
-            <h3>
-                1ButelkaKaucyjna
-            </h3>
-
-            <p>
-                Minecraft, gaming, challenge i najlepsze momenty.
-            </p>
-
-            <br>
-
-            <a
-                class="bt-btn"
-                href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH"
-                target="_blank"
-                rel="noopener"
-            >
-                ▶️ Otwórz YouTube
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- DISCORD -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-            <h2>💜 Discord</h2>
-            <p>Dołącz do społeczności.</p>
-        </div>
-
-
-        <div class="bt-card bt-social">
-
-            <div class="bt-icon">
-                💬
-            </div>
-
-            <h3>
-                Discord 1ButelkaKaucyjna
-            </h3>
-
-            <p>
-                Rozmawiaj, graj z innymi widzami
-                i śledź najnowsze informacje.
-            </p>
-
-            <br>
-
-            <a
-                class="bt-btn"
-                href="https://discord.gg/aN5GPpBkTv"
-                target="_blank"
-                rel="noopener"
-            >
-                💜 Dołącz na Discord
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRYWATNOŚĆ -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-            <h2>🔒 Prywatność</h2>
-            <p>Informacje o danych strony.</p>
-        </div>
-
-
-        <div class="bt-card bt-info">
-
-            <h3>
-                🔐 Dane lokalne
-            </h3>
-
-            <p>
-                Wynik quizu i passa są zapisywane
-                lokalnie w przeglądarce użytkownika.
-                Strona nie wysyła tych danych do
-                zewnętrznej bazy danych.
-            </p>
-
-            <br>
-
-            <p>
-                Kliknięcie przycisków YouTube lub Discord
-                otwiera zewnętrzne strony tych usług.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- KONTO -->
-    <section class="bt-section">
-
-        <div class="bt-title">
-            <h2>👤 Konto</h2>
-            <p>Panel widza.</p>
-        </div>
-
-
-        <div class="bt-grid">
-
-            <div class="bt-card">
-
-                <div class="bt-icon">
-                    👤
-                </div>
-
-                <h3>
-                    Twoja aktywność
-                </h3>
-
-                <p>
-                    Sprawdzaj swoją passę quizów
-                    oraz wyniki zapisane w tej przeglądarce.
-                </p>
-
-            </div>
-
-
-            <div class="bt-card">
-
-                <div class="bt-icon">
-                    🔥
-                </div>
-
-                <h3>
-                    Passa
-                </h3>
-
-                <p>
-                    Aktualna passa:
-                    <strong id="btAccountStreak">0</strong>
-                    dni.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- STOPKA -->
-    <footer class="bt-footer">
-
-        <div class="bt-footer-title">
-            💜 1ButelkaKaucyjna
-        </div>
-
-        <p>
-            Minecraft • Gaming • Community
-        </p>
-
-        <p style="margin-top:10px">
-            © 2026 1ButelkaKaucyjna
-        </p>
-
-    </footer>
-
-</div>
-
-
-<script>
-(function(){
-
-/* =========================
-   PARTICLES
-========================= */
-
-const particles =
-    document.getElementById("btParticles");
-
-for(let i=0;i<45;i++){
-
-    const p =
-        document.createElement("span");
-
-    p.className="bt-particle";
-
-    const size =
-        Math.random()*4+2;
-
-    p.style.width=size+"px";
-    p.style.height=size+"px";
-
-    p.style.left =
-        Math.random()*100+"%";
-
-    p.style.animationDuration =
-        (Math.random()*12+8)+"s";
-
-    p.style.animationDelay =
-        (Math.random()*10)+"s";
-
-    particles.appendChild(p);
-}
-
-
-/* =========================
-   SUBY
-========================= */
-
-const subCount = 40;
-
-document.getElementById("btSubs")
-    .textContent=subCount;
-
-
-/* liczba bloków obsydianu */
-
-const obsidian =
-    document.getElementById("btObsidian");
-
-let blocks="";
-
-const blocksToShow =
-    Math.min(subCount,50);
-
-for(let i=0;i<blocksToShow;i++){
-    blocks+="🟪";
-}
-
-obsidian.textContent=blocks;
-
-
-/* =========================
-   QUIZ DNIA
-========================= */
-
-const questions=[
-
-    {
-        q:"Który przedmiot jest charakterystyczny dla Netheru?",
-        a:[
-            "Obsydian",
-            "Trawa",
-            "Piasek",
-            "Śnieg"
-        ],
-        correct:0
-    },
-
-    {
-        q:"Ile bloków potrzeba do stworzenia pełnego portalu Netheru w podstawowej wersji?",
-        a:[
-            "10",
-            "14",
-            "20",
-            "8"
-        ],
-        correct:0
-    },
-
-    {
-        q:"Który mob wybucha?",
-        a:[
-            "Creeper",
-            "Krowa",
-            "Owca",
-            "Kurczak"
-        ],
-        correct:0
-    },
-
-    {
-        q:"Jak nazywa się główny wymiar Minecrafta?",
-        a:[
-            "Overworld",
-            "Nether",
-            "End",
-            "Void"
-        ],
-        correct:0
-    },
-
-    {
-        q:"Który materiał jest potrzebny do stworzenia stołu do zaklinania?",
-        a:[
-            "Diament",
-            "Drewno",
-            "Żelazo",
-            "Piasek"
-        ],
-        correct:0
-    }
-
+function ranking(){
+
+let players=[
+{name:"👑 Topxd25",xp:2450},
+{name:"⚔️ MinecraftFan",xp:1980},
+{name:"💜 PurplePlayer",xp:1640},
+{name:"⛏️ Kopacz",xp:1210},
+{name:"🔥 PVPGracz",xp:990}
 ];
 
+let current={
+name:"🟣 "+name,
+xp:xp
+};
 
-/* pytanie zależne od dnia */
+players.push(current);
 
-const dayNumber =
-    Math.floor(Date.now()/86400000);
+players.sort((a,b)=>b.xp-a.xp);
 
-const question =
-    questions[dayNumber % questions.length];
+let box=document.getElementById("rankingList");
 
-const questionEl =
-    document.getElementById("btQuestion");
+box.innerHTML="";
 
-const answersEl =
-    document.getElementById("btAnswers");
+players.slice(0,10).forEach((player,index)=>{
 
-const resultEl =
-    document.getElementById("btQuizResult");
+let row=document.createElement("div");
 
-questionEl.textContent =
-    question.q;
+row.className="rank";
 
+row.innerHTML=`
+<div class="ranknum">${index+1}</div>
+<div class="rankname">${escapeHTML(player.name)}</div>
+<div class="rankxp">${player.xp} XP</div>
+`;
 
-question.a.forEach((answer,index)=>{
-
-    const btn =
-        document.createElement("button");
-
-    btn.className="bt-answer";
-
-    btn.textContent =
-        String.fromCharCode(65+index)+". "+answer;
-
-    btn.onclick=function(){
-
-        if(
-            localStorage.getItem(
-                "btQuizDone_"+dayNumber
-            )
-        ){
-            return;
-        }
-
-        if(index===question.correct){
-
-            resultEl.textContent =
-                "✅ Dobra odpowiedź! +1 dzień passy.";
-
-            updateStreak(true);
-
-        }else{
-
-            resultEl.textContent =
-                "❌ Niestety! Spróbuj ponownie jutro.";
-
-            updateStreak(false);
-        }
-
-        localStorage.setItem(
-            "btQuizDone_"+dayNumber,
-            "1"
-        );
-
-        document
-            .querySelectorAll(".bt-answer")
-            .forEach(x=>x.disabled=true);
-    };
-
-    answersEl.appendChild(btn);
+box.appendChild(row);
 
 });
 
+}
+
+function escapeHTML(text){
+
+let div=document.createElement("div");
+div.textContent=text;
+return div.innerHTML;
+
+}
 
 /* =========================
-   PASSA
+   START
 ========================= */
 
-function updateStreak(correct){
+update();
+loadQuiz();
+ranking();
 
-    let streak =
-        Number(
-            localStorage.getItem("btStreak") || 0
-        );
-
-    const lastDay =
-        Number(
-            localStorage.getItem("btLastQuizDay") || -999
-        );
-
-    if(correct){
-
-        if(lastDay===dayNumber-1){
-            streak++;
-        }else if(lastDay!==dayNumber){
-            streak=1;
-        }
-
-        localStorage.setItem(
-            "btStreak",
-            streak
-        );
-
-        localStorage.setItem(
-            "btLastQuizDay",
-            dayNumber
-        );
-    }
-
-    showStreak();
-}
-
-
-function showStreak(){
-
-    const streak =
-        Number(
-            localStorage.getItem("btStreak") || 0
-        );
-
-    document.getElementById("btStreak")
-        .textContent=streak;
-
-    document.getElementById("btAccountStreak")
-        .textContent=streak;
-}
-
-showStreak();
-
-})();
 </script>
 
-</div>
+</body>
+</html>
 ```
-
