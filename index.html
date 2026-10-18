@@ -1,213 +1,841 @@
-```html
-<div id="aura-portal">
+<div id="ultraV">
+
 <style>
-#aura-portal {
-  --purple:#a100ff;
-  --pink:#e49aff;
-  --bg:#08020e;
-  --panel:#13091d;
-  color:#fff;
-  background:var(--bg);
-  font-family:Arial,sans-serif;
-  border-radius:18px;
-  overflow:hidden;
-  position:relative;
+#ultraV{
+ --bg:#07040d;
+ --panel:#100b1c;
+ --panel2:#191027;
+ --purple:#a855f7;
+ --pink:#e879f9;
+ --text:#f8f4ff;
+ --muted:#b5a8c9;
+ --line:#38234d;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;
+ min-height:100vh;
+ border-radius:18px;
+ overflow:hidden;
+ position:relative;
+ isolation:isolate;
 }
-#aura-portal *{box-sizing:border-box}
-#aura-portal button,#aura-portal input{font:inherit}
-#aura-portal button{
-  background:linear-gradient(135deg,#7900c9,#bd35ff);
-  color:#fff;border:1px solid #dc8cff;
-  border-radius:10px;padding:11px 15px;
-  cursor:pointer;transition:.2s;
+#ultraV *{box-sizing:border-box}
+#ultraV button,#ultraV input,#ultraV select{font:inherit}
+#ultraV button{
+ cursor:pointer;
+ border:1px solid #b66aff;
+ color:white;
+ padding:11px 15px;
+ border-radius:10px;
+ background:linear-gradient(135deg,#7025cf,#a855f7);
+ transition:.2s;
 }
-#aura-portal button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 18px #a100ff;
+#ultraV button:hover{
+ transform:translateY(-2px);
+ box-shadow:0 0 20px #a855f766;
 }
-#aura-portal .hero{
-  text-align:center;padding:42px 18px;
-  background:
-  radial-gradient(ellipse at top,#6500a855,transparent 65%),
-  linear-gradient(135deg,#11051d,#08020e);
-  border-bottom:1px solid #7700a8;
+#ultraV button.secondary{
+ background:#1a1126;border-color:#49315d;
 }
-#aura-portal .logo{
-  font-size:clamp(30px,6vw,58px);
-  font-weight:1000;letter-spacing:2px;
-  color:#e7b5ff;
-  text-shadow:0 0 12px #a100ff,0 0 35px #7900ff;
+#ultraV button.danger{
+ background:#7f1d45;border-color:#fb7185;
 }
-#aura-portal .subtitle{color:#c6a4d9;margin:12px 0 20px}
-#aura-portal .status{
-  display:inline-block;border:1px solid #6fdb9b;
-  color:#8dffb0;border-radius:30px;
-  padding:7px 13px;font-size:12px;
+#ultraV button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+#ultraV a{color:#e5b7ff;text-decoration:none}
+#ultraV input,#ultraV select{
+ background:#0a0710;color:white;
+ border:1px solid #503467;
+ border-radius:9px;padding:12px;width:100%;
+ margin:7px 0 12px;
 }
-#aura-portal .nav{
-  display:flex;gap:8px;padding:13px;
-  overflow-x:auto;background:#0d0514;
-  border-bottom:1px solid #341044;
+#ultraV .topbar{
+ padding:12px 20px;display:flex;
+ align-items:center;justify-content:space-between;
+ gap:15px;background:#0c0813;
+ border-bottom:1px solid var(--line);
+ flex-wrap:wrap;
 }
-#aura-portal .nav button{white-space:nowrap}
-#aura-portal .content{padding:18px}
-#aura-portal .page{display:none}
-#aura-portal .page.active{display:block}
-#aura-portal h2{color:#e5b5ff}
-#aura-portal h3{margin-top:0}
-#aura-portal .grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:14px;margin:16px 0;
+#ultraV .brand{
+ font-size:22px;font-weight:1000;letter-spacing:1px;
+ color:#f0c9ff;text-shadow:0 0 15px #a855f7;
 }
-#aura-portal .card{
-  background:linear-gradient(145deg,#1b0b29,#0e0615);
-  border:1px solid #4d1b69;
-  border-radius:15px;padding:18px;
-  box-shadow:0 0 12px #6700a011;
+#ultraV .online{color:#86efac;font-size:12px}
+#ultraV .hero{
+ text-align:center;padding:55px 18px 45px;
+ position:relative;overflow:hidden;
+ background:
+ radial-gradient(ellipse at 50% 0%,#8428dd55,transparent 55%),
+ radial-gradient(ellipse at 0% 100%,#5b21b655,transparent 45%),
+ #09050f;
+ border-bottom:1px solid #522575;
 }
-#aura-portal .big{font-size:32px}
-#aura-portal .muted{color:#b8a1c6;font-size:13px}
-#aura-portal .number{font-size:25px;font-weight:bold;color:#e2a8ff}
-#aura-portal .bar{
-  height:10px;background:#30203a;border-radius:10px;
-  overflow:hidden;margin:12px 0;
+#ultraV .hero:before{
+ content:"";position:absolute;inset:-60%;
+ background:conic-gradient(from 0deg,transparent,#a855f70d,transparent,#e879f922,transparent);
+ animation:uvRotate 22s linear infinite;pointer-events:none;
 }
-#aura-portal .bar span{
-  display:block;height:100%;width:0%;
-  background:linear-gradient(90deg,#7200ff,#f09cff);
-  box-shadow:0 0 12px #a100ff;
-  transition:width .4s;
+#ultraV .hero>*{position:relative}
+#ultraV .heroTitle{
+ font-size:clamp(32px,6vw,64px);font-weight:1000;
+ letter-spacing:2px;margin:8px 0;
+ background:linear-gradient(90deg,#fff,#d8b4fe,#f0abfc,#fff);
+ background-size:250%;color:transparent;background-clip:text;
+ animation:uvShine 5s linear infinite;
 }
-#aura-portal .item{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:12px 0;border-bottom:1px solid #382044;
+#ultraV .hero p{color:#c9b8db;line-height:1.7}
+#ultraV .heroBadge{
+ display:inline-block;border:1px solid #a855f7;
+ border-radius:30px;padding:7px 13px;
+ color:#e9c5ff;background:#a855f711;font-size:12px;
 }
-#aura-portal .item:last-child{border-bottom:0}
-#aura-portal .tag{
-  display:inline-block;padding:5px 9px;border-radius:8px;
-  background:#3c1452;color:#e7b5ff;font-size:12px;
+#ultraV .nav{
+ display:flex;gap:8px;padding:12px;
+ overflow-x:auto;background:#0b0710;
+ border-bottom:1px solid var(--line);
+ position:sticky;top:0;z-index:20;
 }
-#aura-portal input{
-  background:#0b0610;color:white;border:1px solid #6b3187;
-  padding:12px;border-radius:9px;width:100%;margin:6px 0 12px;
+#ultraV .nav button{white-space:nowrap;font-size:13px}
+#ultraV .nav button.active{box-shadow:0 0 17px #a855f766}
+#ultraV .layout{
+ display:grid;grid-template-columns:225px minmax(0,1fr);
+ gap:18px;padding:18px;max-width:1500px;margin:auto;
 }
-#aura-portal .arena{
-  text-align:center;padding:22px;
-  border:1px solid #6d2692;border-radius:15px;
-  background:radial-gradient(circle,#3b105c,#100519 75%);
+#ultraV .sidebar{
+ align-self:start;position:sticky;top:76px;
+ background:#100b19;border:1px solid var(--line);
+ border-radius:15px;padding:15px;
 }
-#aura-portal .enemy{font-size:65px;filter:drop-shadow(0 0 12px #b500ff)}
-#aura-portal .notice{
-  padding:12px;border-left:3px solid #bb47ff;
-  background:#200d2e;margin:10px 0;border-radius:5px;
+#ultraV .sidebtn{
+ display:block;width:100%;text-align:left;
+ margin:5px 0;background:transparent!important;
+ border-color:transparent!important;
 }
-#aura-portal .footer{
-  text-align:center;padding:22px;color:#9c80ac;
-  background:#0b0411;border-top:1px solid #351044;
+#ultraV .sidebtn:hover,#ultraV .sidebtn.active{
+ background:#28153b!important;border-color:#7844a1!important;
 }
-#aura-portal .toast{
-  position:fixed;bottom:20px;right:20px;z-index:99999;
-  background:#220b35;border:1px solid #d18aff;
-  color:white;padding:14px 18px;border-radius:12px;
-  box-shadow:0 0 25px #8e00ff;display:none;
+#ultraV .main{min-width:0}
+#ultraV .page{display:none;animation:uvEnter .25s ease}
+#ultraV .page.active{display:block}
+#ultraV h2{font-size:26px;margin:5px 0 17px}
+#ultraV h3{margin:0 0 10px}
+#ultraV .muted{color:var(--muted);font-size:13px;line-height:1.6}
+#ultraV .grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));
+ gap:14px;margin:15px 0;
 }
-#aura-portal .rank{color:#f2bdff;font-weight:bold}
-#aura-portal .glow{animation:auraPulse 2s infinite alternate}
-@keyframes auraPulse{
-  from{text-shadow:0 0 5px #8e00ff}
-  to{text-shadow:0 0 24px #ed9cff,0 0 45px #8e00ff}
+#ultraV .card{
+ min-width:0;background:linear-gradient(145deg,#171024,#0e0917);
+ border:1px solid var(--line);border-radius:15px;padding:18px;
+ position:relative;overflow:hidden;
 }
-#aura-portal .pixel{
-  font-family:monospace;font-weight:bold;
+#ultraV .card:hover{border-color:#8951b1}
+#ultraV .stat{
+ font-size:29px;font-weight:900;color:#e9c5ff;
+ text-shadow:0 0 15px #a855f733;
 }
-#aura-portal .danger{background:linear-gradient(135deg,#a00035,#ed286d)}
-#aura-portal .green{color:#8dffb0}
-#aura-portal .yellow{color:#ffe18a}
-#aura-portal .purple{color:#e3a3ff}
-@media(max-width:600px){
-  #aura-portal .content{padding:12px}
-  #aura-portal .hero{padding:30px 12px}
-  #aura-portal .item{align-items:flex-start;flex-wrap:wrap}
+#ultraV .icon{font-size:32px;margin-bottom:10px}
+#ultraV .tag{
+ display:inline-block;padding:5px 9px;border-radius:7px;
+ background:#31194a;color:#e9c5ff;font-size:11px;
+ border:1px solid #4f2b70;
+}
+#ultraV .bar{
+ height:9px;border-radius:20px;background:#30223c;
+ overflow:hidden;margin:12px 0;
+}
+#ultraV .bar span{
+ display:block;width:0;height:100%;
+ background:linear-gradient(90deg,#7c3aed,#e879f9);
+ box-shadow:0 0 12px #a855f7;transition:width .35s;
+}
+#ultraV .row{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:12px;padding:13px 0;border-bottom:1px solid #30213e;
+}
+#ultraV .row:last-child{border-bottom:0}
+#ultraV .notice{
+ background:#1a1025;border-left:3px solid #c084fc;
+ padding:13px;border-radius:7px;margin:10px 0;line-height:1.5;
+}
+#ultraV .arena{
+ text-align:center;padding:25px 15px;
+ background:radial-gradient(ellipse at center,#37145b,#100818 72%);
+ border:1px solid #7840a0;border-radius:17px;
+}
+#ultraV .enemy{font-size:75px;filter:drop-shadow(0 0 15px #a855f7)}
+#ultraV .question{
+ font-size:20px;font-weight:bold;line-height:1.5;margin:18px 0;
+}
+#ultraV .answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#ultraV .answers button{text-align:left;background:#20142d;border-color:#56366e}
+#ultraV .answers button.correct{background:#14532d;border-color:#4ade80}
+#ultraV .answers button.wrong{background:#7f1d1d;border-color:#f87171}
+#ultraV .footer{
+ padding:25px;text-align:center;color:#9585a8;
+ background:#0a0610;border-top:1px solid var(--line);
+}
+#ultraV .toast{
+ display:none;position:fixed;z-index:999999;
+ bottom:22px;right:22px;max-width:calc(100vw - 44px);
+ padding:14px 18px;background:#21102f;
+ border:1px solid #d8b4fe;border-radius:12px;
+ box-shadow:0 0 25px #9333ea55;color:white;
+}
+#ultraV .progressText{font-size:12px;color:#c4b5d5}
+#ultraV .bigNumber{font-size:40px}
+#ultraV .empty{padding:22px;text-align:center;color:#b5a8c9}
+#ultraV .auraOrb{
+ position:absolute;width:160px;height:160px;
+ border-radius:50%;background:#9333ea18;
+ filter:blur(50px);pointer-events:none;
+}
+#ultraV .switchline{display:flex;align-items:center;gap:10px;margin:12px 0}
+#ultraV .switchline input{width:auto;margin:0}
+#ultraV .small{font-size:11px;color:#a99ab8}
+@keyframes uvRotate{to{transform:rotate(360deg)}}
+@keyframes uvShine{to{background-position:250% center}}
+@keyframes uvEnter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){
+ #ultraV .layout{grid-template-columns:1fr;padding:12px}
+ #ultraV .sidebar{position:static;display:flex;gap:5px;overflow:auto}
+ #ultraV .sidebtn{width:auto;white-space:nowrap}
+}
+@media(max-width:520px){
+ #ultraV .hero{padding:35px 12px}
+ #ultraV .grid{grid-template-columns:1fr 1fr;gap:9px}
+ #ultraV .card{padding:13px}
+ #ultraV .answers{grid-template-columns:1fr}
+ #ultraV .stat{font-size:23px}
+ #ultraV .brand{font-size:17px}
 }
 </style>
 
+<div class="topbar">
+ <div class="brand">💜 1BUTELKAKAUCYJNA <span style="color:#a855f7">ULTRA V</span></div>
+ <div class="online">● ULTRA AURA ACTIVE</div>
+ <div><span id="uvTopName">Gracz</span> · <b id="uvTopCrystals">100</b> 💎</div>
+</div>
+
 <header class="hero">
-  <div class="logo glow">⚡ 1BUTELKAKAUCYJNA ⚡</div>
-  <div class="subtitle">MINECRAFT • GAMING • WIDZOWIE • ULTRA AURA</div>
-  <div class="status">● ULTRA AURA ONLINE</div>
-  <p style="margin-top:22px">Wbijaj do świata wyzwań, zdobywaj kryształy i buduj swoją legendę!</p>
-  <button onclick="auraPage('profil')">👤 Mój profil</button>
-  <button onclick="auraPage('wyzwania')">🔥 Wyzwania</button>
+ <div class="auraOrb" style="left:10%;top:20%"></div>
+ <div class="heroBadge">✦ ULTRA AURA EDITION ✦</div>
+ <div class="heroTitle">ENTER THE AURA</div>
+ <p>MINECRAFT • GAMING • WIDZOWIE • WYZWANIA</p>
+ <p>Wbijaj poziomy, rozwiązuj quizy, zdobywaj kryształy i buduj swoją legendę.</p>
+ <button onclick="uvGo('quiz')">🧠 Quiz dnia</button>
+ <button class="secondary" onclick="uvGo('minecraft')">⛏️ Wejdź do gry</button>
 </header>
 
 <nav class="nav">
-  <button onclick="auraPage('start')">🏠 Start</button>
-  <button onclick="auraPage('minecraft')">⛏️ Minecraft</button>
-  <button onclick="auraPage('arena')">⚔️ Arena PvP</button>
-  <button onclick="auraPage('sklep')">🛒 Sklep</button>
-  <button onclick="auraPage('boss')">🐉 Boss tygodnia</button>
-  <button onclick="auraPage('wyzwania')">🔥 Wyzwania</button>
-  <button onclick="auraPage('ranking')">🏆 Ranking</button>
-  <button onclick="auraPage('osiagniecia')">🎖️ Osiągnięcia</button>
-  <button onclick="auraPage('profil')">👤 Profil</button>
-  <button onclick="auraPage('ogloszenia')">📢 Ogłoszenia</button>
-  <button onclick="auraPage('wlasciciel')">🔐 Panel właściciela</button>
+ <button class="active" data-uvnav="home" onclick="uvGo('home')">🏠 Start</button>
+ <button data-uvnav="quiz" onclick="uvGo('quiz')">🧠 Quiz</button>
+ <button data-uvnav="minecraft" onclick="uvGo('minecraft')">⛏️ Minecraft</button>
+ <button data-uvnav="arena" onclick="uvGo('arena')">⚔️ Arena PvP</button>
+ <button data-uvnav="shop" onclick="uvGo('shop')">🛒 Sklep</button>
+ <button data-uvnav="boss" onclick="uvGo('boss')">🐉 Boss</button>
+ <button data-uvnav="ranking" onclick="uvGo('ranking')">🏆 Ranking</button>
+ <button data-uvnav="community" onclick="uvGo('community')">👥 Widzowie</button>
+ <button data-uvnav="profile" onclick="uvGo('profile')">👤 Profil</button>
+ <button data-uvnav="owner" onclick="uvGo('owner')">👑 Właściciel</button>
 </nav>
 
-<div class="content">
+<div class="layout">
+<aside class="sidebar">
+ <div class="muted" style="margin:5px 8px 12px">MENU GŁÓWNE</div>
+ <button class="sidebtn active" data-uvnav="home" onclick="uvGo('home')">🏠 Dashboard</button>
+ <button class="sidebtn" data-uvnav="quiz" onclick="uvGo('quiz')">🧠 Quiz dnia</button>
+ <button class="sidebtn" data-uvnav="minecraft" onclick="uvGo('minecraft')">⛏️ Survival</button>
+ <button class="sidebtn" data-uvnav="arena" onclick="uvGo('arena')">⚔️ Arena PvP</button>
+ <button class="sidebtn" data-uvnav="boss" onclick="uvGo('boss')">🐉 Boss tygodnia</button>
+ <button class="sidebtn" data-uvnav="shop" onclick="uvGo('shop')">🛒 Sklep</button>
+ <button class="sidebtn" data-uvnav="ranking" onclick="uvGo('ranking')">🏆 Ranking</button>
+ <button class="sidebtn" data-uvnav="achievements" onclick="uvGo('achievements')">🎖️ Osiągnięcia</button>
+ <button class="sidebtn" data-uvnav="community" onclick="uvGo('community')">👥 Strefa widzów</button>
+ <button class="sidebtn" data-uvnav="events" onclick="uvGo('events')">📅 Eventy</button>
+ <button class="sidebtn" data-uvnav="announcements" onclick="uvGo('announcements')">📢 Ogłoszenia</button>
+ <button class="sidebtn" data-uvnav="profile" onclick="uvGo('profile')">👤 Mój profil</button>
+ <button class="sidebtn" data-uvnav="owner" onclick="uvGo('owner')">👑 Panel właściciela</button>
+ <hr style="border-color:#38234d;margin:15px 0">
+ <div class="muted">TWOJE STATYSTYKI</div>
+ <div style="margin-top:12px">⭐ Poziom <b id="uvSideLevel">1</b></div>
+ <div class="bar"><span id="uvSideBar"></span></div>
+ <div class="small" id="uvSideXP">0 / 100 XP</div>
+</aside>
 
-<section class="page active" id="aura-start">
-  <h2>🌌 Witaj w ULTRA AURA!</h2>
-  <p class="muted">Twoja przygoda zaczyna się tutaj. Graj, zdobywaj poziomy i odblokowuj nowe nagrody.</p>
-  <div class="grid">
-    <div class="card">
-      <div class="big">💎</div><h3>Kryształy</h3>
-      <div class="number" id="aura-crystals">100</div>
-      <p class="muted">Twoja waluta w portalu.</p>
-    </div>
-    <div class="card">
-      <div class="big">⭐</div><h3>Poziom</h3>
-      <div class="number" id="aura-level">1</div>
-      <p class="muted" id="aura-rank">Ranga: Nowicjusz</p>
-    </div>
-    <div class="card">
-      <div class="big">🔥</div><h3>Passa logowania</h3>
-      <div class="number" id="aura-streak">0 dni</div>
-      <p class="muted">Wracaj codziennie po nagrody.</p>
-    </div>
-    <div class="card">
-      <div class="big">✨</div><h3>Doświadczenie</h3>
-      <div class="number"><span id="aura-xp">0</span> XP</div>
-      <div class="bar"><span id="aura-xpbar"></span></div>
-      <p class="muted" id="aura-next">100 XP do kolejnego poziomu</p>
-    </div>
-  </div>
+<main class="main">
 
-  <div class="grid">
-    <div class="card">
-      <h3>🎁 Nagroda dnia</h3>
-      <p>Odbierz darmowe kryształy!</p>
-      <button id="aura-daily" onclick="auraDaily()">Odbierz +50 💎</button>
-    </div>
-    <div class="card">
-      <h3>📺 Twój YouTube</h3>
-      <p>1 SUB = 1 BLOK OBSYDIANU!</p>
-      <a href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH" target="_blank" rel="noopener">
-        <button>▶️ Otwórz kanał</button>
-      </a>
-    </div>
-    <div class="card">
-      <h3>💬 Discord</h3>
-      <p>Dołącz do społeczności i graj razem z widzami.</p>
-      <a href="https://discord.gg/aN5GPpBkTv" target="_blank" rel="noopener">
-        <button>Dołącz na Discord</button>
-      </a>
-    </div>
-  </div>
+<section class="page active" id="uv-home">
+ <h2>🌌 Dashboard</h2>
+ <p class="muted">Witaj w ULTRA V. Twoja gamingowa przygoda trwa!</p>
 
+ <div class="grid">
+  <div class="card"><div class="icon">💎</div><div class="muted">Kryształy</div><div class="stat" id="uvCrystals">100</div></div>
+  <div class="card"><div class="icon">⭐</div><div class="muted">Poziom gracza</div><div class="stat" id="uvLevel">1</div><span class="tag" id="uvRank">NOWICJUSZ</span></div>
+  <div class="card"><div class="icon">🔥</div><div class="muted">Passa quizów</div><div class="stat" id="uvStreak">0 dni</div></div>
+  <div class="card"><div class="icon">🎖️</div><div class="muted">Osiągnięcia</div><div class="stat" id="uvAchCount">0</div></div>
+ </div>
+
+ <div class="card">
+  <div class="row"><div><h3>✨ Postęp doświadczenia</h3><div class="muted">Awansuj i zdobywaj nowe rangi.</div></div><b id="uvXP">0 / 100 XP</b></div>
+  <div class="bar"><span id="uvXPBar"></span></div>
+  <div class="progressText" id="uvXPMessage">Zdobądź XP, aby awansować.</div>
+ </div>
+
+ <div class="grid">
   <div class="card">
-    <h3>🌟 Misja społeczności</h3>
-    <p>Zdobywaj doświad
-```
+   <div class="icon">🎁</div><h3>Bonus dnia</h3>
+   <p class="muted">Odbierz codzienną nagrodę. Im dłuższa passa, tym większy bonus!</p>
+   <button id="uvDailyBtn" onclick="uvDaily()">Odbierz nagrodę</button>
+  </div>
+  <div class="card">
+   <div class="icon">📺</div><h3>1 SUB = 1 BLOK OBSYDIANU</h3>
+   <p class="muted">Wspieraj wyzwanie na kanale YouTube!</p>
+   <a href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH" target="_blank" rel="noopener"><button>▶️ YouTube</button></a>
+  </div>
+  <div class="card">
+   <div class="icon">💬</div><h3>Discord</h3>
+   <p class="muted">Dołącz do społeczności.</p>
+   <a href="https://discord.gg/aN5GPpBkTv" target="_blank" rel="noopener"><button>Dołącz do ekipy</button></a>
+  </div>
+ </div>
 
-      
+ <div class="card">
+  <h3>🔥 Codzienne misje</h3>
+  <div class="row"><span>⛏️ Wydobądź kryształy</span><button onclick="uvGo('minecraft')">Graj</button></div>
+  <div class="row"><span>🧠 Rozwiąż quiz dnia</span><button onclick="uvGo('quiz')">Rozwiąż</button></div>
+  <div class="row"><span>⚔️ Zmierz się z przeciwnikiem</span><button onclick="uvGo('arena')">Walcz</button></div>
+  <div class="row"><span>🐉 Zaatakuj bossa</span><button onclick="uvGo('boss')">Atakuj</button></div>
+ </div>
+</section>
+
+<section class="page" id="uv-quiz">
+ <h2>🧠 Quiz dnia</h2>
+ <div class="grid">
+  <div class="card"><div class="muted">PASSA</div><div class="stat" id="uvQuizStreak">0 dni 🔥</div></div>
+  <div class="card"><div class="muted">POPRAWNE ODPOWIEDZI</div><div class="stat" id="uvQuizWins">0</div></div>
+  <div class="card"><div class="muted">PUNKTY QUIZOWE</div><div class="stat" id="uvQuizPoints">0</div></div>
+ </div>
+ <div class="card">
+  <span class="tag" id="uvQuizDate">QUIZ DNIA</span>
+  <div class="question" id="uvQuestion">Ładowanie pytania...</div>
+  <div class="answers" id="uvAnswers"></div>
+  <div id="uvQuizFeedback" class="notice" style="display:none"></div>
+  <p class="muted">Każdego dnia dostępne jest nowe pytanie. Za poprawną odpowiedź zdobywasz XP i kryształy.</p>
+ </div>
+</section>
+
+<section class="page" id="uv-minecraft">
+ <h2>⛏️ Minecraft Zone</h2>
+ <div class="grid">
+  <div class="card">
+   <div class="icon">🧱</div><h3>Survival Challenge</h3>
+   <p class="muted">Losuj zadanie i zaznacz je jako wykonane.</p>
+   <div class="notice" id="uvChallenge">Zbuduj swoją pierwszą bazę!</div>
+   <button onclick="uvNewChallenge()">🎲 Losuj zadanie</button>
+   <button class="secondary" onclick="uvFinishChallenge()">✅ Ukończ</button>
+  </div>
+  <div class="card">
+   <div class="icon">💎</div><h3>Kopalnia Aury</h3>
+   <p class="muted">Wydobywaj kryształy i rozwijaj profil.</p>
+   <div class="stat" id="uvMined">0</div><p class="muted">Wydobytych kryształów</p>
+   <button onclick="uvMine()">⛏️ Kop +5 💎</button>
+  </div>
+  <div class="card">
+   <div class="icon">🎒</div><h3>Ekwipunek</h3>
+   <div id="uvInventory"><p class="muted">Twój ekwipunek jest pusty.</p></div>
+  </div>
+ </div>
+ <div class="card">
+  <h3>🌑 Cele społeczności</h3>
+  <p class="muted">1 SUB = 1 BLOK OBSYDIANU. Cele są orientacyjne — liczba subskrypcji nie jest pobierana automatycznie.</p>
+  <div class="row"><span>50 subskrypcji</span><span class="tag">Cel I</span></div>
+  <div class="row"><span>100 subskrypcji</span><span class="tag">Cel II</span></div>
+  <div class="row"><span>250 subskrypcji</span><span class="tag">Cel III</span></div>
+  <div class="row"><span>500 subskrypcji</span><span class="tag">Cel LEGENDARNY</span></div>
+ </div>
+</section>
+
+<section class="page" id="uv-arena">
+ <h2>⚔️ Arena PvP</h2>
+ <p class="muted">Walka jest symulacją na stronie, nie połączeniem z serwerem Minecraft.</p>
+ <div class="arena">
+  <div class="enemy" id="uvEnemyEmoji">🧟</div>
+  <h3 id="uvEnemyName">Zombie</h3>
+  <span class="tag">PRZECIWNIK AI</span>
+  <p>HP przeciwnika</p><div class="bar"><span id="uvEnemyBar" style="width:100%"></span></div>
+  <b id="uvEnemyHP">100</b> / 100 HP
+  <hr style="border-color:#503467;margin:20px 0">
+  <p>❤️ Twoje HP: <b id="uvPlayerHP">100</b> / 100</p>
+  <button onclick="uvAttack()">⚔️ ATAKUJ</button>
+  <button onclick="uvHeal()" class="secondary">🧪 Leczenie — 20 💎</button>
+  <button onclick="uvNewEnemy()" class="secondary">🔄 Nowy przeciwnik</button>
+  <p id="uvBattleLog" class="muted">Arena czeka na wojownika...</p>
+ </div>
+</section>
+
+<section class="page" id="uv-shop">
+ <h2>🛒 Sklep Aury</h2>
+ <p class="muted">Kupuj przedmioty za kryształy zdobywane podczas gry.</p>
+ <div class="grid" id="uvShopItems"></div>
+</section>
+
+<section class="page" id="uv-boss">
+ <h2>🐉 Boss tygodnia</h2>
+ <div class="arena">
+  <div class="enemy">🐉</div>
+  <h3>Fioletowy Smok</h3>
+  <p class="muted">Legendarny przeciwnik. Każdy atak osłabia bossa.</p>
+  <p>Życie bossa</p>
+  <div class="bar"><span id="uvBossBar" style="width:100%"></span></div>
+  <b id="uvBossHP">500</b> / 500 HP
+  <p style="margin-top:20px">🏆 Nagroda: 150 💎 + 100 XP</p>
+  <button onclick="uvBossAttack()">🗡️ UDERZ SMOKA</button>
+  <p id="uvBossLog" class="muted">Smok czeka na wyzwanie...</p>
+ </div>
+</section>
+
+<section class="page" id="uv-ranking">
+ <h2>🏆 Ranking graczy</h2>
+ <div class="card">
+  <p class="muted">Ranking lokalny pokazuje postęp zapisany w tej przeglądarce oraz przykładowych przeciwników. Nie jest wspólnym rankingiem wszystkich użytkowników.</p>
+  <div id="uvRankingList"></div>
+ </div>
+</section>
+
+<section class="page" id="uv-achievements">
+ <h2>🎖️ Osiągnięcia</h2>
+ <div class="grid" id="uvAchievementList"></div>
+</section>
+
+<section class="page" id="uv-community">
+ <h2>👥 Strefa widzów</h2>
+ <div class="grid">
+  <div class="card"><div class="icon">💜</div><h3>Dołącz do ekipy</h3><p class="muted">Spotkaj innych graczy.</p><a href="https://discord.gg/aN5GPpBkTv" target="_blank" rel="noopener"><button>Otwórz Discord</button></a></div>
+  <div class="card"><div class="icon">📺</div><h3>Obejrzyj kanał</h3><p class="muted">Minecraft, gaming i wyzwania.</p><a href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH" target="_blank" rel="noopener"><button>Otwórz YouTube</button></a></div>
+ </div>
+ <div class="card">
+  <h3>🗳️ Głosowanie widzów</h3>
+  <p>Co powinno pojawić się na kolejnym evencie?</p>
+  <div id="uvVoteOptions"></div>
+  <p class="muted" id="uvVoteResult"></p>
+  <p class="small">Głosowanie działa lokalnie w tej przeglądarce.</p>
+ </div>
+</section>
+
+<section class="page" id="uv-events">
+ <h2>📅 Eventy</h2>
+ <div class="grid">
+  <div class="card"><span class="tag">MINECRAFT</span><h3>⛏️ Survival Challenge</h3><p class="muted">Wykonaj wyzwanie survivalowe.</p><button onclick="uvGo('minecraft')">Dołącz</button></div>
+  <div class="card"><span class="tag">PVP</span><h3>⚔️ Arena Aury</h3><p class="muted">Pokonaj przeciwników.</p><button onclick="uvGo('arena')">Dołącz</button></div>
+  <div class="card"><span class="tag">BOSS</span><h3>🐉 Polowanie na smoka</h3><p class="muted">Podejmij wyzwanie bossa.</p><button onclick="uvGo('boss')">Dołącz</button></div>
+  <div class="card"><span class="tag">QUIZ</span><h3>🧠 Quiz dnia</h3><p class="muted">Sprawdź swoją wiedzę.</p><button onclick="uvGo('quiz')">Dołącz</button></div>
+ </div>
+ <div class="notice">Terminy prawdziwych transmisji i eventów należy uzupełniać ręcznie.</div>
+</section>
+
+<section class="page" id="uv-announcements">
+ <h2>📢 Ogłoszenia</h2>
+ <div id="uvAnnouncementList">
+  <div class="notice"><b>💜 ULTRA V START!</b><br>Witaj w nowym portalu 1ButelkaKaucyjna.</div>
+  <div class="notice"><b>⛏️ Minecraft</b><br>Sprawdź Survival Challenge i arenę PvP.</div>
+  <div class="notice"><b>📺 YouTube</b><br>1 SUB = 1 BLOK OBSYDIANU!</div>
+ </div>
+</section>
+
+<section class="page" id="uv-profile">
+ <h2>👤 Mój profil</h2>
+ <div class="card">
+  <label for="uvNameInput">Twój nick</label>
+  <input id="uvNameInput" maxlength="20" placeholder="Wpisz nick">
+  <button onclick="uvSaveName()">Zapisz nick</button>
+  <div class="notice">
+   Gracz: <b id="uvProfileName">Gracz</b><br>
+   Poziom: <b id="uvProfileLevel">1</b><br>
+   Ranga: <b id="uvProfileRank">Nowicjusz</b><br>
+   Kryształy: <b id="uvProfileCrystals">100</b><br>
+   Passa quizów: <b id="uvProfileStreak">0 dni</b>
+  </div>
+  <h3>⚙️ Ustawienia</h3>
+  <label class="switchline"><input id="uvEffects" type="checkbox" checked onchange="uvSetEffects(this.checked)"> Włącz efekty aury</label>
+  <button class="secondary" onclick="uvExport()">📥 Eksportuj zapis</button>
+  <button class="danger" onclick="uvReset()">Resetuj postęp</button>
+ </div>
+ <div class="card">
+  <h3>🔒 Prywatność</h3>
+  <p class="muted">Nick i postęp są przechowywane w lokalnej pamięci tej przeglądarki. Ten prototyp nie tworzy prawdziwego konta ani nie wysyła danych do wspólnej bazy.</p>
+ </div>
+</section>
+
+<section class="page" id="uv-owner">
+ <h2>👑 Panel właściciela</h2>
+ <div class="card">
+  <p class="muted">Panel demonstracyjny do testowania. Nie jest zabezpieczeniem administracyjnym WordPressa.</p>
+  <label for="uvOwnerPass">Hasło demonstracyjne</label>
+  <input id="uvOwnerPass" type="password" placeholder="Hasło">
+  <button onclick="uvOwnerLogin()">Otwórz panel</button>
+  <div id="uvOwnerTools" style="display:none">
+   <hr style="border-color:#38234d;margin:20px 0">
+   <h3>🛠️ Narzędzia testowe</h3>
+   <button onclick="uvAdminReward()">+100 kryształów</button>
+   <button onclick="uvAdminXP()">+100 XP</button>
+   <label for="uvNewAnnouncement">Nowe ogłoszenie</label>
+   <input id="uvNewAnnouncement" maxlength="180" placeholder="Treść ogłoszenia">
+   <button onclick="uvPublishAnnouncement()">Opublikuj lokalnie</button>
+   <p class="muted">Ogłoszenia dodane tutaj są widoczne tylko w tej przeglądarce. Prawdziwy panel właściciela wymaga bezpiecznego zaplecza.</p>
+  </div>
+ </div>
+</section>
+
+</main>
+</div>
+
+<footer class="footer">
+ <div class="brand">💜 1ButelkaKaucyjna ULTRA V</div>
+ <p>MINECRAFT • GAMING • WIDZOWIE • ULTRA AURA</p>
+ <p class="small">Portal demonstracyjny. Postęp zapisywany lokalnie w przeglądarce.</p>
+</footer>
+<div class="toast" id="uvToast"></div>
+
+<script>
+(function(){
+const root=document.getElementById('ultraV');
+if(!root||root.dataset.init==='1')return;
+root.dataset.init='1';
+
+const KEY='ultraV_butelka_save_v1';
+const defaults={
+ name:'Gracz',crystals:100,xp:0,level:1,
+ streak:0,lastQuizDay:'',lastDaily:'',
+ quizWins:0,quizPoints:0,mined:0,missionDone:'',
+ inventory:[],achievements:[],bossHP:500,bossDone:false,
+ challenge:'Zbuduj małą bazę w Minecraft!',challengeDone:'',
+ votes:{},voted:false,attacks:0,announcements:[]
+};
+let s;
+try{s=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||'{}'))}
+catch(e){s={...defaults,inventory:[],achievements:[],votes:{},announcements:[]};}
+s.inventory=Array.isArray(s.inventory)?s.inventory:[];
+s.achievements=Array.isArray(s.achievements)?s.achievements:[];
+s.votes=s.votes||{};
+s.announcements=Array.isArray(s.announcements)?s.announcements:[];
+
+function $(id){return root.querySelector('#'+id)}
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function day(){let d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
+function prevDay(){let d=new Date();d.setDate(d.getDate()-1);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
+function toast(msg){
+ let t=$('uvToast');t.textContent=msg;t.style.display='block';
+ clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.style.display='none',2600);
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}render()}
+function rank(){
+ if(s.level>=100)return'LEGENDA AURY';
+ if(s.level>=50)return'ULTRA OVERDRIVE';
+ if(s.level>=20)return'MISTRZ AURY';
+ if(s.level>=10)return'WOJOWNIK';
+ if(s.level>=5)return'ELITA';
+ return'NOWICJUSZ';
+}
+function xpAdd(n){
+ s.xp+=n;
+ while(s.xp>=s.level*100){
+  s.xp-=s.level*100;s.level++;
+  toast('⭐ AWANS! Poziom '+s.level+'!');
+  if([5,10,20,50,100].includes(s.level))setTimeout(()=>toast('💜 NOWA RANGA: '+rank()),350);
+ }
+ checkAchievements();save();
+}
+function crystalAdd(n){s.crystals=Math.max(0,s.crystals+n);save()}
+function unlock(name){
+ if(!s.achievements.includes(name)){
+  s.achievements.push(name);toast('🎖️ Osiągnięcie: '+name);
+ }
+}
+function checkAchievements(){
+ if(s.level>=2)unlock('Pierwszy awans');
+ if(s.mined>=5)unlock('Górnik Aury');
+ if(s.attacks>=5)unlock('Wojownik areny');
+ if(s.inventory.length>=3)unlock('Kolekcjoner');
+ if(s.quizWins>=3)unlock('Mistrz quizów');
+ if(s.bossDone)unlock('Pogromca smoka');
+ if(s.level>=10)unlock('Legenda');
+}
+window.uvGo=function(page){
+ root.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const p=$('uv-'+page);if(p)p.classList.add('active');
+ root.querySelectorAll('[data-uvnav]').forEach(b=>b.classList.toggle('active',b.dataset.uvnav===page));
+ if(page==='quiz')renderQuiz();
+ if(page==='community')renderVotes();
+ window.scrollTo({top:root.getBoundingClientRect().top+window.scrollY-10,behavior:'smooth'});
+};
+window.uvDaily=function(){
+ if(s.lastDaily===day())return toast('Bonus odebrany już dzisiaj!');
+ s.streak=s.lastDaily===prevDay()?s.streak+1:1;
+ s.lastDaily=day();
+ const reward=50+Math.min(s.streak,7)*5;
+ s.crystals+=reward;
+ toast('🎁 Nagroda: +'+reward+' kryształów!');
+ save();
+};
+const questions=[
+ {q:'Który przedmiot pozwala teleportować się w Minecraft?',a:['Perła Endu','Krzesiwo','Kompas','Wędka'],c:0},
+ {q:'Który mob wybucha w pobliżu gracza?',a:['Enderman','Creeper','Wieśniak','Wilk'],c:1},
+ {q:'Czym wydobywa się obsydian?',a:['Drewnianym kilofem','Ręką','Diamentowym lub netheritowym kilofem','Łopatą'],c:2},
+ {q:'Co trzeba aktywować, aby wejść do Endu?',a:['Portal Endu','Piec','Stół rzemieślniczy','Latarnia'],c:0},
+ {q:'Który surowiec służy do tworzenia netheritu?',a:['Lapis','Złoto','Starożytne zgliszcza','Węgiel'],c:2},
+ {q:'Jak nazywa się smok w Endzie?',a:['Smok Kresu','Wither','Strażnik','Ghast'],c:0},
+ {q:'Co daje łóżko w Minecraft?',a:['Zawsze diamenty','Możliwość ustawienia punktu odrodzenia','Latający tryb','Nieskończone życie'],c:1},
+ {q:'Który blok jest potrzebny do stołu zaklęć?',a:['Obsydian','Gąbka','Piasek dusz','Blok miedzi'],c:0}
+];
+function quizIndex(){
+ let n=new Date();return Math.floor((Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())/86400000))%questions.length;
+}
+function renderQuiz(){
+ const q=questions[quizIndex()];
+ $('uvQuizDate').textContent='QUIZ DNIA • '+day();
+ $('uvQuizStreak').textContent=s.streak+' dni 🔥';
+ $('uvQuizWins').textContent=s.quizWins;
+ $('uvQuizPoints').textContent=s.quizPoints;
+ $('uvQuestion').textContent=q.q;
+ $('uvQuizFeedback').style.display='none';
+ const done=s.lastQuizDay===day();
+ $('uvAnswers').innerHTML=q.a.map((a,i)=>'<button '+(done?'disabled':'')+' onclick="uvAnswer('+i+')">'+esc(a)+'</button>').join('');
+ if(done){
+  $('uvQuizFeedback').style.display='block';
+  $('uvQuizFeedback').textContent='Quiz na dzisiaj rozwiązany. Wróć jutro po nowe pytanie!';
+ }
+}
+window.uvAnswer=function(i){
+ if(s.lastQuizDay===day())return toast('Quiz został już rozwiązany!');
+ const q=questions[quizIndex()];
+ const buttons=$('uvAnswers').querySelectorAll('button');
+ buttons.forEach((b,j)=>{b.disabled=true;if(j===q.c)b.classList.add('correct');if(j===i&&i!==q.c)b.classList.add('wrong')});
+ if(i===q.c){
+  s.quizWins++;s.quizPoints+=10;s.crystals+=25;s.xp+=20;
+  s.streak=s.lastQuizDay===prevDay()?s.streak+1:1;
+  toast('✅ Dobrze! +25 💎 i +20 XP');
+  $('uvQuizFeedback').textContent='Świetnie! Poprawna odpowiedź. Zdobywasz 25 kryształów i 20 XP.';
+ }else{
+  s.streak=0;
+  $('uvQuizFeedback').textContent='❌ Nie tym razem! Poprawna odpowiedź: '+q.a[q.c]+'.';
+  toast('❌ Błędna odpowiedź. Spróbuj jutro!');
+ }
+ s.lastQuizDay=day();
+ $('uvQuizFeedback').style.display='block';
+ checkAchievements();save();
+};
+window.uvNewChallenge=function(){
+ const arr=[
+ 'Zbuduj małą bazę w Minecraft!',
+ 'Zdobądź 16 sztuk żelaza.',
+ 'Pokonaj 5 potworów.',
+ 'Zbierz 32 bloki kamienia.',
+ 'Znajdź diamenty.',
+ 'Przetrwaj noc w survivalu.',
+ 'Zdobądź złote jabłko.',
+ 'Zbuduj portal do Netheru.'
+ ];
+ s.challenge=arr[Math.floor(Math.random()*arr.length)];
+ s.challengeDone='';save();toast('🎲 Nowe wyzwanie!');
+};
+window.uvFinishChallenge=function(){
+ if(!s.challenge)return toast('Najpierw wylosuj wyzwanie.');
+ if(s.challengeDone===day())return toast('Wyzwanie zaliczone dzisiaj!');
+ s.challengeDone=day();s.crystals+=20;save();xpAdd(25);
+ toast('🏆 Wyzwanie zaliczone! +20 💎 +25 XP');
+};
+window.uvMine=function(){
+ s.mined++;s.crystals+=5;save();xpAdd(5);
+ toast('⛏️ Wydobyto kryształ: +5 💎');
+};
+const items=[
+ {name:'Miecz Aury',emoji:'🗡️',price:40},
+ {name:'Zbroja Fioletu',emoji:'🛡️',price:70},
+ {name:'Perła Endu',emoji:'🟣',price:25},
+ {name:'Złote jabłko',emoji:'🍎',price:35},
+ {name:'Skrzynia kryształów',emoji:'🎁',price:90},
+ {name:'Smocza korona',emoji:'👑',price:150},
+ {name:'Netheritowy kilof',emoji:'⛏️',price:120},
+ {name:'Aura legendarna',emoji:'🌌',price:250}
+];
+function renderShop(){
+ $('uvShopItems').innerHTML=items.map((it,i)=>
+ '<div class="card"><div class="icon">'+it.emoji+'</div><h3>'+esc(it.name)+'</h3><div class="stat">'+it.price+' 💎</div><p class="muted">Kolekcjonerski przedmiot portalu.</p><button onclick="uvBuy('+i+')">Kup przedmiot</button></div>'
+ ).join('');
+}
+window.uvBuy=function(i){
+ const it=items[i];if(!it)return;
+ if(s.crystals<it.price)return toast('Za mało kryształów!');
+ s.crystals-=it.price;s.inventory.push(it.name);
+ checkAchievements();save();toast('🛒 Kupiono: '+it.name);
+};
+let playerHP=100,enemyHP=100,enemyIndex=0;
+const enemies=[
+ {name:'Zombie',emoji:'🧟'},
+ {name:'Enderman',emoji:'👾'},
+ {name:'Wither',emoji:'☠️'},
+ {name:'Strażnik',emoji:'🛡️'}
+];
+function renderArena(){
+ $('uvEnemyName').textContent=enemies[enemyIndex].name;
+ $('uvEnemyEmoji').textContent=enemies[enemyIndex].emoji;
+ $('uvEnemyHP').textContent=enemyHP;
+ $('uvEnemyBar').style.width=enemyHP+'%';
+ $('uvPlayerHP').textContent=playerHP;
+}
+window.uvNewEnemy=function(){
+ enemyIndex=(enemyIndex+1)%enemies.length;
+ enemyHP=100;playerHP=100;renderArena();
+ $('uvBattleLog').textContent='Pojawił się przeciwnik: '+enemies[enemyIndex].name+'!';
+};
+window.uvAttack=function(){
+ if(playerHP<=0)return toast('Przegrana! Wybierz nowego przeciwnika.');
+ if(enemyHP<=0)return toast('Pokonałeś go! Wybierz nowego przeciwnika.');
+ enemyHP=Math.max(0,enemyHP-(15+Math.floor(Math.random()*26)));
+ s.attacks++;
+ if(enemyHP===0){
+  s.crystals+=30;s.xp+=30;
+  $('uvBattleLog').textContent='🏆 Wygrana! +30 💎 i +30 XP';
+ }else{
+  playerHP=Math.max(0,playerHP-(5+Math.floor(Math.random()*16)));
+  $('uvBattleLog').textContent=playerHP===0?'💀 Przegrana! Wybierz nowego przeciwnika.':'⚔️ Trwa walka!';
+ }
+ renderArena();checkAchievements();save();
+};
+window.uvHeal=function(){
+ if(s.crystals<20)return toast('Za mało kryształów!');
+ if(playerHP>=100)return toast('Masz pełne HP!');
+ s.crystals-=20;playerHP=Math.min(100,playerHP+35);renderArena();save();
+ toast('🧪 Przywrócono zdrowie.');
+};
+window.uvBossAttack=function(){
+ if(s.bossDone)return toast('Smok został już pokonany!');
+ s.bossHP=Math.max(0,s.bossHP-(20+Math.floor(Math.random()*31)));
+ if(s.bossHP===0){
+  s.bossDone=true;s.crystals+=150;s.xp+=100;
+  $('uvBossLog').textContent='🐉 Smok pokonany! Zdobywasz 150 💎 i 100 XP!';
+  checkAchievements();
+ }else{
+  $('uvBossLog').textContent='⚔️ Trafienie! Boss ma '+s.bossHP+' HP.';
+ }
+ save();toast(s.bossDone?'🏆 LEGENDARNY BOSS POKONANY!':'Udało się trafić bossa!');
+};
+function renderBoss(){
+ $('uvBossHP').textContent=s.bossHP;
+ $('uvBossBar').style.width=(s.bossHP/5)+'%';
+}
+window.uvSaveName=function(){
+ const n=$('uvNameInput').value.trim().slice(0,20);
+ if(!n)return toast('Wpisz nick!');
+ s.name=n;save();toast('👤 Nick zapisany!');
+};
+window.uvSetEffects=function(on){
+ root.classList.toggle('noAura',!on);
+ root.querySelector('.heroTitle').style.animation=on?'uvShine 5s linear infinite':'none';
+ toast(on?'Efekty włączone':'Efekty wyłączone');
+};
+window.uvExport=function(){
+ const blob=new Blob([JSON.stringify(s,null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download='ultra-v-zapis.json';
+ document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+window.uvReset=function(){
+ if(!confirm('Na pewno usunąć cały postęp z tej przeglądarki?'))return;
+ localStorage.removeItem(KEY);location.reload();
+};
+window.uvOwnerLogin=function(){
+ // Hasło jest widoczne w kodzie strony. To tylko panel demonstracyjny!
+ if($('uvOwnerPass').value==='AURA-DEMO-2026'){
+  $('uvOwnerTools').style.display='block';toast('Panel demonstracyjny otwarty.');
+ }else toast('Nieprawidłowe hasło demonstracyjne.');
+};
+window.uvAdminReward=function(){s.crystals+=100;save();toast('+100 kryształów');};
+window.uvAdminXP=function(){xpAdd(100);toast('+100 XP');};
+window.uvPublishAnnouncement=function(){
+ const v=$('uvNewAnnouncement').value.trim();
+ if(!v)return toast('Wpisz treść ogłoszenia!');
+ s.announcements.unshift(v);$('uvNewAnnouncement').value='';save();
+ toast('Ogłoszenie dodane lokalnie.');
+};
+function renderVotes(){
+ const opts=['Minecraft Survival','Turniej PvP','Wyzwanie 1 SUB = 1 OBSYDIAN','Quiz na live'];
+ $('uvVoteOptions').innerHTML=opts.map((o,i)=>
+ '<div class="row"><span>'+esc(o)+'</span><button '+(s.voted?'disabled':'')+' onclick="uvVote('+i+')">Głosuj</button></div>'
+ ).join('');
+ $('uvVoteResult').textContent=s.voted?'Twój głos zapisano w tej przeglądarce.':'Wybierz swoją propozycję.';
+}
+window.uvVote=function(i){
+ if(s.voted)return toast('Oddałeś już głos w tej przeglądarce!');
+ const opts=['Minecraft Survival','Turniej PvP','Wyzwanie 1 SUB = 1 OBSYDIAN','Quiz na live'];
+ s.votes[i]=(s.votes[i]||0)+1;s.voted=true;save();renderVotes();
+ toast('🗳️ Głos oddany na: '+opts[i]);
+};
+function renderAchievements(){
+ const list=[
+ ['Pierwszy awans','Osiągnij poziom 2','⭐'],
+ ['Górnik Aury','Wydobądź 5 kryształów','⛏️'],
+ ['Wojownik areny','Wykonaj 5 ataków','⚔️'],
+ ['Kolekcjoner','Kup 3 przedmioty','🎒'],
+ ['Mistrz quizów','Odpowiedz poprawnie 3 razy','🧠'],
+ ['Pogromca smoka','Pokonaj bossa','🐉'],
+ ['Legenda','Osiągnij poziom 10','👑']
+ ];
+ $('uvAchievementList').innerHTML=list.map(a=>{
+ const got=s.achievements.includes(a[0]);
+ return '<div class="card"><div class="icon">'+a[2]+'</div><h3>'+a[0]+'</h3><p class="muted">'+a[1]+'</p><span class="tag">'+(got?'✅ ODBLOKOWANO':'🔒 ZABLOKOWANE')+'</span></div>';
+ }).join('');
+}
+function renderRanking(){
+ $('uvRankingList').innerHTML=
+ '<div class="row"><span>🥇 '+esc(s.name)+' <span class="tag">'+rank()+'</span></span><b>'+((s.level-1)*100+s.xp)+' XP</b></div>'+
+ '<div class="row"><span>🥈 EnderPro <span class="tag">DEMO</span></span><b>850 XP</b></div>'+
+ '<div class="row"><span>🥉 NetherKing <span class="tag">DEMO</span></span><b>600 XP</b></div>'+
+ '<div class="row"><span>4. AuraMaster <span class="tag">DEMO</span></span><b>450 XP</b></div>'+
+ '<div class="row"><span>5. PurpleWolf <span class="tag">DEMO</span></span><b>300 XP</b></div>';
+}
+function renderAnnouncements(){
+ const fixed=[
+ '<b>💜 ULTRA V START!</b><br>Witaj w nowej wersji portalu.',
+ '<b>⛏️ MINECRAFT</b><br>Sprawdź wyzwania i arenę PvP.',
+ '<b>📺 YOUTUBE</b><br>1 SUB = 1 BLOK OBSYDIANU!'
+ ];
+ const extra=s.announcements.map(a=>'<b>📢 OGŁOSZENIE WŁAŚCICIELA</b><br>'+esc(a));
+ $('uvAnnouncementList').innerHTML=fixed.concat(extra).map(x=>'<div class="notice">'+x+'</div>').join('');
+}
+function render(){
+ $('uvTopName').textContent=s.name;
+ $('uvTopCrystals').textContent=s.crystals;
+ $('uvCrystals').textContent=s.crystals;
+ $('uvLevel').textContent=s.level;
+ $('uvRank').textContent=rank();
+ $('uvStreak').textContent=s.streak+' dni';
+ $('uvAchCount').textContent=s.achievements.length;
+ $('uvXP').textContent=s.xp+' / '+(s.level*100)+' XP';
+ $('uvXPBar').style.width=(s.xp/(s.level*100)*100)+'%';
+ $('uvXPMessage').textContent=(s.level*100-s.xp)+' XP do następnego poziomu';
+ $('uvSideLevel').textContent=s.level;
+ $('uvSideBar').style.width=(s.xp/(s.level*100)*100)+'%';
+ $('uvSideXP').textContent=s.xp+' / '+(s.level*100)+' XP';
+ $('uvDailyBtn').disabled=s.lastDaily===day();
+ $('uvDailyBtn').textContent=s.lastDaily===day()?'Odebrano dzisiaj ✓':'🎁 Odbierz nagrodę';
+ $('uvMined').textContent=s.mined;
+ $('uvChallenge').textContent=s.challenge;
+ $('uvNameInput').value=s.name;
+ $('uvProfileName').textContent=s.name;
+ $('uvProfileLevel').textContent=s.level;
+ $('uvProfileRank').textContent=rank();
+ $('uvProfileCrystals').textContent=s.crystals;
+ $('uvProfileStreak').textContent=s.streak+' dni';
+ $('uvInventory').innerHTML=s.inventory.length?s.inventory.map(x=>'<div class="row"><span>🎁 '+esc(x)+'</span><span class="tag">KOLEKCJA</span></div>').join(''):'<p class="muted">Twój ekwipunek jest pusty.</p>';
+ renderShop();renderArena();renderBoss();renderRanking();renderAchievements();renderAnnouncements();
+ if($('uv-quiz').classList.contains('active'))renderQuiz();
+ if($('uv-community').classList.contains('active'))renderVotes();
+}
+render();
+renderQuiz();
+renderVotes();
+})();
+</script>
+</div>
