@@ -192,18 +192,6 @@
 #ultraV .switchline{display:flex;align-items:center;gap:10px;margin:12px 0}
 #ultraV .switchline input{width:auto;margin:0}
 #ultraV .small{font-size:11px;color:#a99ab8}
-
-#ultraV .aura-mode-on{animation:uvPulse 2.5s ease-in-out infinite}
-#ultraV .rarity-common{color:#d1d5db}
-#ultraV .rarity-rare{color:#60a5fa}
-#ultraV .rarity-epic{color:#c084fc}
-#ultraV .rarity-legendary{color:#fbbf24;text-shadow:0 0 12px #f59e0b88}
-#ultraV .feature-banner{border:1px solid #9d4edd;background:linear-gradient(120deg,#241039,#120a1d);border-radius:16px;padding:18px;margin:14px 0}
-#ultraV .avatar-pick{font-size:28px;padding:8px!important;margin:3px}
-#ultraV .team-card{border:1px solid #5b3477;border-radius:13px;padding:16px;background:#130b20}
-#ultraV .live-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#fb7185;box-shadow:0 0 12px #fb7185;margin-right:6px}
-@keyframes uvPulse{0%,100%{box-shadow:0 0 0 #a855f700}50%{box-shadow:0 0 30px #a855f755}}
-
 @keyframes uvRotate{to{transform:rotate(360deg)}}
 @keyframes uvShine{to{background-position:250% center}}
 @keyframes uvEnter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
@@ -248,8 +236,7 @@
  <button data-uvnav="ranking" onclick="uvGo('ranking')">🏆 Ranking</button>
  <button data-uvnav="community" onclick="uvGo('community')">👥 Widzowie</button>
  <button data-uvnav="profile" onclick="uvGo('profile')">👤 Profil</button>
- <button data-uvnav="ultra" onclick="uvGo('ultra')">🌌 ULTRA AURA 2.0</button>
-  <button data-uvnav="owner" onclick="uvGo('owner')">👑 Właściciel</button>
+ <button data-uvnav="owner" onclick="uvGo('owner')">👑 Właściciel</button>
 </nav>
 
 <div class="layout">
@@ -267,8 +254,7 @@
  <button class="sidebtn" data-uvnav="events" onclick="uvGo('events')">📅 Eventy</button>
  <button class="sidebtn" data-uvnav="announcements" onclick="uvGo('announcements')">📢 Ogłoszenia</button>
  <button class="sidebtn" data-uvnav="profile" onclick="uvGo('profile')">👤 Mój profil</button>
- <button class="sidebtn" data-uvnav="ultra" onclick="uvGo('ultra')">🌌 ULTRA AURA 2.0</button>
-  <button class="sidebtn" data-uvnav="owner" onclick="uvGo('owner')">👑 Panel właściciela</button>
+ <button class="sidebtn" data-uvnav="owner" onclick="uvGo('owner')">👑 Panel właściciela</button>
  <hr style="border-color:#38234d;margin:15px 0">
  <div class="muted">TWOJE STATYSTYKI</div>
  <div style="margin-top:12px">⭐ Poziom <b id="uvSideLevel">1</b></div>
@@ -500,29 +486,6 @@
  </div>
 </section>
 
-
-<section class="page" id="uv-ultra">
- <h2>🌌 ULTRA AURA 2.0</h2>
- <p class="muted">Nowe tryby, skrzynki, drużyny i centrum wydarzeń dla społeczności 1ButelkaKaucyjna.</p>
- <div class="feature-banner">
-  <h3>⚡ Aura Mode</h3><p class="muted">Włącz mocniejsze animacje i fioletową poświatę portalu.</p>
-  <button onclick="uvAuraMode()">⚡ Przełącz AURA MODE</button> <span class="tag" id="uvAuraStatus">AURA: STANDARD</span>
- </div>
- <div class="grid">
-  <div class="card"><div class="icon">🎁</div><h3>Skrzynki Aury</h3><p class="muted">Otwórz skrzynkę za 30 kryształów i wylosuj nagrodę.</p><div class="stat">30 💎</div><button onclick="uvOpenCrate()">Otwórz skrzynkę</button><div id="uvCrateResult" class="notice" style="display:none"></div></div>
-  <div class="card"><div class="icon">💎</div><h3>Rzadkości przedmiotów</h3><div class="row"><span class="rarity-common">● Zwykły</span><b>60%</b></div><div class="row"><span class="rarity-rare">● Rzadki</span><b>25%</b></div><div class="row"><span class="rarity-epic">● Epicki</span><b>12%</b></div><div class="row"><span class="rarity-legendary">● LEGENDARNY</span><b>3%</b></div></div>
-  <div class="card"><div class="icon">👤</div><h3>Awatar profilu</h3><p class="muted">Wybierz ikonę profilu.</p><div id="uvAvatarChoices"><button class="avatar-pick" onclick="uvChooseAvatar('🧙')">🧙</button><button class="avatar-pick" onclick="uvChooseAvatar('🐉')">🐉</button><button class="avatar-pick" onclick="uvChooseAvatar('⚔️')">⚔️</button><button class="avatar-pick" onclick="uvChooseAvatar('👑')">👑</button><button class="avatar-pick" onclick="uvChooseAvatar('💜')">💜</button></div><p>Twój awatar: <b id="uvAvatarDisplay">🧙</b></p></div>
- </div>
- <div class="card"><h3>⚔️ Wojna widzów</h3><p class="muted">Wybierz drużynę i wspieraj ją. Wyniki zapisują się tylko w tej przeglądarce.</p>
-  <div class="grid"><div class="team-card"><div class="icon">🟣</div><h3>Drużyna Fioletu</h3><div class="stat" id="uvTeamPurple">0</div><button onclick="uvVoteTeam('purple')">Wesprzyj Fiolet</button></div><div class="team-card"><div class="icon">🔵</div><h3>Drużyna Błękitu</h3><div class="stat" id="uvTeamBlue">0</div><button onclick="uvVoteTeam('blue')">Wesprzyj Błękit</button></div></div><p class="muted" id="uvTeamStatus">Wybierz stronę konfliktu!</p>
- </div>
- <div class="grid">
-  <div class="card"><div class="icon">🧠</div><h3>Quiz Boss — 10 pytań</h3><p class="muted">Każda poprawna odpowiedź daje 5 kryształów. Idealny wynik daje bonus.</p><div id="uvBossQuizArea"><button onclick="uvStartBossQuiz()">Rozpocznij quiz</button></div></div>
-  <div class="card"><div class="icon">📺</div><h3>Live Center</h3><p class="muted">Status transmisji nie jest pobierany automatycznie.</p><div class="notice"><span class="live-dot"></span>LIVE CENTER — sprawdź kanał</div><a href="https://youtube.com/@butelka_ka?si=9dF5Yz3v3GF1ZzZH" target="_blank" rel="noopener"><button>▶️ YouTube</button></a> <a href="https://discord.gg/aN5GPpBkTv" target="_blank" rel="noopener"><button class="secondary">💬 Discord</button></a></div>
- </div>
- <div class="card"><h3>📅 Kalendarz wydarzeń</h3><div class="row"><span>⛏️ Survival Challenge</span><button onclick="uvGo('minecraft')">Otwórz</button></div><div class="row"><span>🧠 Quiz dnia</span><button onclick="uvGo('quiz')">Otwórz</button></div><div class="row"><span>⚔️ Arena PvP</span><button onclick="uvGo('arena')">Otwórz</button></div><div class="row"><span>🐉 Boss Aury</span><button onclick="uvGo('boss')">Otwórz</button></div><p class="muted">To przykładowy harmonogram. Terminy prawdziwych transmisji należy uzupełnić ręcznie.</p></div>
-</section>
-
 </main>
 </div>
 
@@ -546,7 +509,7 @@ const defaults={
  quizWins:0,quizPoints:0,mined:0,missionDone:'',
  inventory:[],achievements:[],bossHP:500,bossDone:false,
  challenge:'Zbuduj małą bazę w Minecraft!',challengeDone:'',
- votes:{},voted:false,attacks:0,announcements:[],avatar:'🧙',auraMode:false,teamPurple:0,teamBlue:0,bossQuizIndex:0,bossQuizWins:0
+ votes:{},voted:false,attacks:0,announcements:[]
 };
 let s;
 try{s=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||'{}'))}
@@ -841,42 +804,6 @@ function renderAnnouncements(){
  const extra=s.announcements.map(a=>'<b>📢 OGŁOSZENIE WŁAŚCICIELA</b><br>'+esc(a));
  $('uvAnnouncementList').innerHTML=fixed.concat(extra).map(x=>'<div class="notice">'+x+'</div>').join('');
 }
-
-window.uvAuraMode=function(){s.auraMode=!s.auraMode;root.classList.toggle('aura-mode-on',s.auraMode);$('uvAuraStatus').textContent=s.auraMode?'AURA: ULTRA AKTYWNA':'AURA: STANDARD';toast(s.auraMode?'⚡ ULTRA AURA WŁĄCZONA!':'Aura wróciła do trybu standardowego.');save();};
-window.uvChooseAvatar=function(icon){s.avatar=icon;save();toast('Awatar profilu zmieniony!');};
-window.uvOpenCrate=function(){
- if(s.crystals<30)return toast('Potrzebujesz 30 kryształów!');
- s.crystals-=30;const r=Math.random()*100;let rarity,item,reward;
- if(r<60){rarity='Zwykły';item='Kamień Aury';reward=5;}
- else if(r<85){rarity='Rzadki';item='Kryształ Fioletu';reward=15;}
- else if(r<97){rarity='Epicki';item='Serce Aury';reward=35;}
- else{rarity='LEGENDARNY';item='Korona ULTRA AURY';reward=100;}
- s.inventory.push(item+' ['+rarity+']');
- s.crystals+=reward;const cls=rarity==='Zwykły'?'rarity-common':rarity==='Rzadki'?'rarity-rare':rarity==='Epicki'?'rarity-epic':'rarity-legendary';
- $('uvCrateResult').style.display='block';$('uvCrateResult').innerHTML='Wylosowano: <b class="'+cls+'">'+esc(item)+'</b><br>Rzadkość: '+esc(rarity)+'<br>Bonus: +'+reward+' 💎';
- checkAchievements();save();toast('🎁 Skrzynka otwarta!');
-};
-window.uvVoteTeam=function(team){if(team==='purple')s.teamPurple=(s.teamPurple||0)+1;else s.teamBlue=(s.teamBlue||0)+1;s.teamChoice=team;save();toast('⚔️ Wsparłeś drużynę '+(team==='purple'?'Fioletu':'Błękitu')+'!');};
-const bossQuestions=[
- {q:'Ile punktów życia ma standardowy gracz?',a:['10','20','30','40'],c:1},
- {q:'Który mob pilnuje oceanicznych monumentów?',a:['Strażnik','Creeper','Pająk','Szkielet'],c:0},
- {q:'Z czego powstaje obsydian?',a:['Lawa i woda','Piasek i woda','Drewno i lawa','Kamień i ogień'],c:0},
- {q:'Czy Wither ma własny wymiar?',a:['Tak, End','Tak, Nether','Nie','Tylko Overworld'],c:2},
- {q:'Co dropi Creeper?',a:['Proch','Szmaragdy','Pióra','Perły Endu'],c:0},
- {q:'Który kilof wydobywa diamenty?',a:['Drewniany','Kamienny','Żelazny lub lepszy','Złoty'],c:2},
- {q:'Jak aktywować portal do Netheru?',a:['Wodą','Krzesiwem i ogniem','Redstone','Łóżkiem'],c:1},
- {q:'Który mob teleportuje się?',a:['Enderman','Krowa','Świnia','Pszczoła'],c:0},
- {q:'Co pomaga oddychać pod wodą?',a:['Hełm z oddychaniem','Buty z piórkiem','Tarcza','Łuk'],c:0},
- {q:'Czym przywołuje się smoka Endu ponownie?',a:['Kryształami Endu','Perłą Endu','Totemem','Jajkiem'],c:0}
-];
-window.uvStartBossQuiz=function(){s.bossQuizIndex=0;s.bossQuizWins=0;uvShowBossQuestion();};
-function uvShowBossQuestion(){
- const area=$('uvBossQuizArea'),idx=s.bossQuizIndex;
- if(idx>=bossQuestions.length){area.innerHTML='<h3>🏆 Quiz ukończony!</h3><p>Wynik: '+s.bossQuizWins+'/10</p><button onclick="uvStartBossQuiz()">Zagraj ponownie</button>';if(s.bossQuizWins===10){s.crystals+=50;xpAdd(50);toast('PERFEKCYJNY WYNIK! +50 💎 +50 XP');}save();return;}
- const q=bossQuestions[idx];area.innerHTML='<p class="tag">PYTANIE '+(idx+1)+'/10</p><div class="question">'+esc(q.q)+'</div><div class="answers">'+q.a.map((a,i)=>'<button onclick="uvBossQuizAnswer('+i+')">'+esc(a)+'</button>').join('')+'</div>';
-}
-window.uvBossQuizAnswer=function(i){const q=bossQuestions[s.bossQuizIndex];if(!q)return;if(i===q.c){s.bossQuizWins++;s.crystals+=5;toast('Dobra odpowiedź! +5 💎');}else toast('Nie tym razem! Poprawna: '+q.a[q.c]);s.bossQuizIndex++;save();uvShowBossQuestion();};
-
 function render(){
  $('uvTopName').textContent=s.name;
  $('uvTopCrystals').textContent=s.crystals;
@@ -903,12 +830,6 @@ function render(){
  $('uvProfileStreak').textContent=s.streak+' dni';
  $('uvInventory').innerHTML=s.inventory.length?s.inventory.map(x=>'<div class="row"><span>🎁 '+esc(x)+'</span><span class="tag">KOLEKCJA</span></div>').join(''):'<p class="muted">Twój ekwipunek jest pusty.</p>';
  renderShop();renderArena();renderBoss();renderRanking();renderAchievements();renderAnnouncements();
-  if($('uvAvatarDisplay'))$('uvAvatarDisplay').textContent=s.avatar||'🧙';
-  if($('uvTeamPurple'))$('uvTeamPurple').textContent=s.teamPurple||0;
-  if($('uvTeamBlue'))$('uvTeamBlue').textContent=s.teamBlue||0;
-  if($('uvTeamStatus'))$('uvTeamStatus').textContent=s.teamChoice?'Twoja drużyna: '+(s.teamChoice==='purple'?'Fioletu 🟣':'Błękitu 🔵'):'Wybierz stronę konfliktu!';
-  if($('uvAuraStatus'))$('uvAuraStatus').textContent=s.auraMode?'AURA: ULTRA AKTYWNA':'AURA: STANDARD';
-  root.classList.toggle('aura-mode-on',!!s.auraMode);
  if($('uv-quiz').classList.contains('active'))renderQuiz();
  if($('uv-community').classList.contains('active'))renderVotes();
 }
