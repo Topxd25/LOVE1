@@ -193,6 +193,22 @@
 #ultraV .switchline input{width:auto;margin:0}
 #ultraV .small{font-size:11px;color:#a99ab8}
 
+
+#ultraV .mc-inventory{background:#c6c6c6;color:#222;border:3px solid #fff;border-right-color:#555;border-bottom-color:#555;padding:12px;image-rendering:pixelated;font-family:Arial,sans-serif;max-width:760px;margin:12px auto;box-shadow:0 8px 0 #0005}
+#ultraV .mc-title{font-size:17px;color:#333;margin:2px 0 10px;font-weight:700}
+#ultraV .mc-layout{display:grid;grid-template-columns:76px 1fr;gap:14px}
+#ultraV .mc-armor{display:grid;grid-template-columns:repeat(2,34px);gap:5px;align-content:start}
+#ultraV .mc-slot{width:34px;height:34px;background:#8b8b8b;border:2px solid #373737;border-right-color:#eee;border-bottom-color:#eee;box-shadow:inset 1px 1px 0 #555;display:flex;align-items:center;justify-content:center;font-size:22px;position:relative;padding:0!important;border-radius:0!important;color:#fff!important;transition:none!important}
+#ultraV .mc-slot:hover{background:#b4a4c8!important;transform:none!important;box-shadow:inset 1px 1px 0 #555,0 0 0 2px #fff!important}
+#ultraV .mc-slot .mc-count{position:absolute;right:1px;bottom:-1px;font-size:10px;font-weight:900;color:#fff;text-shadow:1px 1px #222}
+#ultraV .mc-main-slots{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:4px}
+#ultraV .mc-main-slots .mc-slot{width:100%;height:auto;aspect-ratio:1}
+#ultraV .mc-inventory hr{border:0;border-top:2px solid #888;border-bottom:1px solid #eee;margin:12px 0}
+#ultraV .mc-player{background:#aaa;border:2px inset #eee;text-align:center;padding:8px;font-size:12px;color:#222;margin-top:10px}
+#ultraV .mc-slot.empty{opacity:.85}
+#ultraV .mc-help{color:#333;font-size:12px;margin:8px 0 0}
+@media(max-width:520px){#ultraV .mc-layout{grid-template-columns:1fr}#ultraV .mc-armor{grid-template-columns:repeat(4,34px)}#ultraV .mc-slot{width:100%;height:auto;aspect-ratio:1;font-size:18px}#ultraV .mc-main-slots{gap:3px}}
+
 #ultraV .aura-mode-on{animation:uvPulse 2.5s ease-in-out infinite}
 #ultraV .rarity-common{color:#d1d5db}
 #ultraV .rarity-rare{color:#60a5fa}
@@ -244,6 +260,8 @@
  <button data-uvnav="minecraft" onclick="uvGo('minecraft')">⛏️ Minecraft</button>
  <button data-uvnav="arena" onclick="uvGo('arena')">⚔️ Arena PvP</button>
  <button data-uvnav="shop" onclick="uvGo('shop')">🛒 Sklep</button>
+ <button data-uvnav="enchant" onclick="uvGo('enchant')">✨ Stół zaklęć</button>
+ <button data-uvnav="avatar" onclick="uvGo('avatar')">🧑 Mój awatar</button>
  <button data-uvnav="boss" onclick="uvGo('boss')">🐉 Boss</button>
  <button data-uvnav="ranking" onclick="uvGo('ranking')">🏆 Ranking</button>
  <button data-uvnav="community" onclick="uvGo('community')">👥 Widzowie</button>
@@ -261,6 +279,8 @@
  <button class="sidebtn" data-uvnav="arena" onclick="uvGo('arena')">⚔️ Arena PvP</button>
  <button class="sidebtn" data-uvnav="boss" onclick="uvGo('boss')">🐉 Boss tygodnia</button>
  <button class="sidebtn" data-uvnav="shop" onclick="uvGo('shop')">🛒 Sklep</button>
+ <button class="sidebtn" data-uvnav="enchant" onclick="uvGo('enchant')">✨ Stół zaklęć</button>
+ <button class="sidebtn" data-uvnav="avatar" onclick="uvGo('avatar')">🧑 Mój awatar</button>
  <button class="sidebtn" data-uvnav="ranking" onclick="uvGo('ranking')">🏆 Ranking</button>
  <button class="sidebtn" data-uvnav="achievements" onclick="uvGo('achievements')">🎖️ Osiągnięcia</button>
  <button class="sidebtn" data-uvnav="community" onclick="uvGo('community')">👥 Strefa widzów</button>
@@ -356,7 +376,12 @@
   </div>
   <div class="card">
    <div class="icon">🎒</div><h3>Ekwipunek</h3>
-   <div id="uvInventory"><p class="muted">Twój ekwipunek jest pusty.</p></div>
+   <div class="mc-inventory" id="uvInventory">
+      <div class="mc-title">Ekwipunek</div>
+      <div class="mc-layout"><div><div class="mc-armor" id="uvArmorSlots"></div><div class="mc-player">🧍<br>GRACZ</div></div>
+      <div><div class="mc-main-slots" id="uvMainSlots"></div><hr><div class="mc-main-slots" id="uvHotbarSlots"></div></div></div>
+      <p class="mc-help">Najedź na przedmiot, aby zobaczyć nazwę. Sloty i ikony w stylu Minecraft Java.</p>
+    </div>
   </div>
  </div>
  <div class="card">
@@ -371,7 +396,7 @@
 
 <section class="page" id="uv-arena">
  <h2>⚔️ Arena PvP</h2>
- <p class="muted">Walka jest symulacją na stronie, nie połączeniem z serwerem Minecraft.</p>
+ <p class="muted">Walka jest symulacją na stronie, nie połączeniem z serwerem Minecraft. 🕷️ Pająk i wszystkie mocniejsze moby zabijają gracza bez zbroi jednym trafieniem. Zbroja zmniejsza obrażenia. Wilki kupione w sklepie pomagają zadawać dodatkowe obrażenia.</p>
  <div class="arena">
   <div class="enemy" id="uvEnemyEmoji">🧟</div>
   <h3 id="uvEnemyName">Zombie</h3>
@@ -379,9 +404,9 @@
   <p>HP przeciwnika</p><div class="bar"><span id="uvEnemyBar" style="width:100%"></span></div>
   <b id="uvEnemyHP">100</b> / 100 HP
   <hr style="border-color:#503467;margin:20px 0">
-  <p>❤️ Twoje HP: <b id="uvPlayerHP">100</b> / 100</p>
+  <p>❤️ Twoje HP: <b id="uvPlayerHP">100</b> / 100</p><p>🛡️ Zbroja: <b id="uvEquippedArmor">Brak zbroi</b> · Obrona: <b id="uvArmorDefense">0%</b></p><p>⭐ Poziom przeciwnika: <b id="uvEnemyLevel">1</b></p>
   <button onclick="uvAttack()">⚔️ ATAKUJ</button>
-  <button onclick="uvHeal()" class="secondary">🧪 Leczenie — 20 💎</button>
+  <button onclick="uvHeal()" class="secondary">💜 Pełne leczenie — 1000 💎</button>
   <button onclick="uvNewEnemy()" class="secondary">🔄 Nowy przeciwnik</button>
   <p id="uvBattleLog" class="muted">Arena czeka na wojownika...</p>
  </div>
@@ -391,6 +416,35 @@
  <h2>🛒 Sklep Aury</h2>
  <p class="muted">Kupuj przedmioty za kryształy zdobywane podczas gry.</p>
  <div class="grid" id="uvShopItems"></div>
+</section>
+
+<section class="page" id="uv-enchant">
+ <h2>✨ Stół do zaklęć</h2>
+ <p class="muted">Wybierz posiadaną zbroję i nałóż zaklęcie za kryształy. Każde zaklęcie kupujesz osobno.</p>
+ <div class="card">
+  <div class="icon">📚✨</div>
+  <h3>Twoja zbroja</h3>
+  <p>🛡️ Aktualnie założona: <b id="uvEnchantArmor">Brak zbroi</b></p>
+  <p>Zaklęcia: <b id="uvEnchantStatus">Brak</b></p>
+  <p>Twoje kryształy: <b id="uvEnchantCrystals">100</b> 💎</p>
+  <p class="small">Zaklęcia można kupić również wtedy, gdy zbroja jest już zaklęta — ponowny zakup nie pobiera kryształów.</p>
+ </div>
+ <div class="grid">
+  <div class="card"><div class="icon">🧱</div><h3>Niezniszczalność III</h3><p class="muted">Zmniejsza zużycie trwałości zbroi.</p><div class="stat">10 000 💎</div><button onclick="uvEnchant('unbreaking')">Nałóż zaklęcie</button></div>
+  <div class="card"><div class="icon">🛡️</div><h3>Ochrona IV</h3><p class="muted">Dodatkowo zmniejsza obrażenia otrzymywane w walce.</p><div class="stat">15 000 💎</div><button onclick="uvEnchant('protection')">Nałóż zaklęcie</button></div>
+  <div class="card"><div class="icon">✨</div><h3>Naprawa</h3><p class="muted">Po walce stopniowo odnawia trwałość zbroi.</p><div class="stat">20 000 💎</div><button onclick="uvEnchant('mending')">Nałóż zaklęcie</button></div>
+ </div>
+</section>
+
+<section class="page" id="uv-avatar">
+ <h2>🧑 Mój awatar</h2>
+ <p class="muted">Wybierz wygląd swojej postaci. Wybór zapisze się w tej przeglądarce.</p>
+ <div class="card" style="text-align:center">
+  <div id="uvAvatarBig" style="font-size:88px;filter:drop-shadow(0 0 18px #a855f7);padding:15px">🧙</div>
+  <h3 id="uvAvatarName">Mag AURY</h3>
+  <p class="muted">Twój awatar</p>
+ </div>
+ <div class="grid" id="uvAvatarChoices"></div>
 </section>
 
 <section class="page" id="uv-boss">
@@ -513,8 +567,13 @@
   <div class="card"><div class="icon">💎</div><h3>Rzadkości przedmiotów</h3><div class="row"><span class="rarity-common">● Zwykły</span><b>60%</b></div><div class="row"><span class="rarity-rare">● Rzadki</span><b>25%</b></div><div class="row"><span class="rarity-epic">● Epicki</span><b>12%</b></div><div class="row"><span class="rarity-legendary">● LEGENDARNY</span><b>3%</b></div></div>
   <div class="card"><div class="icon">👤</div><h3>Awatar profilu</h3><p class="muted">Wybierz ikonę profilu.</p><div id="uvAvatarChoices"><button class="avatar-pick" onclick="uvChooseAvatar('🧙')">🧙</button><button class="avatar-pick" onclick="uvChooseAvatar('🐉')">🐉</button><button class="avatar-pick" onclick="uvChooseAvatar('⚔️')">⚔️</button><button class="avatar-pick" onclick="uvChooseAvatar('👑')">👑</button><button class="avatar-pick" onclick="uvChooseAvatar('💜')">💜</button></div><p>Twój awatar: <b id="uvAvatarDisplay">🧙</b></p></div>
  </div>
- <div class="card"><h3>⚔️ Wojna widzów</h3><p class="muted">Wybierz drużynę i wspieraj ją. Wyniki zapisują się tylko w tej przeglądarce.</p>
-  <div class="grid"><div class="team-card"><div class="icon">🟣</div><h3>Drużyna Fioletu</h3><div class="stat" id="uvTeamPurple">0</div><button onclick="uvVoteTeam('purple')">Wesprzyj Fiolet</button></div><div class="team-card"><div class="icon">🔵</div><h3>Drużyna Błękitu</h3><div class="stat" id="uvTeamBlue">0</div><button onclick="uvVoteTeam('blue')">Wesprzyj Błękit</button></div></div><p class="muted" id="uvTeamStatus">Wybierz stronę konfliktu!</p>
+ <div class="card"><h3>⚔️ Wojna widzów — wzmocnienie drużyny</h3><p class="muted">Wybierz drużynę i zapłać 1000 💎 za udział w bitwie. Wygrana daje 2000 💎 łącznie w nagrodzie (zysk netto +1000 💎 po opłacie), a przegrana oznacza utratę opłaty 1000 💎. Szansa na wygraną w tej symulacji wynosi 50%. Wyniki zapisują się tylko w tej przeglądarce.</p>
+  <div class="grid">
+   <div class="team-card"><div class="icon">🟣</div><h3>Drużyna Fioletowa</h3><div class="stat" id="uvTeamPurple">0</div><button onclick="uvVoteTeam('purple')">Wybierz Fiolet</button><button class="secondary" onclick="uvTeamBattle('purple')">⚡ Wzmocnij i walcz — 1000 💎</button></div>
+   <div class="team-card"><div class="icon">🔵</div><h3>Drużyna Niebieska</h3><div class="stat" id="uvTeamBlue">0</div><button onclick="uvVoteTeam('blue')">Wybierz Błękit</button><button class="secondary" onclick="uvTeamBattle('blue')">⚡ Wzmocnij i walcz — 1000 💎</button></div>
+  </div>
+  <div class="grid"><div class="card"><div class="muted">BITWY</div><div class="stat" id="uvTeamBattles">0</div></div><div class="card"><div class="muted">WYGRANE</div><div class="stat" id="uvTeamWins">0</div></div><div class="card"><div class="muted">PRZEGRANE</div><div class="stat" id="uvTeamLosses">0</div></div></div>
+  <p class="muted" id="uvTeamStatus">Wybierz drużynę i rozpocznij bitwę!</p>
  </div>
  <div class="grid">
   <div class="card"><div class="icon">🧠</div><h3>Quiz Boss — 10 pytań</h3><p class="muted">Każda poprawna odpowiedź daje 5 kryształów. Idealny wynik daje bonus.</p><div id="uvBossQuizArea"><button onclick="uvStartBossQuiz()">Rozpocznij quiz</button></div></div>
@@ -530,6 +589,7 @@
  <div class="brand">💜 1ButelkaKaucyjna ULTRA V</div>
  <p>MINECRAFT • GAMING • WIDZOWIE • ULTRA AURA</p>
  <p class="small">Portal demonstracyjny. Postęp zapisywany lokalnie w przeglądarce.</p>
+ <p class="small">Autor strony: <b style="color:#e9c5ff">1ButelkaKaucyjna</b> · © 2026</p>
 </footer>
 <div class="toast" id="uvToast"></div>
 
@@ -541,16 +601,20 @@ root.dataset.init='1';
 
 const KEY='ultraV_butelka_save_v1';
 const defaults={
- name:'Gracz',crystals:100,xp:0,level:1,
+ name:'Gracz',crystals:100,xp:0,level:1,armor:'Brak zbroi',armorDurability:0,armorTrim:'Brak wzoru',armorEnchantments:{protection:0,unbreaking:0,mending:false},
  streak:0,lastQuizDay:'',lastDaily:'',
  quizWins:0,quizPoints:0,mined:0,missionDone:'',
  inventory:[],achievements:[],bossHP:500,bossDone:false,
  challenge:'Zbuduj małą bazę w Minecraft!',challengeDone:'',
- votes:{},voted:false,attacks:0,announcements:[],avatar:'🧙',auraMode:false,teamPurple:0,teamBlue:0,bossQuizIndex:0,bossQuizWins:0
+ votes:{},voted:false,attacks:0,announcements:[],avatar:'🧙',auraMode:false,teamPurple:0,teamBlue:0,teamWins:0,teamLosses:0,teamBattles:0,bossQuizIndex:0,bossQuizWins:0
 };
 let s;
 try{s=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||'{}'))}
 catch(e){s={...defaults,inventory:[],achievements:[],votes:{},announcements:[]};}
+s.armor=s.armor||'Brak zbroi';
+s.armorDurability=Number.isFinite(s.armorDurability)?s.armorDurability:0;
+s.armorTrim=s.armorTrim||'Brak wzoru';
+s.armorEnchantments=Object.assign({protection:0,unbreaking:0,mending:false},s.armorEnchantments||{});
 s.inventory=Array.isArray(s.inventory)?s.inventory:[];
 s.achievements=Array.isArray(s.achievements)?s.achievements:[];
 s.votes=s.votes||{};
@@ -596,6 +660,19 @@ function checkAchievements(){
  if(s.quizWins>=3)unlock('Mistrz quizów');
  if(s.bossDone)unlock('Pogromca smoka');
  if(s.level>=10)unlock('Legenda');
+ if(s.mined>=25)unlock('Mistrz kopalni');
+ if(s.mined>=100)unlock('Legenda kopalni');
+ if(s.attacks>=25)unlock('Weteran areny');
+ if(s.quizWins>=10)unlock('Quizowy ekspert');
+ if(s.streak>=7)unlock('Tydzień bez przerwy');
+ if(s.inventory.length>=10)unlock('Wielki kolekcjoner');
+ if(s.teamBattles>=1)unlock('Pierwsza wojna drużyn');
+ if(s.teamWins>=1)unlock('Pierwsze zwycięstwo drużyny');
+ if(s.teamWins>=5)unlock('Dowódca drużyny');
+ if(s.teamBattles>=10)unlock('Weteran wojny widzów');
+ if(s.teamLosses>=1)unlock('To jeszcze nie koniec');
+ if(s.crystals>=10000)unlock('Kryształowy bogacz');
+ if(s.armor&&s.armor!=='Brak zbroi')unlock('Opancerzony wojownik');
 }
 window.uvGo=function(page){
  root.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -686,64 +763,141 @@ window.uvMine=function(){
  toast('⛏️ Wydobyto kryształ: +5 💎');
 };
 const items=[
- {name:'Miecz Aury',emoji:'🗡️',price:40},
- {name:'Zbroja Fioletu',emoji:'🛡️',price:70},
- {name:'Perła Endu',emoji:'🟣',price:25},
- {name:'Złote jabłko',emoji:'🍎',price:35},
- {name:'Skrzynia kryształów',emoji:'🎁',price:90},
- {name:'Smocza korona',emoji:'👑',price:150},
- {name:'Netheritowy kilof',emoji:'⛏️',price:120},
- {name:'Aura legendarna',emoji:'🌌',price:250}
+ {name:'Miecz Aury',emoji:'🗡️',price:1000},
+ {name:'Skórzana zbroja',emoji:'🥋',price:1000,armor:10,durability:80,material:'Skóra'},
+ {name:'Żelazna zbroja',emoji:'🛡️',price:5000,armor:25,durability:240,material:'Żelazo'},
+ {name:'Diamentowa zbroja',emoji:'💎',price:10000,armor:40,durability:528,material:'Diament'},
+ {name:'Netheritowa zbroja',emoji:'⚫',price:15000,armor:55,durability:592,material:'Netheryt'},
+ {name:'Zbroja AURY',emoji:'🌌',price:25000,armor:70,durability:800,material:'Aura'},
+ {name:'Perła Endu',emoji:'🟣',price:500},
+ {name:'Złote jabłko',emoji:'🍎',price:1000},
+ {name:'Skrzynia kryształów',emoji:'🎁',price:3000},
+ {name:'Smocza korona',emoji:'👑',price:7500},
+ {name:'Netheritowy kilof',emoji:'⛏️',price:6000},
+ {name:'Aura legendarna',emoji:'🌌',price:12000},
+ {name:'Oswojony wilk',emoji:'🐺',price:2500,wolfDamage:10},
+ {name:'Wilk AURY',emoji:'🐺',price:10000,wolfDamage:20},
+ {name:'Wilk Alfa',emoji:'🐺',price:25000,wolfDamage:30}
 ];
+const armorTrims=['Brak wzoru','Sentry','Dune','Coast','Wild','Ward','Eye','Vex','Tide','Snout','Rib','Spire','Wayfinder','Shaper','Silence','Raiser','Host','Flow','Bolt'];
 function renderShop(){
  $('uvShopItems').innerHTML=items.map((it,i)=>
- '<div class="card"><div class="icon">'+it.emoji+'</div><h3>'+esc(it.name)+'</h3><div class="stat">'+it.price+' 💎</div><p class="muted">Kolekcjonerski przedmiot portalu.</p><button onclick="uvBuy('+i+')">Kup przedmiot</button></div>'
+ '<div class="card"><div class="icon">'+it.emoji+'</div><h3>'+esc(it.name)+'</h3><div class="stat">'+it.price.toLocaleString('pl-PL')+' 💎</div><p class="muted">'+(it.armor?'Obrona: '+it.armor+'% · Trwałość: '+it.durability+'<br>✨ Zaklęcia możesz dodać przy stole zaklęć':(it.wolfDamage?'🐾 Towarzysz pomaga w walce: +'+it.wolfDamage+' obrażeń na atak.':'Przedmiot do ekwipunku.'))+'</p><button onclick="uvBuy('+i+')">Kup '+(it.armor?'i załóż':'przedmiot')+'</button></div>'
  ).join('');
+ const box=$('uvShopItems');
+ box.insertAdjacentHTML('beforeend','<div class="card" style="grid-column:1/-1"><h3>🎨 Wzór zbroi — jak w Minecraft</h3><p class="muted">Wybierz ozdobny wzór zbroi. To wygląd kosmetyczny; nie zmienia obrony.</p><select id="uvArmorTrimSelect" onchange="uvSetArmorTrim(this.value)">'+armorTrims.map(t=>'<option '+(t===s.armorTrim?'selected':'')+'>'+esc(t)+'</option>').join('')+'</select><p>Aktualny wzór: <b id="uvArmorTrimName">'+esc(s.armorTrim)+'</b></p><p>🛡️ Enchanty: <b>Ochrona IV</b>, <b>Niezniszczalność III</b>, <b>Naprawa</b></p><p>Trwałość zbroi: <b id="uvArmorDurability">'+(s.armorDurability||0)+'</b></p></div>');
 }
+window.uvSetArmorTrim=function(v){s.armorTrim=armorTrims.includes(v)?v:'Brak wzoru';save();toast('🎨 Wzór zbroi: '+s.armorTrim);};
 window.uvBuy=function(i){
  const it=items[i];if(!it)return;
  if(s.crystals<it.price)return toast('Za mało kryształów!');
- s.crystals-=it.price;s.inventory.push(it.name);
- checkAchievements();save();toast('🛒 Kupiono: '+it.name);
+ s.crystals-=it.price;
+ if(it.armor){s.armor=it.name;s.armorDurability=it.durability;s.armorTrim=s.armorTrim||'Brak wzoru';toast('🛡️ Założono '+it.name+' — '+it.armor+'% obrony, trwałość '+it.durability+'!');}
+ else s.inventory.push(it.name);
+ checkAchievements();save();if(!it.armor)toast('🛒 Kupiono: '+it.name);
 };
-let playerHP=100,enemyHP=100,enemyIndex=0;
-const enemies=[
- {name:'Zombie',emoji:'🧟'},
- {name:'Enderman',emoji:'👾'},
- {name:'Wither',emoji:'☠️'},
- {name:'Strażnik',emoji:'🛡️'}
+const enchantInfo={unbreaking:{name:'Niezniszczalność III',price:10000},protection:{name:'Ochrona IV',price:15000},mending:{name:'Naprawa',price:20000}};
+window.uvEnchant=function(type){
+ const info=enchantInfo[type];if(!info)return;
+ if(!s.armor||s.armor==='Brak zbroi')return toast('Najpierw kup i załóż zbroję w Sklepie!');
+ if(type==='mending'?!!s.armorEnchantments.mending:Number(s.armorEnchantments[type]||0)>0)return toast('To zaklęcie jest już nałożone na zbroję.');
+ if(s.crystals<info.price)return toast('Za mało kryształów! Potrzebujesz '+info.price.toLocaleString('pl-PL')+' 💎.');
+ s.crystals-=info.price;
+ if(type==='mending')s.armorEnchantments.mending=true;else s.armorEnchantments[type]=type==='protection'?4:3;
+ save();toast('✨ Nałożono: '+info.name+'!');
+};
+const avatarOptions=[
+ {icon:'🧑🏻',name:'Steve'}, {icon:'👩🏻',name:'Alex'}, {icon:'🧙',name:'Mag AURY'},
+ {icon:'🧟',name:'Zombie'}, {icon:'💀',name:'Szkielet'}, {icon:'🕷️',name:'Pająk'},
+ {icon:'💥',name:'Creeper'}, {icon:'👾',name:'Enderman'}, {icon:'🐉',name:'Smoczy wojownik'},
+ {icon:'🛡️',name:'Rycerz'}, {icon:'😈',name:'Demon AURY'}, {icon:'👑',name:'Król Potworów'}
 ];
+window.uvChooseAvatar=function(icon,name){s.avatar=icon;s.avatarName=name;save();toast('Awatar zmieniony: '+name);};
+function renderEnchantAvatar(){
+ if($('uvEnchantArmor'))$('uvEnchantArmor').textContent=s.armor||'Brak zbroi';
+ if($('uvEnchantCrystals'))$('uvEnchantCrystals').textContent=s.crystals.toLocaleString('pl-PL');
+ const ench=[];if(s.armorEnchantments?.unbreaking)ench.push('Niezniszczalność III');if(s.armorEnchantments?.protection)ench.push('Ochrona IV');if(s.armorEnchantments?.mending)ench.push('Naprawa');
+ if($('uvEnchantStatus'))$('uvEnchantStatus').textContent=ench.length?ench.join(' · '):'Brak zaklęć';
+ if($('uvAvatarBig'))$('uvAvatarBig').textContent=s.avatar||'🧙';
+ if($('uvAvatarName'))$('uvAvatarName').textContent=s.avatarName||'Mag AURY';
+ if($('uvAvatarChoices'))$('uvAvatarChoices').innerHTML=avatarOptions.map(a=>'<div class="card" style="text-align:center"><div style="font-size:48px;padding:8px">'+a.icon+'</div><h3>'+esc(a.name)+'</h3><button onclick="uvChooseAvatar('+JSON.stringify(a.icon)+','+JSON.stringify(a.name)+')">Wybierz</button></div>').join('');
+}
+let playerHP=100,enemyHP=35,enemyIndex=0,enemyLevel=1;
+const enemies=[
+ {name:'Zombie',emoji:'🧟',base:45,damage:5,level:1},
+ {name:'Szkielet',emoji:'🏹',base:60,damage:7,level:3},
+ {name:'Pająk',emoji:'🕷️',base:130,damage:110,level:5},
+ {name:'Creeper',emoji:'💥',base:90,damage:110,level:8},
+ {name:'Enderman',emoji:'👾',base:120,damage:120,level:12},
+ {name:'Blaze',emoji:'🔥',base:150,damage:130,level:18},
+ {name:'Wither',emoji:'☠️',base:220,damage:140,level:25},
+ {name:'Smok Endu',emoji:'🐉',base:300,damage:150,level:35},
+ {name:'Demon AURY',emoji:'😈',base:420,damage:160,level:50},
+ {name:'Król Potworów',emoji:'👑',base:600,damage:180,level:75}
+];
+function setEnemyForLevel(){
+ const e=enemies[enemyIndex];
+ enemyLevel=Math.min(100,e.level+Math.floor(Math.max(0,s.level-1)/5));
+ enemyHP=Math.round(e.base*(1+(enemyLevel-e.level)*0.12));
+}
+function armorDefense(){
+ const it=items.find(x=>x.name===s.armor&&x.armor);
+ if(!it||s.armorDurability<=0)return 0;
+ const protection=Math.max(0,Math.min(4,Number(s.armorEnchantments?.protection)||0))*4;
+ return Math.min(85,it.armor+protection);
+}
+function armorDurabilityMax(){const it=items.find(x=>x.name===s.armor&&x.armor);return it?it.durability:0;}
 function renderArena(){
- $('uvEnemyName').textContent=enemies[enemyIndex].name;
- $('uvEnemyEmoji').textContent=enemies[enemyIndex].emoji;
+ const e=enemies[enemyIndex];
+ $('uvEnemyName').textContent=e.name;
+ $('uvEnemyEmoji').textContent=e.emoji;
  $('uvEnemyHP').textContent=enemyHP;
- $('uvEnemyBar').style.width=enemyHP+'%';
+ $('uvEnemyBar').style.width=(enemyHP/Math.max(1,e.base*(1+(enemyLevel-e.level)*0.12))*100)+'%';
  $('uvPlayerHP').textContent=playerHP;
+ $('uvEquippedArmor').textContent=s.armor||'Brak zbroi';
+ $('uvArmorDefense').textContent=armorDefense()+'%';
+ const durabilityEl=$('uvArmorDurability');if(durabilityEl)durabilityEl.textContent=s.armorDurability+' / '+armorDurabilityMax();
+ const trimEl=$('uvArmorTrimName');if(trimEl)trimEl.textContent=s.armorTrim||'Brak wzoru';
+ $('uvEnemyLevel').textContent=enemyLevel;
 }
 window.uvNewEnemy=function(){
  enemyIndex=(enemyIndex+1)%enemies.length;
- enemyHP=100;playerHP=100;renderArena();
- $('uvBattleLog').textContent='Pojawił się przeciwnik: '+enemies[enemyIndex].name+'!';
+ setEnemyForLevel();playerHP=100;renderArena();
+ $('uvBattleLog').textContent='Pojawił się '+enemies[enemyIndex].name+' — poziom '+enemyLevel+'!';
 };
 window.uvAttack=function(){
  if(playerHP<=0)return toast('Przegrana! Wybierz nowego przeciwnika.');
  if(enemyHP<=0)return toast('Pokonałeś go! Wybierz nowego przeciwnika.');
- enemyHP=Math.max(0,enemyHP-(15+Math.floor(Math.random()*26)));
+ const e=enemies[enemyIndex];
+ const wolfBonus=s.inventory.includes('Wilk Alfa')?30:(s.inventory.includes('Wilk AURY')?20:(s.inventory.includes('Oswojony wilk')?10:0));
+ const playerDamage=25+Math.floor(Math.random()*16)+Math.floor(s.level/10)*2+wolfBonus;
+ enemyHP=Math.max(0,enemyHP-playerDamage);
  s.attacks++;
  if(enemyHP===0){
-  s.crystals+=30;s.xp+=30;
-  $('uvBattleLog').textContent='🏆 Wygrana! +30 💎 i +30 XP';
+  const reward=100+enemyLevel*20;s.crystals+=reward;s.xp+=30+enemyLevel*2;
+  if(s.armor&&s.armor!=='Brak zbroi'&&s.armorEnchantments?.mending){const maxDur=armorDurabilityMax();if(maxDur&&s.armorDurability<maxDur){s.armorDurability=Math.min(maxDur,s.armorDurability+8);}}
+  $('uvBattleLog').textContent='🏆 Wygrana! +'+reward+' 💎 i +'+(30+enemyLevel*2)+' XP';
  }else{
-  playerHP=Math.max(0,playerHP-(5+Math.floor(Math.random()*16)));
-  $('uvBattleLog').textContent=playerHP===0?'💀 Przegrana! Wybierz nowego przeciwnika.':'⚔️ Trwa walka!';
+  const raw=e.damage+Math.floor(Math.random()*4)+Math.max(0,enemyLevel-e.level)*2;
+  const defenseBefore=armorDefense();
+  const damage=Math.max(1,Math.round(raw*(1-defenseBefore/100)));
+  playerHP=Math.max(0,playerHP-damage);
+  const equipped=items.find(x=>x.name===s.armor&&x.armor);
+  let durabilityMsg='';
+  if(equipped&&s.armorDurability>0){
+   const unbreaking=Math.max(0,Math.min(3,Number(s.armorEnchantments?.unbreaking)||0));
+   if(Math.random()<1/(unbreaking+1))s.armorDurability=Math.max(0,s.armorDurability-1);
+   if(s.armorDurability===0)durabilityMsg=' Zbroja się zużyła!';
+  }
+  $('uvBattleLog').textContent=playerHP===0?'💀 Przegrana! Wybierz nowego przeciwnika.':'⚔️ '+e.name+' zadaje '+damage+' obrażeń po uwzględnieniu zbroi!'+durabilityMsg;
  }
  renderArena();checkAchievements();save();
 };
 window.uvHeal=function(){
- if(s.crystals<20)return toast('Za mało kryształów!');
+ if(s.crystals<1000)return toast('Leczenie kosztuje 1000 kryształów!');
  if(playerHP>=100)return toast('Masz pełne HP!');
- s.crystals-=20;playerHP=Math.min(100,playerHP+35);renderArena();save();
- toast('🧪 Przywrócono zdrowie.');
+ s.crystals-=1000;playerHP=100;renderArena();save();
+ toast('💜 Pełne leczenie! -1000 💎');
 };
 window.uvBossAttack=function(){
  if(s.bossDone)return toast('Smok został już pokonany!');
@@ -817,7 +971,20 @@ function renderAchievements(){
  ['Kolekcjoner','Kup 3 przedmioty','🎒'],
  ['Mistrz quizów','Odpowiedz poprawnie 3 razy','🧠'],
  ['Pogromca smoka','Pokonaj bossa','🐉'],
- ['Legenda','Osiągnij poziom 10','👑']
+ ['Legenda','Osiągnij poziom 10','👑'],
+ ['Mistrz kopalni','Wydobądź 25 kryształów','💎'],
+ ['Legenda kopalni','Wydobądź 100 kryształów','🌋'],
+ ['Weteran areny','Wykonaj 25 ataków','🗡️'],
+ ['Quizowy ekspert','Odpowiedz poprawnie 10 razy','📚'],
+ ['Tydzień bez przerwy','Osiągnij passę 7 dni','🔥'],
+ ['Wielki kolekcjoner','Zdobądź 10 przedmiotów','🎁'],
+ ['Pierwsza wojna drużyn','Weź udział w pierwszej bitwie drużyn','⚔️'],
+ ['Pierwsze zwycięstwo drużyny','Wygraj bitwę drużyn','🏆'],
+ ['Dowódca drużyny','Wygraj 5 bitew drużyn','🛡️'],
+ ['Weteran wojny widzów','Rozegraj 10 bitew drużyn','🌌'],
+ ['To jeszcze nie koniec','Przegraj bitwę i wróć do walki','💪'],
+ ['Kryształowy bogacz','Zgromadź 10 000 kryształów','💰'],
+ ['Opancerzony wojownik','Kup i załóż dowolną zbroję','🛡️']
  ];
  $('uvAchievementList').innerHTML=list.map(a=>{
  const got=s.achievements.includes(a[0]);
@@ -856,7 +1023,29 @@ window.uvOpenCrate=function(){
  $('uvCrateResult').style.display='block';$('uvCrateResult').innerHTML='Wylosowano: <b class="'+cls+'">'+esc(item)+'</b><br>Rzadkość: '+esc(rarity)+'<br>Bonus: +'+reward+' 💎';
  checkAchievements();save();toast('🎁 Skrzynka otwarta!');
 };
-window.uvVoteTeam=function(team){if(team==='purple')s.teamPurple=(s.teamPurple||0)+1;else s.teamBlue=(s.teamBlue||0)+1;s.teamChoice=team;save();toast('⚔️ Wsparłeś drużynę '+(team==='purple'?'Fioletu':'Błękitu')+'!');};
+window.uvVoteTeam=function(team){
+ if(team!=='purple'&&team!=='blue')return;
+ s.teamChoice=team;
+ if(team==='purple')s.teamPurple=(s.teamPurple||0)+1;else s.teamBlue=(s.teamBlue||0)+1;
+ save();toast('⚔️ Wybrano drużynę '+(team==='purple'?'Fioletową':'Niebieską')+'!');
+};
+window.uvTeamBattle=function(team){
+ if(team!=='purple'&&team!=='blue')return;
+ if(s.crystals<1000)return toast('Potrzebujesz 1000 kryształów, aby wzmocnić drużynę!');
+ s.crystals-=1000;
+ s.teamChoice=team;s.teamBattles=(s.teamBattles||0)+1;
+ const won=Math.random()<0.5;
+ if(won){
+   s.teamWins=(s.teamWins||0)+1;s.crystals+=2000;
+   $('uvTeamStatus').textContent='🏆 ZWYCIĘSTWO! Drużyna '+(team==='purple'?'Fioletowa 🟣':'Niebieska 🔵')+' wygrała. Nagroda +2000 💎!';
+   toast('🏆 Wygrana! +2000 💎 nagrody!');
+ }else{
+   s.teamLosses=(s.teamLosses||0)+1;
+   $('uvTeamStatus').textContent='💥 Porażka! Drużyna '+(team==='purple'?'Fioletowa 🟣':'Niebieska 🔵')+' przegrała. Opłata 1000 💎 przepada.';
+   toast('💥 Przegrana — utracono 1000 💎.');
+ }
+ checkAchievements();save();
+};
 const bossQuestions=[
  {q:'Ile punktów życia ma standardowy gracz?',a:['10','20','30','40'],c:1},
  {q:'Który mob pilnuje oceanicznych monumentów?',a:['Strażnik','Creeper','Pająk','Szkielet'],c:0},
@@ -876,6 +1065,48 @@ function uvShowBossQuestion(){
  const q=bossQuestions[idx];area.innerHTML='<p class="tag">PYTANIE '+(idx+1)+'/10</p><div class="question">'+esc(q.q)+'</div><div class="answers">'+q.a.map((a,i)=>'<button onclick="uvBossQuizAnswer('+i+')">'+esc(a)+'</button>').join('')+'</div>';
 }
 window.uvBossQuizAnswer=function(i){const q=bossQuestions[s.bossQuizIndex];if(!q)return;if(i===q.c){s.bossQuizWins++;s.crystals+=5;toast('Dobra odpowiedź! +5 💎');}else toast('Nie tym razem! Poprawna: '+q.a[q.c]);s.bossQuizIndex++;save();uvShowBossQuestion();};
+
+
+function mcIcon(name){
+ const map={
+ 'Miecz Aury':'🗡️','Perła Endu':'🟣','Złote jabłko':'🍎','Skrzynia kryształów':'🎁',
+ 'Smocza korona':'👑','Netheritowy kilof':'⛏️','Aura legendarna':'🌌',
+ 'Oswojony wilk':'🐺','Wilk AURY':'🐺','Wilk Alfa':'🐺',
+ 'Skórzana zbroja':'🥋','Żelazna zbroja':'🛡️','Diamentowa zbroja':'💎',
+ 'Netheritowa zbroja':'⚫','Zbroja AURY':'🌌'
+ };
+ return map[name]||'📦';
+}
+function renderMcInventory(){
+ const armor=$('uvArmorSlots'),main=$('uvMainSlots'),hot=$('uvHotbarSlots');
+ if(!armor||!main||!hot)return;
+ const armorIcon=s.armor&&s.armor!=='Brak zbroi'?mcIcon(s.armor):'';
+ armor.innerHTML=[
+  ['Hełm','🪖'],['Napierśnik',armorIcon],['Spodnie',''],['Buty','']
+ ].map(([label,icon])=>'<button class="mc-slot '+(!icon?'empty':'')+'" title="'+esc(label+(icon?' — '+(label==='Napierśnik'?s.armor:label):' — puste'))+'" onclick="uvMcSlotInfo('+JSON.stringify(label)+')">'+(icon||'')+'</button>').join('');
+ const owned=s.inventory.slice();
+ function slot(i,hotbar){
+  const name=owned[i]||'';
+  return '<button class="mc-slot '+(!name?'empty':'')+'" title="'+esc(name||'Pusty slot')+'" '+(name?'onclick="uvMcItemInfo('+i+')"':'')+'>'+(name?mcIcon(name):'')+(name&&owned.filter(x=>x===name).length>1?'<span class="mc-count">'+owned.filter(x=>x===name).length+'</span>':'')+'</button>';
+ }
+ main.innerHTML=Array.from({length:27},(_,i)=>slot(i,false)).join('');
+ hot.innerHTML=Array.from({length:9},(_,i)=>slot(i,true)).join('');
+}
+window.uvMcItemInfo=function(i){
+ const name=s.inventory[i];if(!name)return;
+ const desc={
+ 'Perła Endu':'Przedmiot teleportacyjny — w tej wersji gry służy jako kolekcjonerski przedmiot.',
+ 'Złote jabłko':'Przedmiot leczniczy. W arenie użyj przycisku leczenia, aby odnowić HP.',
+ 'Netheritowy kilof':'Narzędzie do kolekcji.',
+ 'Oswojony wilk':'Towarzysz dodający 10 obrażeń w walce.',
+ 'Wilk AURY':'Towarzysz dodający 20 obrażeń w walce.',
+ 'Wilk Alfa':'Towarzysz dodający 30 obrażeń w walce.',
+ 'Skrzynia kryształów':'Skrzynia z nagrodami — kupiona do kolekcji.',
+ 'Miecz Aury':'Miecz kolekcjonerski AURY.'
+ };
+ toast('🎒 '+name+': '+(desc[name]||'Przedmiot w ekwipunku.'));
+};
+window.uvMcSlotInfo=function(label){toast(label==='Napierśnik'&&s.armor!=='Brak zbroi'?'🛡️ Założono: '+s.armor:label+': slot ekwipunku.');};
 
 function render(){
  $('uvTopName').textContent=s.name;
@@ -901,12 +1132,15 @@ function render(){
  $('uvProfileRank').textContent=rank();
  $('uvProfileCrystals').textContent=s.crystals;
  $('uvProfileStreak').textContent=s.streak+' dni';
- $('uvInventory').innerHTML=s.inventory.length?s.inventory.map(x=>'<div class="row"><span>🎁 '+esc(x)+'</span><span class="tag">KOLEKCJA</span></div>').join(''):'<p class="muted">Twój ekwipunek jest pusty.</p>';
- renderShop();renderArena();renderBoss();renderRanking();renderAchievements();renderAnnouncements();
+ renderMcInventory();
+ renderShop();renderEnchantAvatar();renderArena();renderBoss();renderRanking();renderAchievements();renderAnnouncements();
   if($('uvAvatarDisplay'))$('uvAvatarDisplay').textContent=s.avatar||'🧙';
   if($('uvTeamPurple'))$('uvTeamPurple').textContent=s.teamPurple||0;
   if($('uvTeamBlue'))$('uvTeamBlue').textContent=s.teamBlue||0;
-  if($('uvTeamStatus'))$('uvTeamStatus').textContent=s.teamChoice?'Twoja drużyna: '+(s.teamChoice==='purple'?'Fioletu 🟣':'Błękitu 🔵'):'Wybierz stronę konfliktu!';
+  if($('uvTeamBattles'))$('uvTeamBattles').textContent=s.teamBattles||0;
+  if($('uvTeamWins'))$('uvTeamWins').textContent=s.teamWins||0;
+  if($('uvTeamLosses'))$('uvTeamLosses').textContent=s.teamLosses||0;
+  if($('uvTeamStatus')&&!$('uvTeamStatus').textContent.trim())$('uvTeamStatus').textContent=s.teamChoice?'Wybrana drużyna: '+(s.teamChoice==='purple'?'Fioletowa 🟣':'Niebieska 🔵'):'Wybierz stronę konfliktu!';
   if($('uvAuraStatus'))$('uvAuraStatus').textContent=s.auraMode?'AURA: ULTRA AKTYWNA':'AURA: STANDARD';
   root.classList.toggle('aura-mode-on',!!s.auraMode);
  if($('uv-quiz').classList.contains('active'))renderQuiz();
